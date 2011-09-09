@@ -1,10 +1,22 @@
 require 'thor'
+require 'guard'
+require 'forge/guard'
 
 class Forge < Thor
   include Thor::Actions
+  attr_reader :name, :uri, :author, :author_uri, :description, :version_number, :license_name, :license_uri, :tags
+  
+  def self.source_root
+    File.join(File.dirname(__FILE__), 'forge', 'templates')
+  end
   
   desc "init NAME", "Initializes a Forge project"
-  def init(name)
+  def init(name)    
+    @name = ask "What is the name of the theme?"
+    @uri = ask "What is the website for the theme?"
+    @author = ask "What is the author's name?"
+    @author_uri = ask "What is the author's website?"
+    
     empty_directory name
     
     empty_directory File.join(name, "assets", "images")
@@ -16,5 +28,25 @@ class Forge < Thor
     empty_directory File.join(name, "templates", "custom", "partials")
     
     empty_directory File.join(name, "functions")
+    
+    add_file File.join(name, "config.rb")
+    
+    template File.join("stylesheets", "style.css.erb"), File.join(name, "assets", "stylesheets", "style.css")
+  end
+  
+  desc "preview", "Start preview process"
+  def preview
+    unless File.exists?('config.rb')
+      puts "No configuration file found - are you sure you're in a Forge project directory?"
+      exit
+    end
+    
+    guardfile_contents = %Q{
+      guard 'forge' do
+        watch(%r{.*})
+      end
+    }
+    
+    Forge::Guard.start({ :guardfile_contents => guardfile_contents })
   end
 end

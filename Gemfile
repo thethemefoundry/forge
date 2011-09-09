@@ -4,6 +4,7 @@ source "http://rubygems.org"
 #   gem "activesupport", ">= 2.3.5"
 
 gem "thor"
+gem "guard"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
