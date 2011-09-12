@@ -9,4 +9,4 @@ $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
 require 'forge'
 
-Forge.start
+Forge::CLI.start
