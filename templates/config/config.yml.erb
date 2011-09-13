@@ -1,27 +1,27 @@
 # The name of the theme
-<% if name -%>
-name: <%= name %>
+<% if config[:name] -%>
+name: <%= config[:name] %>
 <% else -%>
 # name: Your Theme Name
 <% end -%>
 
 # The website for the theme
-<% if uri -%>
-uri: <%= uri %>
+<% if config[:uri] -%>
+uri: <%= config[:uri] %>
 <% else -%>
 # uri: http://example.com/theme-name/
 <% end -%>
 
 # The author's name
-<% if author -%>
-author: <%= author %>
+<% if config[:author] -%>
+author: <%= config[:author] %>
 <% else -%>
 # author: The Author's Name
 <% end -%>
 
 # The author's website
-<% if author_uri -%>
-author_uri: <%= author_uri %>
+<% if config[:author_uri] -%>
+author_uri: <%= config[:author_uri] %>
 <% else -%>
 # author_uri: http://authorswebsite.com/
 <% end -%>
