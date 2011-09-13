@@ -10,6 +10,10 @@ module Guard
       init_sprockets
     end
 
+    def start
+      rebuild
+    end
+
     # Called on Ctrl-\ signal
     # This method should be principally used for long action like running all specs/tests/...
     def run_all
@@ -20,11 +24,6 @@ module Guard
     def run_on_change(paths)
       p "Assets have changed, rebuilding..."
       rebuild
-    end
-
-    def cleanup
-      # TODO: X-compatibility?
-      ::Forge::Guard.task.run('rm -rf .forge/*')
     end
 
     def init_sprockets
