@@ -13,18 +13,18 @@ module Forge
       options.each do |k,v|
         options_hash << ", :#{k} => '#{v}'"
       end
-    
+
       guardfile_contents = %Q{
-        guard 'forgeconfig'#{options_hash} do 
+        guard 'forgeconfig'#{options_hash} do
           watch("config.yml")
         end
       }
-    
+
       (@additional_guards || []).each do |block|
         result = block.call(options, livereload)
         guardfile_contents << result unless result.nil?
       end
-    
+
       ::Guard.start({ :guardfile_contents => guardfile_contents })
     end
 
@@ -40,7 +40,7 @@ module Guard
     # Called once when Guard starts
     # Please override initialize method to init stuff
     def start
-      puts "Staring Forge config watcher"
+      puts "Starting Forge config watcher"
     end
 
     # Called on Ctrl-C signal (when Guard quits)
@@ -76,7 +76,7 @@ module Guard
     # Called once when Guard starts
     # Please override initialize method to init stuff
     def start
-      puts "Staring Forge previewer"
+      puts "Starting Forge previewer"
     end
 
     # Called on Ctrl-C signal (when Guard quits)
@@ -98,7 +98,21 @@ module Guard
 
     # Called on file(s) modifications
     def run_on_change(paths)
-      puts "File Changed"
+      template_paths.each do |template_path|
+        FileUtils.cp_r template_path, '.forge'
+      end
+    end
+
+    private
+
+    def template_paths
+      paths = [
+        ['templates', 'core', '.'],
+        ['templates', 'custom', 'pages', '.'],
+        ['templates', 'custom', 'partials', '.']
+      ]
+
+      paths.collect { |path| File.join(path) }
     end
 
   end

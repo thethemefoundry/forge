@@ -25,6 +25,14 @@ module Forge
     def preview
       project = Forge::Project.new('.', self)
 
+      Forge::Guard.add_guard do
+        %Q{
+          guard 'forge' do
+            watch(%r{.*})
+          end
+        }
+      end
+
       Forge::Guard.start
     end
   end
