@@ -7,6 +7,7 @@ module Forge
         root = File.expand_path(root)
 
         paths = [
+          ['.forge'],
           ['assets', 'images'],
           ['assets', 'javascripts'],
           ['assets', 'stylesheets'],
@@ -39,6 +40,10 @@ module Forge
       @task        = task
 
       load_config if @config.empty?
+    end
+
+    def build_dir
+      File.join(root, '.forge')
     end
 
     def load_config

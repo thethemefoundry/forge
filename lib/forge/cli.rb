@@ -15,7 +15,7 @@ module Forge
         :name       => ask("What is the name of this theme?"),
         :uri        => ask("What is the website for the theme?"),
         :author     => ask("What is the author's name?"),
-        :author_url => ask("What is the author's url?")
+        :author_uri => ask("What is the author's uri?")
       }
 
       project = Forge::Project.create(dir, config, self)
@@ -25,7 +25,7 @@ module Forge
     def preview
       project = Forge::Project.new('.', self)
 
-      Forge::Guard.start
+      Forge::Guard.start(project, self)
     end
   end
 end
