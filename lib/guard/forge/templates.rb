@@ -1,5 +1,8 @@
+require 'guard'
+require 'guard/guard'
+
 module Guard
-  class ForgeTemplates < Guard
+  class ForgeTemplates < ::Guard::Guard
     def initialize(watchers=[], options={})
       super
     end

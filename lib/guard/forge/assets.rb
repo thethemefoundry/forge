@@ -1,6 +1,8 @@
+require 'guard'
+require 'guard/guard'
 
 module Guard
-  class ForgeAssets < Guard
+  class ForgeAssets < ::Guard::Guard
 
     def initialize(watchers=[], options={})
       super

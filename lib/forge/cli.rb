@@ -1,5 +1,8 @@
 require 'thor'
 require 'yaml'
+require 'guard/forge/assets'
+require 'guard/forge/config'
+require 'guard/forge/templates'
 
 module Forge
   class CLI < Thor
