@@ -26,8 +26,8 @@ module Forge
       project = Forge::Project.create(dir, config, self)
     end
 
-    desc "preview", "Start preview process"
-    def preview
+    desc "watch", "Start watch process"
+    def watch
       project = Forge::Project.new('.', self)
 
       Forge::Guard.start(project, self)
