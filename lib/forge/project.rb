@@ -26,6 +26,7 @@ module Forge
         project = self.new(root, task, config)
         project.write_config
         project.write_stylesheet
+        project.copy_default_templates
         project
       end
     end
@@ -48,7 +49,7 @@ module Forge
 
     def load_config
       unless File.exists?(@config_file)
-        raise Error, "Could not find the config file, are you sure you're in a 
+        raise Error, "Could not find the config file, are you sure you're in a
         forge project directory?"
       end
 
@@ -63,6 +64,15 @@ module Forge
 
     def write_stylesheet
       write_template(['stylesheets', 'style.css.scss.erb'], [root, 'assets', 'stylesheets', 'style.css.scss'])
+
+      self
+    end
+
+    def copy_default_templates
+      template_path = File.join('templates', 'core')
+      output_path = File.join(@root, 'templates', 'core')
+
+      @task.directory(template_path, output_path)
 
       self
     end

@@ -9,14 +9,19 @@ module Forge
       File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'templates'))
     end
 
-    desc "init dir", "Initializes a Forge project"
+    desc "init DIRECTORY", "Initializes a Forge project"
+    method_options :prompt => :boolean
     def init(dir)
-      config = {
-        :name       => ask("What is the name of this theme?"),
-        :uri        => ask("What is the website for the theme?"),
-        :author     => ask("What is the author's name?"),
-        :author_uri => ask("What is the author's uri?")
-      }
+      config = {:name => dir}
+
+      if options.prompt?
+        config = {
+          :name       => ask("What is the name of this theme?"),
+          :uri        => ask("What is the website for the theme?"),
+          :author     => ask("What is the author's name?"),
+          :author_url => ask("What is the author's url?")
+        }
+      end
 
       project = Forge::Project.create(dir, config, self)
     end
