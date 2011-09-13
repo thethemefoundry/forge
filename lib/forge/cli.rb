@@ -15,7 +15,9 @@ module Forge
     desc "init DIRECTORY", "Initializes a Forge project"
     method_options :prompt => :boolean
     def init(dir)
-      config = {:name => dir}
+      config = {
+        :name => dir
+      }
 
       if options.prompt?
         config = {
@@ -34,6 +36,15 @@ module Forge
       project = Forge::Project.new('.', self)
 
       Forge::Guard.start(project, self)
+    end
+
+    desc "package", "Compile and zip your project"
+    def package
+      project = Forge::Project.new('.', self)
+
+      builder = Builder.new(project)
+      builder.build
+      builder.zip
     end
   end
 end

@@ -34,6 +34,7 @@ GEM
     rspec-expectations (2.3.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.3.0)
+    rubyzip (0.9.4)
     sprockets (2.0.0)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -53,5 +54,6 @@ DEPENDENCIES
   jeweler (~> 1.6.4)
   rcov
   rspec (~> 2.3.0)
+  rubyzip
   sprockets
   thor

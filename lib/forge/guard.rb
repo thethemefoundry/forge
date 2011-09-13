@@ -1,13 +1,11 @@
 require 'guard'
 require 'guard/guard'
-require 'sprockets'
 
 module Forge
   module Guard
 
     class << self
-      attr_accessor :project
-      attr_accessor :task
+      attr_accessor :project, :task, :builder
     end
 
     def self.add_guard(&block)
@@ -18,6 +16,7 @@ module Forge
     def self.start(project, task, options={}, livereload={})
       @project = project
       @task = task
+      @builder = Builder.new(project)
 
       options_hash = ""
       options.each do |k,v|
