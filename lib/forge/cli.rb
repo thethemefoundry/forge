@@ -9,7 +9,7 @@ module Forge
     include Thor::Actions
 
     def self.source_root
-      File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'templates'))
+      File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'layouts'))
     end
 
     desc "init DIRECTORY", "Initializes a Forge project"
