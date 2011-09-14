@@ -21,7 +21,7 @@ module Forge
     def zip
       basename = File.basename(@project.root)
 
-      Zip::ZipFile.open("#{basename}.zip", Zip::ZipFile::CREATE) do |zip|
+      Zip::ZipFile.open(get_output_filename(basename), Zip::ZipFile::CREATE) do |zip|
         build_dir = Dir.open(@project.build_dir)
         build_dir.each do |filename|
           zip.add File.join(basename, filename), File.join(@project.build_dir, filename)
@@ -61,6 +61,19 @@ module Forge
         ['custom', 'pages', '.'],
         ['custom', 'partials', '.']
       ].collect { |path| File.join(@templates_path, path) }
+    end
+
+    # Generate a unique filename for the zip output
+    def get_output_filename(basename)
+      filename = "#{basename}.zip"
+
+      i = 1
+      while File.exists?(filename)
+        filename = "#{basename}(#{i}).zip"
+        i += 1
+      end
+
+      filename
     end
   end
 end
