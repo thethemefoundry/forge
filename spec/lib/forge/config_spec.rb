@@ -59,7 +59,7 @@ describe Forge::Config do
       @config.read
     end
 
-    it "should not call write if the config file exists" do
+    it "should not call #write if the config file exists" do
       File.should_receive(:exists?).with(config_file).and_return(true)
       Psych.should_receive(:load_file).with(config_file)
 
