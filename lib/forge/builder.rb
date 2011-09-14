@@ -57,7 +57,7 @@ module Forge
 
     def template_paths
       @template_paths ||= [
-        ['default', '.'],
+        ['core', '.'],
         ['custom', 'pages', '.'],
         ['custom', 'partials', '.']
       ].collect { |path| File.join(@templates_path, path) }

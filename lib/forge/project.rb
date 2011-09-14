@@ -14,7 +14,7 @@ module Forge
 
           ['functions'],
 
-          ['templates', 'default'],
+          ['templates', 'core'],
           ['templates', 'custom', 'pages'],
           ['templates', 'custom', 'partials']
         ]
@@ -73,8 +73,8 @@ module Forge
     end
 
     def copy_default_templates
-      template_path = File.join('templates', 'default')
-      output_path = File.join(@root, 'templates', 'default')
+      template_path = File.join('templates', 'core')
+      output_path = File.join(@root, 'templates', 'core')
 
       @task.directory(template_path, output_path)
 
