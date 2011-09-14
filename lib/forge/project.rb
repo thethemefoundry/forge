@@ -47,6 +47,10 @@ module Forge
       File.join(root, '.forge')
     end
 
+    def name
+      File.basename(root)
+    end
+
     def load_config
       unless File.exists?(@config_file)
         raise Error, "Could not find the config file, are you sure you're in a

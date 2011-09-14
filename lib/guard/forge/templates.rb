@@ -8,11 +8,13 @@ module Guard
     end
 
     def start
+      UI.info "Copying templates over"
       ::Forge::Guard.builder.copy_templates
     end
 
     # Called on file(s) modifications
     def run_on_change(paths)
+      UI.info "Templates have changed, copying over"
       ::Forge::Guard.builder.copy_templates
     end
   end
