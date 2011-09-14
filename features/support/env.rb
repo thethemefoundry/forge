@@ -11,3 +11,5 @@ $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
 require 'forge'
 
 require 'rspec/expectations'
+require 'aruba/cucumber'
+
