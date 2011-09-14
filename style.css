@@ -1,0 +1,81 @@
+/*---------------------------------------------------------
+	1. Reset
+------------------------------------------------------------ */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+/*---------------------------------------------------------
+	2. Body and links
+------------------------------------------------------------ */
+body {
+	font-size: 100%;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #6d6455;
+	background: #e3e2ce url(/images/bg.png);
+}
+a:link,
+a:visited {
+	color: #494339;
+	text-decoration: underline;
+}
+a:hover {
+	color: #39342c;
+}
+
+/*---------------------------------------------------------
+	3. Basic Structure
+------------------------------------------------------------ */
+#wrapper {
+	max-width: 560px;
+	margin: 0 auto;
+}
+.clear:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/*---------------------------------------------------------
+	4. Header
+------------------------------------------------------------ */
+#header {
+	margin: 20px 0;
+}
+h1 {
+	float: left;
+	font-size: 24px;
+}
+#header h1 a {
+	text-decoration: none;
+}
+#nav {
+	float: right;
+	margin-bottom: 30px;	
+}
+#nav ul li {
+	float: left;
+	margin-left: 20px;
+}
+
+/*---------------------------------------------------------
+	5. Sections
+------------------------------------------------------------ */
+div.section {
+	margin: 20px 0;
+	line-height: 1.8em;
+}
+h2 {
+	margin-bottom: 5px;
+	font-size: 18px;
+	color: #585043;
+}
+code {
+	padding: 3px;
+	background: #efecdc;
+	border: 1px solid #dcd7be;
+}
