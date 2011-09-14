@@ -58,13 +58,14 @@ module Forge
     end
 
     def run
+      write_config
       copy_stylesheets
       copy_templates
       return self
     end
 
     def write_config
-      write_template(['config', 'config.yml.erb'], @config_file)
+      write_template(['config', 'config.yml.erb'], @project.config_file)
 
       self
     end
@@ -75,7 +76,8 @@ module Forge
       target   = File.expand_path(File.join(target))
 
       @task.create_file target do
-        ERB.new(::File.binread(template), nil, '-', '@output_buffer').result(binding)
+        ERB.new(::File.binread(template), nil, '-', '@output_buffer'). 
+          result(@project.get_binding)
       end
     end
   end

@@ -47,5 +47,9 @@ module Forge
 
       self.config = YAML.load(self.config_file)
     end
+
+    def get_binding
+      binding
+    end
   end
 end

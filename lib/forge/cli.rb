@@ -13,22 +13,25 @@ module Forge
     end
 
     desc "init DIRECTORY", "Initializes a Forge project"
-    method_options :prompt => :boolean
+    method_option :name, :type => :string, :desc => "The theme name"
+    method_option :uri,  :type => :string, :desc => "The theme's uri"
+    method_option :author, :type => :string, :desc => "The author of the theme"
+    method_option :author_url, :type => :string, :desc => "The author's url"
     def init(dir)
-      config = {
-        :name => dir
+      prompts = {
+        :name       => "What is the name of this theme?",
+        :uri        => "What is the website for this theme?",
+        :author     => "Who is the author of this theme?",
+        :author_url => "What is the author's website?"
       }
 
-      if options.prompt?
-        config = {
-          :name       => ask("What is the name of this theme?"),
-          :uri        => ask("What is the website for the theme?"),
-          :author     => ask("What is the author's name?"),
-          :author_url => ask("What is the author's url?")
-        }
+      theme = {}
+
+      prompts.each do |k,v|
+        theme[k] = options[k] || ask(v)
       end
 
-      project = Forge::Project.create(dir, config, self)
+      project = Forge::Project.create(dir, theme, self)
     end
 
     desc "link WORDPRESS_DIR", "symlink this theme to the specified wordpress install"
