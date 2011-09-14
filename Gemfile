@@ -7,6 +7,7 @@ gem "thor"
 gem "guard"
 gem "sprockets"
 gem "rubyzip"
+gem "psych"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
