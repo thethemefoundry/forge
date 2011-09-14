@@ -18,6 +18,8 @@ module Forge
     method_option :author, :type => :string, :desc => "The author of the theme"
     method_option :author_url, :type => :string, :desc => "The author's url"
     def init(dir)
+      config = Forge::Config.read
+
       prompts = {
         :name       => "What is the name of this theme?",
         :uri        => "What is the website for this theme?",
@@ -28,7 +30,9 @@ module Forge
       theme = {}
 
       prompts.each do |k,v|
-        theme[k] = options[k] || ask(v)
+        # Check if this option was passed as a switch, or put in the user config
+        # before prompting the user
+        theme[k] = options[k] || config[:theme][k] || ask(v)
       end
 
       project = Forge::Project.create(dir, theme, self)

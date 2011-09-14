@@ -5,11 +5,19 @@ module Forge
   #
   class Config
 
+    class << self
+      def read
+        config = self.new
+        config.read
+        config
+      end
+    end
+
     @config
 
     attr_accessor :config
 
-    def initialize()
+    def initialize
       @config = {
         :theme => {
           :author     => nil,
