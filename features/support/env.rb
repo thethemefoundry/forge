@@ -12,4 +12,3 @@ require 'forge'
 
 require 'rspec/expectations'
 require 'aruba/cucumber'
-
