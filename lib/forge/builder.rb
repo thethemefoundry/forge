@@ -31,7 +31,7 @@ module Forge
 
     def copy_templates
       template_paths.each do |template_path|
-        FileUtils.cp_r template_path, '.forge'
+        FileUtils.cp_r template_path, @project.build_dir
       end
     end
 
