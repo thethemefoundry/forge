@@ -6,90 +6,46 @@ module Forge
       def create(root, config, task)
         root = File.expand_path(root)
 
-        paths = [
-          ['.forge'],
-          ['assets', 'images'],
-          ['assets', 'javascripts'],
-          ['assets', 'stylesheets'],
-
-          ['functions'],
-
-          ['templates', 'core'],
-          ['templates', 'custom', 'pages'],
-          ['templates', 'custom', 'partials']
-        ]
-
-        paths.each do |path|
-          task.empty_directory File.join(root, path)
-        end
-
         project = self.new(root, task, config)
-        project.write_config
-        project.write_stylesheet
-        project.copy_default_templates
+        Generator.run(project)
+
         project
       end
     end
 
-    attr_reader :config_file
     attr_accessor :root, :config, :task
 
     def initialize(root, task, config={})
-      @root    = File.expand_path(root)
-      @config  = config || {}
-      @config_file = File.join(root, 'config.yml')
+      @root        = File.expand_path(root)
+      @config      = config || {}
       @task        = task
 
-      load_config if @config.empty?
+      self.load_config if @config.empty?
+    end
+
+    def assets_path
+      @assets_path ||= File.join(self.root, 'assets')
     end
 
     def build_dir
-      File.join(root, '.forge')
+      File.join(self.root, '.forge')
+    end
+
+    def config_file
+      @config_file ||= File.join(self.root, 'config.yml')
     end
 
     def name
-      File.basename(root)
+      File.basename(self.root)
     end
 
     def load_config
-      unless File.exists?(@config_file)
+      unless File.exists?(self.config_file)
         raise Error, "Could not find the config file, are you sure you're in a
         forge project directory?"
       end
 
-      self.config = YAML.load(@config_file)
-    end
-
-    def write_config
-      write_template(['config', 'config.yml.erb'], @config_file)
-
-      self
-    end
-
-    def write_stylesheet
-      write_template(['stylesheets', 'style.css.scss.erb'], [root, 'assets', 'stylesheets', 'style.css.scss'])
-
-      self
-    end
-
-    def copy_default_templates
-      template_path = File.join('templates', 'core')
-      output_path = File.join(@root, 'templates', 'core')
-
-      @task.directory(template_path, output_path)
-
-      self
-    end
-
-    protected
-    def write_template(source, target)
-      source   = File.join(source)
-      template = File.expand_path(@task.find_in_source_paths((source)))
-      target   = File.expand_path(File.join(target))
-
-      @task.create_file target do
-        ERB.new(::File.binread(template), nil, '-', '@output_buffer').result(binding)
-      end
+      self.config = YAML.load(self.config_file)
     end
   end
 end
