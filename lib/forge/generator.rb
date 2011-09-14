@@ -29,7 +29,7 @@ module Forge
       ]
 
       paths.each do |path|
-        @task.empty_directory File.join(root, path)
+        @task.empty_directory File.join(@project.root, path)
       end
 
       self
@@ -59,6 +59,7 @@ module Forge
 
     def run
       write_config
+      create_structure
       copy_stylesheets
       copy_templates
       return self
@@ -76,7 +77,7 @@ module Forge
       target   = File.expand_path(File.join(target))
 
       @task.create_file target do
-        ERB.new(::File.binread(template), nil, '-', '@output_buffer'). 
+        ERB.new(::File.binread(template), nil, '-', '@output_buffer').
           result(@project.get_binding)
       end
     end
