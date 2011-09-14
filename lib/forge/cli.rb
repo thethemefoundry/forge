@@ -16,13 +16,13 @@ module Forge
     method_option :name, :type => :string, :desc => "The theme name"
     method_option :uri,  :type => :string, :desc => "The theme's uri"
     method_option :author, :type => :string, :desc => "The author of the theme"
-    method_option :author_url, :type => :string, :desc => "The author's url"
+    method_option :author_uri, :type => :string, :desc => "The author's uri"
     def init(dir)
       prompts = {
         :name       => "What is the name of this theme?",
         :uri        => "What is the website for this theme?",
         :author     => "Who is the author of this theme?",
-        :author_url => "What is the author's website?"
+        :author_uri => "What is the author's website?"
       }
 
       theme = {}
