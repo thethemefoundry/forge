@@ -17,7 +17,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "forge"
   gem.homepage = "http://github.com/jestro/forge"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
+  gem.summary = %Q{A tool for developing wordpress themes}
   gem.description = %Q{TODO: longer description of your gem}
   gem.email = "aadams@jestro.com"
   gem.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
