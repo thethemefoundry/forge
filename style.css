@@ -80,13 +80,15 @@ code {
 	font-family: Consolas, monospace;
 	font-size: 16px;
 }
+code span {
+	color: #aa9d89;
+}
 pre {
 	margin: 5px 0 20px 0;
 	padding: 10px;
 	background: #efecdc;
 	border: 1px solid #dcd7be;
 }
-
 /*---------------------------------------------------------
 	Footer
 ------------------------------------------------------------ */
