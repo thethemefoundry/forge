@@ -12,10 +12,13 @@ Install Forge (requires [Ruby](http://www.ruby-lang.org/) and [RubyGems](http://
 
     $ gem install forge
 
-Create your new theme project and link it to your local WordPress install(s):
+Create your new theme project:
 
     $ forge create themename
+
+Watch for changes and start developing!
+
     $ cd themename
-    $ forge link /path/to/wordpress
+    $ forge watch
 
 See the [user's manual](http://forge.thethemefoundry.com/manual) for more information.
