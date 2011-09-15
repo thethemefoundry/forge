@@ -36,7 +36,7 @@ module Forge
     end
 
     def copy_stylesheets
-      source = [self.layout_path, 'stylesheets', 'style.css.scss.erb']
+      source = [@layout, 'stylesheets', 'style.css.scss.erb']
       target = [@project.assets_path, 'stylesheets', 'style.css.scss']
 
       write_template(source, target)
@@ -45,16 +45,33 @@ module Forge
     end
 
     def copy_templates
-      source = File.join(self.layout_path, 'templates')
-      target = File.join(@project.root, 'templates')
+      source = File.expand_path(File.join(self.layout_path, 'templates'))
+      target = File.expand_path(File.join(@project.root, 'templates'))
 
-      @task.directory(source, target)
+      Dir.glob("#{source}/**/*") do |file|
+        unless File.directory?(file)
+          source_file = file.gsub(source, '')
+          target_file = File.join(target, source_file)
+
+          if source_file.end_with? ".erb"
+            target_file = target_file.slice(0..-5)
+
+            content = render_erb(file)
+          else
+            content = File.open(file).read
+          end
+
+          @task.create_file target_file do
+            content
+          end
+        end
+      end
 
       self
     end
 
     def layout_path
-      @layout_path ||= File.join(@layout)
+      @layout_path ||= File.join(Forge::ROOT, 'layouts', @layout)
     end
 
     def run
@@ -77,9 +94,13 @@ module Forge
       target   = File.expand_path(File.join(target))
 
       @task.create_file target do
-        ERB.new(::File.binread(template), nil, '-', '@output_buffer').
-          result(@project.get_binding)
+        render_erb(template)
       end
+    end
+
+    protected
+    def render_erb(file)
+      ERB.new(::File.binread(file), nil, '-', '@output_buffer').result(@project.get_binding)
     end
   end
 end
