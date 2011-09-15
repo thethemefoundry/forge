@@ -1,5 +1,10 @@
 Given /^I am in a forge project named "([^"]*)"$/ do |name|
-  Forge::Project.create(File.join(current_dir, name), {:name => name}, Forge::CLI.new)
+  cli = Forge::CLI.new
+
+  cli.shell.mute do
+    Forge::Project.create(File.join(current_dir, name), {:name => name}, cli)
+  end
+
   cd name
 end
 
