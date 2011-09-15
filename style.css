@@ -8,7 +8,7 @@ blockquote, q { quotes: none; }
 table { border-collapse: collapse; border-spacing: 0; }
 
 /*---------------------------------------------------------
-	2. Body and links
+	Body and links
 ------------------------------------------------------------ */
 body {
 	font-size: 100%;
@@ -26,11 +26,12 @@ a:hover {
 }
 
 /*---------------------------------------------------------
-	3. Basic Structure
+	Basic Structure
 ------------------------------------------------------------ */
 #wrapper {
 	max-width: 560px;
 	margin: 0 auto;
+	padding: 0 20px;
 }
 .clear:after {
 	content: ".";
@@ -41,7 +42,7 @@ a:hover {
 }
 
 /*---------------------------------------------------------
-	4. Header
+	Header
 ------------------------------------------------------------ */
 #header {
 	margin: 20px 0;
@@ -63,7 +64,7 @@ h1 {
 }
 
 /*---------------------------------------------------------
-	5. Sections
+	Sections
 ------------------------------------------------------------ */
 div.section {
 	margin: 20px 0;
@@ -71,11 +72,23 @@ div.section {
 }
 h2 {
 	margin-bottom: 5px;
-	font-size: 18px;
-	color: #585043;
+	color: #61594a;
 }
 code {
-	padding: 3px;
+	padding: 8px;
 	background: #efecdc;
 	border: 1px solid #dcd7be;
+}
+pre {
+	margin: 8px 0 20px 0;
+}
+
+/*---------------------------------------------------------
+	Footer
+------------------------------------------------------------ */
+#footer {
+	margin: 40px 0 20px 0;
+	padding-top: 15px;
+	font-size: 0.777777778em; /* 14 / 18 */
+	border-top: 1px solid #e0dac3;
 }

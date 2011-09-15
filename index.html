@@ -23,18 +23,27 @@
 		</div>
 		<div class="section">
 			<h2>How does it work?</h2>
-			<p>Forge creates a clean and organized WordPress theme development folder for you to work from. The folder is then automatically compiled to all your local WordPress installs as you save changes to your theme. When you are ready to distribute your theme Forge will build it into a directory or package it up into an easy to install zip file.</p>
+			<p>Forge creates a neatly organized project folder with some clean and simple scaffolding (base template files, SCSS files, and theme options). The folder is automatically compiled to your local WordPress install(s) as you save changes and work on your theme. When you are ready to distribute your theme Forge will build it to a folder or package it up into an easy to install zip file.</p>
 		</div>
 		<div class="section">
 			<h2>Basic setup</h2>
 			<ol>
-				<li>Install Ruby and Ruby gems.</li>
-				<li>Install Forge <code>gem install forge</code></li>
-				<li>Create your project <code>forge init</code></li>
-				<li>Specify your WordPress install(s) <code>forge link /path/to/wordpress</code></li>
-				<li>Watch for changes <code>forge watch</code></li>
-				<li>Start developing!</li>
+				<li>Install Forge (requires Ruby and Rubygems).
+					<pre><code>gem install forge</code></pre>
+				</li>
+				<li>Create your new theme project.
+					<pre><code>forge init themename</code></pre>
+				</li>
+				<li>Tell Forge about your WordPress install(s).
+					<pre><code>forge link /path/to/wordpress</code></pre>
+				</li>
+				<li>Watch for changes and start developing! 
+					<pre><code>forge watch</code></pre>
+				</li>
 			</ol>
+		</div>
+		<div id="footer">
+			Brought to you by <a href="http://thethemefoundry.com">The Theme Foundry</a>.
 		</div>
 	</div>
 </body>
