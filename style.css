@@ -61,6 +61,8 @@ h1 {
 #nav ul li {
 	float: left;
 	margin-left: 20px;
+	font-size: 0.777777778em; /* 14 / 18 */
+	font-weight: bold;
 }
 
 /*---------------------------------------------------------
@@ -75,12 +77,14 @@ h2 {
 	color: #61594a;
 }
 code {
-	padding: 8px;
-	background: #efecdc;
-	border: 1px solid #dcd7be;
+	font-family: Consolas, monospace;
+	font-size: 16px;
 }
 pre {
-	margin: 8px 0 20px 0;
+	margin: 5px 0 20px 0;
+	padding: 10px;
+	background: #efecdc;
+	border: 1px solid #dcd7be;
 }
 
 /*---------------------------------------------------------

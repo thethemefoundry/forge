@@ -12,30 +12,27 @@
 			<h1><a href="/">Forge</a></h1>
 			<div id="nav">
 				<ul>
-					<li><a href="/manual.html">Manual</a></li>
+					<li><a href="/manual">User's manual</a></li>
 					<li><a href="http://github.com/jestro/forge">Source on Github</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="section">
 			<h2>What is Forge?</h2>
-			<p>Forge is a WordPress theme development toolkit for bootstrapping and developing WordPress themes in a tidy environment using powerful front-end language tools like <a href="http://sass-lang.com/" title="Sass - Syntactically Awesome Stylesheets">SASS</a> and <a href="http://jashkenas.github.com/coffee-script/" title="CoffeeScript">CoffeeScript</a>.</p>
+			<p>Forge is a toolkit for bootstrapping and developing WordPress themes in a tidy environment using front-end language tools like <a href="http://sass-lang.com/" title="Sass - Syntactically Awesome Stylesheets">SASS</a> and <a href="http://jashkenas.github.com/coffee-script/" title="CoffeeScript">CoffeeScript</a>.</p>
 		</div>
 		<div class="section">
 			<h2>How does it work?</h2>
-			<p>Forge creates a neatly organized project folder with some clean and simple scaffolding (base template files, SCSS files, and theme options). The folder is automatically compiled to your local WordPress install(s) as you save changes and work on your theme. When you are ready to distribute your theme Forge will build it to a folder or package it up into an easy to install zip file.</p>
+			<p>Forge creates a neatly organized project folder with some clean and simple scaffolding (base template files, SCSS files, and theme options). The folder is automatically compiled to your local WordPress install(s) as you save changes and work on your theme. When you are ready to distribute your theme Forge will build it to a folder or bundle it up into an easy to install zip package.</p>
 		</div>
 		<div class="section">
 			<h2>Basic setup</h2>
 			<ol>
-				<li>Install Forge (requires Ruby and Rubygems).
+				<li>Install Forge (requires <a href="http://www.ruby-lang.org/">Ruby</a> and <a href="http://rubygems.org/">RubyGems</a>):
 					<pre><code>gem install forge</code></pre>
 				</li>
-				<li>Create your new theme project.
-					<pre><code>forge init themename</code></pre>
-				</li>
-				<li>Tell Forge about your WordPress install(s).
-					<pre><code>forge link /path/to/wordpress</code></pre>
+				<li>Create your new theme project and link it to your local WordPress install(s):
+					<pre><code>forge init themename<br />forge link /path/to/wordpress</code></pre>
 				</li>
 				<li>Watch for changes and start developing! 
 					<pre><code>forge watch</code></pre>
