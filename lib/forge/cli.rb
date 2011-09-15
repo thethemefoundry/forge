@@ -33,18 +33,18 @@ module Forge
 
       project = Forge::Project.create(dir, theme, self)
 
-      if path = ask("Please enter the path to your wordpress install.")
-        say "Linking to #{path}"
+      path = ask("Please enter the path to your wordpress install.").chomp
 
+      unless path.empty?
         begin
           project.link(path)
         rescue LinkSourceNotFound
-          say "Sorry, we couldn't find a wordpress installation at #{path}"
+          say "Sorry, we couldn't find a wordpress installation at #{path}\n"
         end
       else
-        say "No wordpress install specified"
+        say "No wordpress install specified\n"
       end
-      say "You can link to additional wordpress installs using the 'forge link' command"
+      say "You can link to additional wordpress installs using the 'forge link' command\n"
     end
 
     desc "link WORDPRESS_DIR", "symlink this theme to the specified wordpress install"
