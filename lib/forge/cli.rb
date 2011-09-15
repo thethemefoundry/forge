@@ -17,6 +17,7 @@ module Forge
     method_option :uri,  :type => :string, :desc => "The theme's uri"
     method_option :author, :type => :string, :desc => "The author of the theme"
     method_option :author_uri, :type => :string, :desc => "The author's uri"
+    method_option :wp_dir, :type => :string, :desc => "Existing WordPress installation directory"
     def create(dir)
       prompts = {
         :name       => "What is the name of this theme?",
@@ -33,13 +34,14 @@ module Forge
 
       project = Forge::Project.create(dir, theme, self)
 
-      path = ask("Please enter the path to your wordpress install.").chomp
+      path = options[:wp_dir] || ask("Please enter the path to your wordpress install.").chomp
 
       unless path.empty?
         begin
           project.link(path)
         rescue LinkSourceNotFound
           say "Sorry, we couldn't find a wordpress installation at #{path}\n"
+          exit 1
         end
       else
         say "No wordpress install specified\n"
@@ -55,6 +57,7 @@ module Forge
         project.link(wordpress_dir)
       rescue LinkSourceNotFound
         say "Sorry, we couldn't find a wordpress installation at #{wordpress_dir}"
+        exit 1
       end
     end
 
