@@ -1,4 +1,4 @@
-require 'psych'
+require 'json'
 
 module Forge
   # Reads/Writes a configuration file in the user's home directory
@@ -40,7 +40,7 @@ module Forge
       # StringIO object instead of a file buffer
       io = options[:io] || File.open(self.config_file, 'w')
 
-      Psych.dump(@config, io)
+      io.write JSON.generate(@config)
 
       io.close
 
@@ -53,7 +53,9 @@ module Forge
     def read
       return write unless File.exists?(self.config_file)
 
-      @config = Psych.load_file(self.config_file)
+      data = File.open(self.config_file).read
+
+      @config = data.empty? ? {} : JSON.parse(data)
 
       self
     end

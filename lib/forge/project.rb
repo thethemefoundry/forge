@@ -1,4 +1,5 @@
 require 'pathname'
+require 'json'
 
 module Forge
   class Project
@@ -32,7 +33,7 @@ module Forge
     end
 
     def config_file
-      @config_file ||= File.join(self.root, 'config.yml')
+      @config_file ||= File.join(self.root, 'config.json')
     end
 
     def name
@@ -45,7 +46,7 @@ module Forge
         forge project directory?"
       end
 
-      self.config = YAML.load(self.config_file)
+      self.config = JSON.parse File.open(config_file).read
     end
 
     def get_binding
