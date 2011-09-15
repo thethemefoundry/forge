@@ -11,7 +11,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 	Body and links
 ------------------------------------------------------------ */
 body {
-	font-size: 100%;
+	font-size: 87.5%;
 	font-family: Helvetica, Arial, sans-serif;
 	color: #6d6455;
 	background: #e3e2ce url(/images/bg.png);
@@ -46,39 +46,53 @@ a:hover {
 ------------------------------------------------------------ */
 #header {
 	margin: 0 0 20px 0;
-	padding: 20px;
-	background: rgba(0,0,0,.05);
+	padding: 20px 0 10px 0;
+	border-bottom: 4px double #d5cfb9;
 }
 h1 {
 	float: left;
+	font-family: 'IM Fell DW Pica SC', serif;
+	font-size: 2em;
+	font-weight: 400;
+	
 }
 #header h1 a {
 	text-decoration: none;
+	color: #817768;
 }
 #nav {
+	margin-top: 10px;
 	float: right;
 }
 #nav ul li {
 	float: left;
 	margin-left: 20px;
-	font-size: 0.777777778em; /* 14 / 18 */
-	font-weight: bold;
+	font-size: 0.857142857em; /* 12 / 14 */
+}
+#nav a {
+	color: #6d6455;
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+#nav a:hover {
+	color: #494339;
+	border-bottom: 1px solid;
 }
 
 /*---------------------------------------------------------
 	Sections
 ------------------------------------------------------------ */
 div.section {
-	margin: 20px 0;
+	margin: 30px 0;
 	line-height: 1.8em;
 }
 h2 {
 	margin-bottom: 5px;
-	color: #61594a;
+	color: #706858;
 }
 code {
 	font-family: Consolas, monospace;
-	font-size: 16px;
+	font-size: 14px;
 }
 code span {
 	color: #aa9d89;
@@ -93,8 +107,9 @@ pre {
 	Footer
 ------------------------------------------------------------ */
 #footer {
-	margin: 40px 0 20px 0;
-	padding-top: 15px;
-	font-size: 0.777777778em; /* 14 / 18 */
-	border-top: 1px solid #e0dac3;
+	margin: 20px 0;
+	padding-top: 10px;
+	line-height: 1.8em;
+	font-size: 0.857142857em; /* 12 / 14 */
+	border-top: 4px double #d5cfb9;
 }
