@@ -12,12 +12,12 @@ module Forge
       File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'layouts'))
     end
 
-    desc "init DIRECTORY", "Initializes a Forge project"
+    desc "create DIRECTORY", "Creates a Forge project"
     method_option :name, :type => :string, :desc => "The theme name"
     method_option :uri,  :type => :string, :desc => "The theme's uri"
     method_option :author, :type => :string, :desc => "The author of the theme"
     method_option :author_uri, :type => :string, :desc => "The author's uri"
-    def init(dir)
+    def create(dir)
       prompts = {
         :name       => "What is the name of this theme?",
         :uri        => "What is the website for this theme?",
