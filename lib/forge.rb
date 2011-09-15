@@ -1,3 +1,5 @@
+require 'forge/error'
+
 module Forge
   autoload :Guard, 'forge/guard'
   autoload :CLI, 'forge/cli'
