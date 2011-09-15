@@ -1,3 +1,0 @@
-= forge
-
-Easy WordPress theme development
