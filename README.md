@@ -2,7 +2,7 @@
 
 [Forge website and screencast](http://forge.thethemefoundry.com/)
 
-[User's Manual](http://forge.thethemefoundry.com/manual)
+[User's manual](http://forge.thethemefoundry.com/manual)
 
 -----
 
@@ -14,7 +14,8 @@ Install Forge (requires [Ruby](http://www.ruby-lang.org/) and [RubyGems](http://
 
 Create your new theme project and link it to your local WordPress install(s):
 
-    $ forge init themename
+    $ forge create themename
+    $ cd themename
     $ forge link /path/to/wordpress
 
 See the [user's manual](http://forge.thethemefoundry.com/manual) for more information.
