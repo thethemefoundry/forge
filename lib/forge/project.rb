@@ -38,17 +38,16 @@ module Forge
 
     # Create a symlink from source to the project build dir
     def link(source)
-      source = File.join(source, 'wp-content', 'themes', name) unless source.include? "wp-content"
       source = File.expand_path(source)
 
-      unless File.directory?(source)
-        raise Forge::LinkSourceNotFound
+      unless File.directory?(File.dirname(source))
+        raise Forge::LinkSourceDirNotFound
       end
 
       @task.link_file build_dir, source
     end
 
-    def name
+    def theme_id
       File.basename(self.root)
     end
 

@@ -3,6 +3,6 @@ module Forge
   end
 
   # Raised when the link source could not be found
-  class LinkSourceNotFound < Error
+  class LinkSourceDirNotFound < Error
   end
 end

@@ -36,26 +36,21 @@ module Forge
       path = ask("Please enter the path to your wordpress install.").chomp
 
       unless path.empty?
-        begin
-          project.link(path)
-        rescue LinkSourceNotFound
-          say "Sorry, we couldn't find a wordpress installation at #{path}\n"
-        end
+        do_link(path)
       else
         say "No wordpress install specified\n"
       end
+
       say "You can link to additional wordpress installs using the 'forge link' command\n"
     end
 
-    desc "link WORDPRESS_DIR", "symlink this theme to the specified wordpress install"
-    def link(wordpress_dir)
+    desc "link PATH", "symlink the compiled version of theme to the specified path"
+    long_desc "This command will symlink the compiled version of the theme to the specified path.\n\n"+
+      "To compile the theme use the `forge watch` command"
+    def link(path)
       project = Forge::Project.new('.', self)
 
-      begin
-        project.link(wordpress_dir)
-      rescue LinkSourceNotFound
-        say "Sorry, we couldn't find a wordpress installation at #{wordpress_dir}"
-      end
+      do_link(project, path)
     end
 
     desc "watch", "Start watch process"
@@ -72,6 +67,16 @@ module Forge
       builder = Builder.new(project)
       builder.build
       builder.zip
+    end
+
+    protected
+    def do_link(project, path)
+      begin
+        project.link(path)
+      rescue LinkSourceDirNotFound
+        say_status :error, "The path #{File.dirname(path)} does not exist", :red
+        exit 2
+      end
     end
   end
 end
