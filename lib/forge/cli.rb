@@ -39,6 +39,12 @@ module Forge
       project = Forge::Project.new('.', self)
 
       wordpress_dir = File.expand_path(wordpress_dir)
+
+      unless File.directory?(wordpress_dir)
+        say "No WordPress installation found at #{wordpress_dir}"
+        exit 1
+      end
+
       target = File.join(project.root, '.forge')
       source = File.join(wordpress_dir, 'wp-content', 'themes', project.name)
 
