@@ -3,9 +3,9 @@
 	<?php if ( is_front_page() ) : ?>
 		<title><?php bloginfo( 'name' ); ?></title>
 	<?php elseif ( is_404() ) : ?>
-		<title><?php _e( 'Page Not Found |', <%= name %> ); ?> | <?php bloginfo( 'name' ); ?></title>
+		<title><?php _e( 'Page Not Found |', '<%= name %>' ); ?> | <?php bloginfo( 'name' ); ?></title>
 	<?php elseif ( is_search() ) : ?>
-		<title><?php printf( __( "Search results for '%s'", <%= name %> ), get_search_query()); ?> | <?php bloginfo( 'name' ); ?></title>
+		<title><?php printf( __( "Search results for '%s'", '<%= name %>' ), get_search_query()); ?> | <?php bloginfo( 'name' ); ?></title>
 	<?php else : ?>
 		<title><?php wp_title( $sep = '' ); ?> | <?php bloginfo( 'name' );?></title>
 	<?php endif; ?>
@@ -18,7 +18,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<div class="skip-content"><a href="#content"><?php _e( 'Skip to content', <%= name %> ); ?></a></div>
+	<div class="skip-content"><a href="#content"><?php _e( 'Skip to content', '<%= name %>' ); ?></a></div>
 	<div id="wrapper" class="clear">
 		<div id="header" class="clear <?php if ( $react->logoState() == 'true' ) echo 'logo' ?>">
 			<div id="title">
