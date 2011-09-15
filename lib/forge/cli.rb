@@ -18,6 +18,7 @@ module Forge
     method_option :author, :type => :string, :desc => "The author of the theme"
     method_option :author_uri, :type => :string, :desc => "The author's uri"
     method_option :wp_dir, :type => :string, :desc => "Existing WordPress installation directory"
+    method_option :interactive, :type => :boolean, :desc => "Use interactive configuration setup", :aliases => "-i"
     def create(dir)
       prompts = {
         :name       => "What is the name of this theme?",
@@ -29,8 +30,11 @@ module Forge
       theme = {}
 
       prompts.each do |k,v|
-        theme[k] = options[k] || ask(v)
+        theme[k] = options[k]
+        theme[k] = ask(v) if options[:interactive]
       end
+
+      theme[:name] = dir if (theme[:name].nil? || theme[:name].empty?)
 
       project = Forge::Project.create(dir, theme, self)
 

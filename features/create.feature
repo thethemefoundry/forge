@@ -13,6 +13,14 @@ Feature: Initialize a new Forge project
   Scenario: Creating a new project without any arguments
     Given a WordPress installation exists at "wordpress"
     When I run `forge create foo` interactively
+    And I type "wordpress"
+    Then the forge skeleton should be created in directory "foo"
+    And the file "foo/config.json" should contain:
+      | "name": "foo" |
+
+  Scenario: Creating a new project with all prompts
+    Given a WordPress installation exists at "wordpress"
+    When I run `forge create foo -i` interactively
     And I type "foo_theme"
     And I type "http://www.footheme.com"
     And I type "Foo Man"

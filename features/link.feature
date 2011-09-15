@@ -1,5 +1,5 @@
 Feature: Symbolic link creation via the link command
-  @announce
+
   Scenario: Linking a project to a WordPress install
     Given a WordPress installation exists at "wordpress"
     And I am in a forge project named "awesome_theme"
