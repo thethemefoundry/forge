@@ -45,18 +45,18 @@ a:hover {
 	Header
 ------------------------------------------------------------ */
 #header {
-	margin: 20px 0;
+	margin: 0 0 20px 0;
+	padding: 20px;
+	background: rgba(0,0,0,.05);
 }
 h1 {
 	float: left;
-	font-size: 24px;
 }
 #header h1 a {
 	text-decoration: none;
 }
 #nav {
 	float: right;
-	margin-bottom: 30px;	
 }
 #nav ul li {
 	float: left;
