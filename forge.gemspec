@@ -9,51 +9,61 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Andy Adams}, %q{Drew Strojny}, %q{Matt Button}]
-  s.date = %q{2011-09-14}
+  s.date = %q{2011-09-20}
   s.description = %q{TODO: longer description of your gem}
   s.email = %q{aadams@jestro.com}
   s.executables = [%q{forge}]
   s.extra_rdoc_files = [
-    "LICENSE.txt",
-    "README.rdoc"
+    "LICENSE",
+    "README.md"
   ]
   s.files = [
     ".document",
+    ".gitmodules",
     ".rspec",
     "Gemfile",
     "Gemfile.lock",
-    "LICENSE.txt",
-    "README.rdoc",
+    "LICENSE",
+    "README.md",
     "Rakefile",
     "VERSION",
     "bin/forge",
-    "features/forge.feature",
+    "features/create.feature",
+    "features/link.feature",
     "features/step_definitions/forge_steps.rb",
     "features/support/env.rb",
+    "forge.gemspec",
+    "layouts/config/config.json.erb",
+    "layouts/default/functions/functions.php.erb",
+    "layouts/default/stylesheets/header.erb",
+    "layouts/default/stylesheets/style.css.scss.erb",
+    "layouts/default/templates/core/comments.php",
+    "layouts/default/templates/core/footer.php",
+    "layouts/default/templates/core/header.php.erb",
+    "layouts/default/templates/core/index.php",
+    "layouts/default/templates/core/sidebar.php",
+    "layouts/default/templates/custom/partials/loop.php",
     "lib/forge.rb",
     "lib/forge/builder.rb",
     "lib/forge/cli.rb",
+    "lib/forge/config.rb",
+    "lib/forge/error.rb",
+    "lib/forge/generator.rb",
     "lib/forge/guard.rb",
     "lib/forge/project.rb",
+    "lib/forge/version.rb",
     "lib/guard/forge/assets.rb",
     "lib/guard/forge/config.rb",
+    "lib/guard/forge/functions.rb",
     "lib/guard/forge/templates.rb",
-    "spec/forge_spec.rb",
-    "spec/spec_helper.rb",
-    "templates/config/config.yml.erb",
-    "templates/stylesheets/header.erb",
-    "templates/stylesheets/style.css.scss.erb",
-    "templates/templates/core/comments.php",
-    "templates/templates/core/footer.php",
-    "templates/templates/core/header.php",
-    "templates/templates/core/index.php",
-    "templates/templates/core/sidebar.php"
+    "spec/lib/forge/config_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/jestro/forge}
   s.licenses = [%q{MIT}]
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.6}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{A tool for developing wordpress themes}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -62,10 +72,11 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<thor>, [">= 0"])
       s.add_runtime_dependency(%q<guard>, [">= 0"])
       s.add_runtime_dependency(%q<sprockets>, [">= 0"])
-      s.add_runtime_dependency(%q<guard-sprockets>, [">= 0"])
       s.add_runtime_dependency(%q<rubyzip>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
+      s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<cucumber>, [">= 0"])
+      s.add_development_dependency(%q<aruba>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
@@ -73,10 +84,11 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<thor>, [">= 0"])
       s.add_dependency(%q<guard>, [">= 0"])
       s.add_dependency(%q<sprockets>, [">= 0"])
-      s.add_dependency(%q<guard-sprockets>, [">= 0"])
       s.add_dependency(%q<rubyzip>, [">= 0"])
-      s.add_dependency(%q<rspec>, ["~> 2.3.0"])
+      s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
+      s.add_dependency(%q<aruba>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<rcov>, [">= 0"])
@@ -85,10 +97,11 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<thor>, [">= 0"])
     s.add_dependency(%q<guard>, [">= 0"])
     s.add_dependency(%q<sprockets>, [">= 0"])
-    s.add_dependency(%q<guard-sprockets>, [">= 0"])
     s.add_dependency(%q<rubyzip>, [">= 0"])
-    s.add_dependency(%q<rspec>, ["~> 2.3.0"])
+    s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
+    s.add_dependency(%q<aruba>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<rcov>, [">= 0"])
