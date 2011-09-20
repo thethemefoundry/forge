@@ -35,6 +35,11 @@ module Forge
       end
     end
 
+    def copy_functions
+      functions_path = File.join(@project.root, 'functions', '.')
+      FileUtils.cp_r functions_path, @project.build_dir
+    end
+
     def build_assets
       [['style.css'], ['js', 'theme.js']].each do |asset|
         destination = File.join(@project.build_dir, asset)

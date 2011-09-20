@@ -3,6 +3,7 @@ require 'yaml'
 require 'guard/forge/assets'
 require 'guard/forge/config'
 require 'guard/forge/templates'
+require 'guard/forge/functions'
 
 module Forge
   class CLI < Thor
