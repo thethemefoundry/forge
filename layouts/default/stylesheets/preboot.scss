@@ -1,0 +1,82 @@
+/* preboot.css.scss
+ * Variables and mixins
+ * ------------------------------------------------------------------ */
+
+/*---------------------------------------------------------
+	Variables
+------------------------------------------------------------ */
+
+// Links
+$link-color:         #2c5987;
+$link-color-hover:   darken($link_color, 15);
+
+// Fonts
+$font-color:         #333;
+
+
+/*---------------------------------------------------------
+	Mixins
+------------------------------------------------------------ */
+
+// Clearing floats like a boss h5bp.com/q
+@mixin clear {
+	zoom: 1;
+	&:before, &:after {
+		display: table;
+		content: "";
+	}
+	&:after {
+		clear: both;
+	}
+}
+.clear { @include clear; }
+
+// Gradients
+@mixin horizontal-gradient ($startColor: #555, $endColor: #333) {
+	background-color: $endColor;
+	background-repeat: repeat-x;
+	background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor)); // Konqueror
+	background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
+	background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+	background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+	background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
+	background-image: linear-gradient(left, $startColor, $endColor); // Le standard
+}
+
+@mixin vertical-gradient ($startColor: #555, $endColor: #333) {
+	background-color: $endColor;
+	background-repeat: repeat-x;
+	background-image: -khtml-gradient(linear, left top, left bottom, from($startColor), to($endColor)); // Konqueror
+	background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+	background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+	background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+	background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+	background-image: linear-gradient(top, $startColor, $endColor); // The standard
+}
+
+// Border radius
+@mixin border-radius($radius: 3px) {
+	-webkit-border-radius: $radius;
+		 -moz-border-radius: $radius;
+					border-radius: $radius;
+}
+
+// Box shadows
+@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
+	-webkit-box-shadow: $shadow;
+		 -moz-box-shadow: $shadow;
+					box-shadow: $shadow;
+}
+@mixin box-shadow-layered($shadow: 0 1px 3px rgba(0,0,0,.25), $shadow-layered: 0 1px 3px rgba(0,0,0,.25) ) {
+	-webkit-box-shadow: $shadow, $shadow-layered;
+		 -moz-box-shadow: $shadow, $shadow-layered;
+					box-shadow: $shadow, $shadow-layered;
+}
+// Transitions
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	   -moz-transition: $transition;
+	        transition: $transition;
+}
