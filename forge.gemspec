@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Andy Adams}, %q{Drew Strojny}, %q{Matt Button}]
   s.date = %q{2011-09-20}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{A toolkit for bootstrapping and developing WordPress themes.}
   s.email = %q{aadams@jestro.com}
   s.executables = [%q{forge}]
   s.extra_rdoc_files = [
