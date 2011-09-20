@@ -35,6 +35,9 @@ module Forge
           watch(%r{templates/*})
           watch(%r{partials/*})
         end
+        guard 'forgefunctions' do
+          watch(%r{functions/*})
+        end
       }
 
       (@additional_guards || []).each do |block|

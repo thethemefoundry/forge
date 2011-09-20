@@ -21,7 +21,7 @@ module Forge
         ['assets', 'javascripts'],
         ['assets', 'stylesheets'],
 
-        ['functions'],
+        ['functions', 'inc'],
 
         ['templates', 'core'],
         ['templates', 'custom', 'pages'],
@@ -70,6 +70,22 @@ module Forge
       self
     end
 
+    def copy_settings_library
+      settings_path = @task.find_in_source_paths(File.join('lib', 'forge-settings', 'classes'))
+
+      source = File.expand_path(settings_path)
+      target = File.expand_path(File.join(@project.root, 'functions', 'inc', 'forge-settings', '.'))
+
+      @task.directory(source, target)
+    end
+
+    def copy_functions
+      source = File.expand_path(File.join(self.layout_path, 'functions', 'functions.php.erb'))
+      target = File.expand_path(File.join(@project.root, 'functions', 'functions.php'))
+
+      write_template(source, target)
+    end
+
     def layout_path
       @layout_path ||= File.join(Forge::ROOT, 'layouts', @layout)
     end
@@ -79,6 +95,8 @@ module Forge
       create_structure
       copy_stylesheets
       copy_templates
+      copy_functions
+      copy_settings_library
       return self
     end
 

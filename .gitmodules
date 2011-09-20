@@ -1,0 +1,3 @@
+[submodule "layouts/lib/forge-settings"]
+	path = layouts/lib/forge-settings
+	url = git@github.com:jestro/forge-settings.git

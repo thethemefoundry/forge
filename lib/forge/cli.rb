@@ -3,6 +3,7 @@ require 'yaml'
 require 'guard/forge/assets'
 require 'guard/forge/config'
 require 'guard/forge/templates'
+require 'guard/forge/functions'
 
 module Forge
   class CLI < Thor
@@ -38,10 +39,10 @@ module Forge
 
       project = Forge::Project.create(dir, theme, self)
 
-      path = options[:wp_dir] || ask("Please enter the path to your wordpress install.").chomp
+      path = options[:wp_dir] || ask("Please enter the path to your wordpress install theme directory (leave blank to setup later):").chomp
 
       unless path.empty?
-        do_link(project, path)
+        do_link(project, File.join(path, dir))
       else
         say "No wordpress install specified\n"
       end
