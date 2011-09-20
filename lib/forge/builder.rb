@@ -1,4 +1,5 @@
 require 'sprockets'
+require 'sass'
 require 'zip/zip'
 
 module Forge
