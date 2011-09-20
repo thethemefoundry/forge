@@ -15,6 +15,7 @@ module Forge
     # Runs all the methods necessary to build a completed project
     def build
       copy_templates
+      copy_functions
       build_assets
     end
 
@@ -23,8 +24,14 @@ module Forge
       basename = File.basename(@project.root)
 
       Zip::ZipFile.open(get_output_filename(basename), Zip::ZipFile::CREATE) do |zip|
-        build_dir = Dir.open(@project.build_dir)
-        build_dir.each do |filename|
+        # Get all filenames in the build directory recursively
+        filenames = Dir[File.join(@project.build_dir, '**', '*')]
+
+        # Remove the build directory path from the filename
+        filenames.collect! {|path| path.gsub(/#{@project.build_dir}\//, '')}
+
+        # Add each file in the build directory to the zip file
+        filenames.each do |filename|
           zip.add File.join(basename, filename), File.join(@project.build_dir, filename)
         end
       end
