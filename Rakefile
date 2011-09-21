@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/jestro/forge"
   gem.license = "MIT"
   gem.summary = %Q{A tool for developing wordpress themes}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.description = %Q{A toolkit for bootstrapping and developing WordPress themes.}
   gem.email = "aadams@jestro.com"
   gem.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
   # dependencies defined in Gemfile

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Andy Adams}, %q{Drew Strojny}, %q{Matt Button}]
-  s.date = %q{2011-09-20}
+  s.date = %q{2011-09-21}
   s.description = %q{A toolkit for bootstrapping and developing WordPress themes.}
   s.email = %q{aadams@jestro.com}
   s.executables = [%q{forge}]
@@ -34,15 +34,24 @@ Gem::Specification.new do |s|
     "features/support/env.rb",
     "forge.gemspec",
     "layouts/config/config.json.erb",
+    "layouts/config/stylesheet_header.erb",
     "layouts/default/functions/functions.php.erb",
-    "layouts/default/stylesheets/header.erb",
+    "layouts/default/stylesheets/comments.scss",
+    "layouts/default/stylesheets/pages.scss",
+    "layouts/default/stylesheets/patterns.scss",
+    "layouts/default/stylesheets/posts.scss",
+    "layouts/default/stylesheets/preboot.scss",
+    "layouts/default/stylesheets/queries.scss",
+    "layouts/default/stylesheets/reset.scss",
+    "layouts/default/stylesheets/scaffolding.scss",
     "layouts/default/stylesheets/style.css.scss.erb",
+    "layouts/default/stylesheets/widgets.scss",
     "layouts/default/templates/core/comments.php",
     "layouts/default/templates/core/footer.php",
     "layouts/default/templates/core/header.php.erb",
     "layouts/default/templates/core/index.php",
     "layouts/default/templates/core/sidebar.php",
-    "layouts/default/templates/custom/partials/loop.php",
+    "layouts/default/templates/custom/partials/loop.php.erb",
     "lib/forge.rb",
     "lib/forge/builder.rb",
     "lib/forge/cli.rb",
@@ -57,6 +66,7 @@ Gem::Specification.new do |s|
     "lib/guard/forge/functions.rb",
     "lib/guard/forge/templates.rb",
     "spec/lib/forge/config_spec.rb",
+    "spec/lib/forge/project_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/jestro/forge}
