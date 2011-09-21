@@ -56,7 +56,7 @@ module Forge
           if source_file.end_with? ".erb"
             target_file = target_file.slice(0..-5)
 
-            content = render_erb(file)
+            content = @project.parse_erb(file)
           else
             content = File.open(file).read
           end
@@ -112,13 +112,8 @@ module Forge
       target   = File.expand_path(File.join(target))
 
       @task.create_file target do
-        render_erb(template)
+        @project.parse_erb(template)
       end
-    end
-
-    protected
-    def render_erb(file)
-      ERB.new(::File.binread(file), nil, '-', '@output_buffer').result(@project.get_binding)
     end
   end
 end

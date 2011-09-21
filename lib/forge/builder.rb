@@ -6,6 +6,7 @@ module Forge
   class Builder
     def initialize(project)
       @project = project
+      @task    = project.task
       @templates_path = File.join(@project.root, 'templates')
       @assets_path = File.join(@project.root, 'assets')
 
@@ -52,9 +53,13 @@ module Forge
       [['style.css'], ['js', 'theme.js']].each do |asset|
         destination = File.join(@project.build_dir, asset)
 
-        asset = @sprockets.find_asset(asset.last)
+        sprocket = @sprockets.find_asset(asset.last)
 
-        asset.write_to(destination) unless asset.nil?
+        sprocket.write_to(destination) unless sprocket.nil?
+
+        if asset.last == 'style.css'
+          @task.prepend_file destination, @project.parse_erb(stylesheet_header)
+        end
       end
     end
 
@@ -65,6 +70,14 @@ module Forge
 
       ['javascripts', 'stylesheets'].each do |dir|
         @sprockets.append_path File.join(@assets_path, dir)
+      end
+
+      @sprockets.context_class.instance_eval do
+        def config
+          return {:name => 'asd'}
+          p "CALLING CONFIG"
+          @project.config
+        end
       end
     end
 
@@ -87,6 +100,14 @@ module Forge
       end
 
       filename
+    end
+
+    protected
+    def stylesheet_header
+      return @stylesheet_header unless @stylesheet_header.nil?
+
+      file = @task.find_in_source_paths(File.join('config', 'stylesheet_header.erb'))
+      @stylesheet_header = File.expand_path(file)
     end
   end
 end

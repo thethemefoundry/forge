@@ -63,5 +63,9 @@ module Forge
     def get_binding
       binding
     end
+
+    def parse_erb(file)
+      ERB.new(::File.binread(file), nil, '-', '@output_buffer').result(binding)
+    end
   end
 end
