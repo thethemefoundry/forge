@@ -15,8 +15,11 @@ module Forge
     end
 
     def create_structure
-      paths = [
-        ['.forge'],
+      # Create the build and package directories for Forge output
+      @task.empty_directory @project.build_dir
+      @task.empty_directory @project.package_dir
+
+      source_paths = [
         ['assets', 'images'],
         ['assets', 'javascripts'],
         ['assets', 'stylesheets'],
@@ -28,44 +31,28 @@ module Forge
         ['templates', 'custom', 'partials']
       ]
 
-      paths.each do |path|
-        @task.empty_directory File.join(@project.root, path)
+      # Build out Forge structure in the source directory
+      source_paths.each do |path|
+        @task.empty_directory File.join(@project.source_dir, path)
       end
 
       self
     end
 
     def copy_stylesheets
-      source = [@layout, 'stylesheets', 'style.css.scss.erb']
-      target = [@project.assets_path, 'stylesheets', 'style.css.scss']
+      source = File.expand_path(File.join(self.layout_path, 'stylesheets'))
+      target = File.expand_path(File.join(@project.assets_path, 'stylesheets'))
 
-      write_template(source, target)
+      render_directory(source, target)
 
       self
     end
 
     def copy_templates
       source = File.expand_path(File.join(self.layout_path, 'templates'))
-      target = File.expand_path(File.join(@project.root, 'templates'))
+      target = File.expand_path(File.join(@project.source_dir, 'templates'))
 
-      Dir.glob("#{source}/**/*") do |file|
-        unless File.directory?(file)
-          source_file = file.gsub(source, '')
-          target_file = File.join(target, source_file)
-
-          if source_file.end_with? ".erb"
-            target_file = target_file.slice(0..-5)
-
-            content = render_erb(file)
-          else
-            content = File.open(file).read
-          end
-
-          @task.create_file target_file do
-            content
-          end
-        end
-      end
+      render_directory(source, target)
 
       self
     end
@@ -74,14 +61,14 @@ module Forge
       settings_path = @task.find_in_source_paths(File.join('lib', 'forge-settings', 'classes'))
 
       source = File.expand_path(settings_path)
-      target = File.expand_path(File.join(@project.root, 'functions', 'inc', 'forge-settings', '.'))
+      target = File.expand_path(File.join(@project.source_dir, 'functions', 'inc', 'forge-settings', '.'))
 
       @task.directory(source, target)
     end
 
     def copy_functions
       source = File.expand_path(File.join(self.layout_path, 'functions', 'functions.php.erb'))
-      target = File.expand_path(File.join(@project.root, 'functions', 'functions.php'))
+      target = File.expand_path(File.join(@project.source_dir, 'functions', 'functions.php'))
 
       write_template(source, target)
     end
@@ -117,6 +104,27 @@ module Forge
     end
 
     protected
+    def render_directory(source, target)
+      Dir.glob("#{source}/**/*") do |file|
+        unless File.directory?(file)
+          source_file = file.gsub(source, '')
+          target_file = File.join(target, source_file)
+
+          if source_file.end_with? ".erb"
+            target_file = target_file.slice(0..-5)
+
+            content = render_erb(file)
+          else
+            content = File.open(file).read
+          end
+
+          @task.create_file target_file do
+            content
+          end
+        end
+      end
+    end
+
     def render_erb(file)
       ERB.new(::File.binread(file), nil, '-', '@output_buffer').result(@project.get_binding)
     end

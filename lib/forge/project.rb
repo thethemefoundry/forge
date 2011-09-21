@@ -25,7 +25,7 @@ module Forge
     end
 
     def assets_path
-      @assets_path ||= File.join(self.root, 'assets')
+      @assets_path ||= File.join(self.source_dir, 'assets')
     end
 
     def build_dir
