@@ -29,7 +29,15 @@ module Forge
     end
 
     def build_dir
-      File.join(self.root, '.forge')
+      File.join(self.root, 'build')
+    end
+
+    def source_dir
+      File.join(self.root, 'source')
+    end
+
+    def package_dir
+      File.join(self.root, 'package')
     end
 
     def config_file
