@@ -6,8 +6,9 @@ module Forge
   class Builder
     def initialize(project)
       @project = project
-      @templates_path = File.join(@project.root, 'templates')
-      @assets_path = File.join(@project.root, 'assets')
+      @templates_path = File.join(@project.source_dir, 'templates')
+      @assets_path = File.join(@project.source_dir, 'assets')
+      @functions_path = File.join(@project.source_dir, 'functions')
 
       init_sprockets
     end
@@ -44,8 +45,7 @@ module Forge
     end
 
     def copy_functions
-      functions_path = File.join(@project.root, 'functions', '.')
-      FileUtils.cp_r functions_path, @project.build_dir
+      FileUtils.cp_r @functions_path, @project.build_dir
     end
 
     def build_assets

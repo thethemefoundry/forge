@@ -25,18 +25,18 @@ module Forge
 
       guardfile_contents = %Q{
         guard 'forgeconfig'#{options_hash} do
-          watch("config.yml")
+          watch("#{@project.config_file}")
         end
         guard 'forgeassets' do
-          watch(%r{assets/javascripts/*})
-          watch(%r{assets/stylesheets/*})
+          watch(%r{#{@project.source_dir}/assets/javascripts/*})
+          watch(%r{#{@project.source_dir}/assets/stylesheets/*})
         end
         guard 'forgetemplates' do
-          watch(%r{templates/*})
-          watch(%r{partials/*})
+          watch(%r{#{@project.source_dir}/templates/*})
+          watch(%r{#{@project.source_dir}/partials/*})
         end
         guard 'forgefunctions' do
-          watch(%r{functions/*})
+          watch(%r{#{@project.source_dir}/functions/*})
         end
       }
 
