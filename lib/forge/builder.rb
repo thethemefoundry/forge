@@ -6,9 +6,9 @@ module Forge
   class Builder
     def initialize(project)
       @project = project
-      @templates_path = File.join(@project.source_dir, 'templates')
-      @assets_path = File.join(@project.source_dir, 'assets')
-      @functions_path = File.join(@project.source_dir, 'functions')
+      @templates_path = File.join(@project.source_path, 'templates')
+      @assets_path = @project.assets_path
+      @functions_path = File.join(@project.source_path, 'functions')
 
       init_sprockets
     end
@@ -26,31 +26,31 @@ module Forge
 
       Zip::ZipFile.open(get_output_filename(basename), Zip::ZipFile::CREATE) do |zip|
         # Get all filenames in the build directory recursively
-        filenames = Dir[File.join(@project.build_dir, '**', '*')]
+        filenames = Dir[File.join(@project.build_path, '**', '*')]
 
         # Remove the build directory path from the filename
-        filenames.collect! {|path| path.gsub(/#{@project.build_dir}\//, '')}
+        filenames.collect! {|path| path.gsub(/#{@project.build_path}\//, '')}
 
         # Add each file in the build directory to the zip file
         filenames.each do |filename|
-          zip.add File.join(basename, filename), File.join(@project.build_dir, filename)
+          zip.add File.join(basename, filename), File.join(@project.build_path, filename)
         end
       end
     end
 
     def copy_templates
       template_paths.each do |template_path|
-        FileUtils.cp_r template_path, @project.build_dir
+        FileUtils.cp_r template_path, @project.build_path
       end
     end
 
     def copy_functions
-      FileUtils.cp_r @functions_path, @project.build_dir
+      FileUtils.cp_r @functions_path, @project.build_path
     end
 
     def build_assets
       [['style.css'], ['js', 'theme.js']].each do |asset|
-        destination = File.join(@project.build_dir, asset)
+        destination = File.join(@project.build_path, asset)
 
         asset = @sprockets.find_asset(asset.last)
 

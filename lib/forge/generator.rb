@@ -16,8 +16,8 @@ module Forge
 
     def create_structure
       # Create the build and package directories for Forge output
-      @task.empty_directory @project.build_dir
-      @task.empty_directory @project.package_dir
+      @task.empty_directory @project.build_path
+      @task.empty_directory @project.package_path
 
       source_paths = [
         ['assets', 'images'],
@@ -33,7 +33,7 @@ module Forge
 
       # Build out Forge structure in the source directory
       source_paths.each do |path|
-        @task.empty_directory File.join(@project.source_dir, path)
+        @task.empty_directory File.join(@project.source_path, path)
       end
 
       self
@@ -50,7 +50,7 @@ module Forge
 
     def copy_templates
       source = File.expand_path(File.join(self.layout_path, 'templates'))
-      target = File.expand_path(File.join(@project.source_dir, 'templates'))
+      target = File.expand_path(File.join(@project.source_path, 'templates'))
 
       render_directory(source, target)
 
@@ -61,14 +61,14 @@ module Forge
       settings_path = @task.find_in_source_paths(File.join('lib', 'forge-settings', 'classes'))
 
       source = File.expand_path(settings_path)
-      target = File.expand_path(File.join(@project.source_dir, 'functions', 'inc', 'forge-settings', '.'))
+      target = File.expand_path(File.join(@project.source_path, 'functions', 'inc', 'forge-settings', '.'))
 
       @task.directory(source, target)
     end
 
     def copy_functions
       source = File.expand_path(File.join(self.layout_path, 'functions', 'functions.php.erb'))
-      target = File.expand_path(File.join(@project.source_dir, 'functions', 'functions.php'))
+      target = File.expand_path(File.join(@project.source_path, 'functions', 'functions.php'))
 
       write_template(source, target)
     end
