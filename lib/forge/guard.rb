@@ -23,20 +23,24 @@ module Forge
         options_hash << ", :#{k} => '#{v}'"
       end
 
+      assets_path = @project.assets_path.gsub(/#{@project.root}\//, '')
+      source_path = @project.source_path.gsub(/#{@project.root}\//, '')
+      config_file = @project.config_file.gsub(/#{@project.root}\//, '')
+
       guardfile_contents = %Q{
         guard 'forgeconfig'#{options_hash} do
-          watch("config.yml")
+          watch("#{config_file}")
         end
         guard 'forgeassets' do
-          watch(%r{assets/javascripts/*})
-          watch(%r{assets/stylesheets/*})
+          watch(%r{#{assets_path}/javascripts/*})
+          watch(%r{#{assets_path}/stylesheets/*})
         end
         guard 'forgetemplates' do
-          watch(%r{templates/*})
-          watch(%r{partials/*})
+          watch(%r{#{source_path}/templates/*})
+          watch(%r{#{source_path}/partials/*})
         end
         guard 'forgefunctions' do
-          watch(%r{functions/*})
+          watch(%r{#{source_path}/functions/*})
         end
       }
 

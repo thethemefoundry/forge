@@ -25,11 +25,19 @@ module Forge
     end
 
     def assets_path
-      @assets_path ||= File.join(self.root, 'assets')
+      @assets_path ||= File.join(self.source_path, 'assets')
     end
 
-    def build_dir
-      File.join(self.root, '.forge')
+    def build_path
+      File.join(self.root, 'build')
+    end
+
+    def source_path
+      File.join(self.root, 'source')
+    end
+
+    def package_path
+      File.join(self.root, 'package')
     end
 
     def config_file
@@ -44,7 +52,7 @@ module Forge
         raise Forge::LinkSourceDirNotFound
       end
 
-      @task.link_file build_dir, source
+      @task.link_file build_path, source
     end
 
     def theme_id
