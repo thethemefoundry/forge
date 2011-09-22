@@ -1,4 +1,5 @@
 require 'sprockets'
+require 'sprockets-sass'
 require 'sass'
 require 'zip/zip'
 
@@ -55,11 +56,26 @@ module Forge
 
         sprocket = @sprockets.find_asset(asset.last)
 
-        sprocket.write_to(destination) unless sprocket.nil?
+        sprockets_error = false
 
-        if asset.last == 'style.css'
-          @task.prepend_file destination, @project.parse_erb(stylesheet_header)
+        # Catch any sprockets errors and continue the process
+        begin
+          sprocket.write_to(destination) unless sprocket.nil?
+
+          if asset.last == 'style.css' && (not sprockets_error)
+            @task.prepend_file destination, @project.parse_erb(stylesheet_header)
+          end
+        rescue Exception => e
+          @task.say "Error while building #{asset.last}.", Thor::Shell::Color::RED
+          File.open(destination, 'w') do |file|
+            file.puts(e.message)
+          end
+
+          # Re-initializing sprockets to prevent further errors
+          # TODO: This is done for lack of a better solution
+          init_sprockets
         end
+
       end
     end
 
