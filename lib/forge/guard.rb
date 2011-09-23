@@ -34,6 +34,7 @@ module Forge
         guard 'forgeassets' do
           watch(%r{#{assets_path}/javascripts/*})
           watch(%r{#{assets_path}/stylesheets/*})
+          watch(%r{#{assets_path}/images/*})
         end
         guard 'forgetemplates' do
           watch(%r{#{source_path}/templates/*})

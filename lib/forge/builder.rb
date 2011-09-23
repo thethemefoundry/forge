@@ -75,8 +75,11 @@ module Forge
           # TODO: This is done for lack of a better solution
           init_sprockets
         end
-
       end
+
+      # Copy the images directory over
+      FileUtils.rm_rf File.join(@project.build_path, 'images')
+      FileUtils.cp_r File.join(@assets_path, 'images'), File.join(@project.build_path)
     end
 
     private
