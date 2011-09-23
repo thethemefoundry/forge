@@ -18,7 +18,6 @@ module Forge
     method_option :uri,  :type => :string, :desc => "The theme's uri"
     method_option :author, :type => :string, :desc => "The author of the theme"
     method_option :author_uri, :type => :string, :desc => "The author's uri"
-    method_option :wp_dir, :type => :string, :desc => "Existing WordPress installation directory"
     method_option :interactive, :type => :boolean, :desc => "Use interactive configuration setup", :aliases => "-i"
     def create(dir)
       prompts = {
@@ -38,16 +37,6 @@ module Forge
       theme[:name] = dir if (theme[:name].nil? || theme[:name].empty?)
 
       project = Forge::Project.create(dir, theme, self)
-
-      path = options[:wp_dir] || ask("Please enter the path to your wordpress install theme directory (leave blank to setup later):").chomp
-
-      unless path.empty?
-        do_link(project, File.join(path, dir))
-      else
-        say "No wordpress install specified\n"
-      end
-
-      say "You can link to additional wordpress installs using the 'forge link' command\n"
     end
 
     desc "link PATH", "symlink the compiled version of theme to the specified path"
