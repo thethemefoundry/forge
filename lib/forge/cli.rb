@@ -75,6 +75,9 @@ module Forge
       rescue LinkSourceDirNotFound
         say_status :error, "The path #{File.dirname(path)} does not exist", :red
         exit 2
+      rescue Errno::EEXIST
+        say_status :error, "The path #{path} already exsts", :red
+        exit 2
       end
     end
   end
