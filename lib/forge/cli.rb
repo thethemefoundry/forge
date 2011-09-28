@@ -52,6 +52,9 @@ module Forge
     def watch
       project = Forge::Project.new('.', self)
 
+      # Empty the build directory before starting up to clean out old files
+      FileUtils.rm_rf Dir.glob(File.join(project.build_path, '*'))
+
       Forge::Guard.start(project, self)
     end
 

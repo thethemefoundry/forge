@@ -8,15 +8,17 @@ module Forge
     def initialize(project)
       @project = project
       @task    = project.task
-      @templates_path = File.join(@project.source_path, 'templates')
+      @templates_path = @project.templates_path
       @assets_path = @project.assets_path
-      @functions_path = File.join(@project.source_path, 'functions')
+      @functions_path = @project.functions_path
+      @includes_path = @project.includes_path
 
       init_sprockets
     end
 
     # Runs all the methods necessary to build a completed project
     def build
+      clean_build_directory
       copy_templates
       copy_functions
       build_assets
@@ -40,6 +42,15 @@ module Forge
       end
     end
 
+    # Empty out the build directory
+    def clean_build_directory
+      FileUtils.rm_rf Dir.glob(File.join(@project.build_path, '*'))
+    end
+
+    def clean_templates
+      FileUtils.rm Dir.glob(File.join(@project.build_path, '*.php'))
+    end
+
     def copy_templates
       template_paths.each do |template_path|
         FileUtils.cp_r template_path, @project.build_path
@@ -47,7 +58,21 @@ module Forge
     end
 
     def copy_functions
-      FileUtils.cp_r @functions_path, @project.build_path
+      FileUtils.cp_r File.join(@functions_path, 'functions.php'), @project.build_path
+    end
+
+    def clean_includes
+      FileUtils.rm_rf File.join(@project.build_path, 'includes')
+    end
+
+    def copy_includes
+      unless Dir.glob(File.join(@includes_path, '*')).empty?
+        FileUtils.cp_r @includes_path, @project.build_path
+      end
+    end
+
+    def clean_images
+      FileUtils.rm_rf File.join(@project.build_path, 'images')
     end
 
     def build_assets
@@ -66,7 +91,8 @@ module Forge
             @task.prepend_file destination, @project.parse_erb(stylesheet_header)
           end
         rescue Exception => e
-          @task.say "Error while building #{asset.last}.", Thor::Shell::Color::RED
+          @task.say "Error while building #{asset.last}:"
+          @task.say e.message, Thor::Shell::Color::RED
           File.open(destination, 'w') do |file|
             file.puts(e.message)
           end
@@ -78,7 +104,6 @@ module Forge
       end
 
       # Copy the images directory over
-      FileUtils.rm_rf File.join(@project.build_path, 'images')
       FileUtils.cp_r File.join(@assets_path, 'images'), File.join(@project.build_path)
     end
 

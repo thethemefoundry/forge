@@ -40,6 +40,18 @@ module Forge
       File.join(self.root, 'package')
     end
 
+    def templates_path
+      File.join(self.source_path, 'templates')
+    end
+
+    def functions_path
+      File.join(self.source_path, 'functions')
+    end
+
+    def includes_path
+      File.join(self.source_path, 'includes')
+    end
+
     def config_file
       @config_file ||= File.join(self.root, 'config.json')
     end
