@@ -15,20 +15,20 @@ module Forge
     end
 
     def create_structure
-      # Create the build and package directories for Forge output
+      # Create the build directory for Forge output
       @task.empty_directory @project.build_path
-      @task.empty_directory @project.package_path
 
       source_paths = [
         ['assets', 'images'],
         ['assets', 'javascripts'],
         ['assets', 'stylesheets'],
 
-        ['functions', 'inc'],
+        ['functions'],
 
-        ['templates', 'core'],
-        ['templates', 'custom', 'pages'],
-        ['templates', 'custom', 'partials']
+        ['includes'],
+
+        ['templates', 'pages'],
+        ['templates', 'partials'],
       ]
 
       # Build out Forge structure in the source directory
@@ -61,7 +61,7 @@ module Forge
       settings_path = @task.find_in_source_paths(File.join('lib', 'forge-settings', 'classes'))
 
       source = File.expand_path(settings_path)
-      target = File.expand_path(File.join(@project.source_path, 'functions', 'inc', 'forge-settings', '.'))
+      target = File.expand_path(File.join(@project.includes_path, 'forge-settings', '.'))
 
       @task.directory(source, target)
     end

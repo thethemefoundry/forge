@@ -29,7 +29,7 @@ module Forge
     end
 
     def build_path
-      File.join(self.root, 'build')
+      File.join(self.root, '.forge', 'build')
     end
 
     def source_path

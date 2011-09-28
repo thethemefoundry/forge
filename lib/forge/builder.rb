@@ -53,7 +53,7 @@ module Forge
 
     def copy_templates
       template_paths.each do |template_path|
-        FileUtils.cp_r template_path, @project.build_path
+        FileUtils.cp template_path, @project.build_path unless File.directory?(template_path)
       end
     end
 
@@ -126,11 +126,7 @@ module Forge
     end
 
     def template_paths
-      @template_paths ||= [
-        ['core', '.'],
-        ['custom', 'pages', '.'],
-        ['custom', 'partials', '.']
-      ].collect { |path| File.join(@templates_path, path) }
+      Dir.glob(File.join(@templates_path, '**', '*'))
     end
 
     # Generate a unique filename for the zip output
