@@ -48,7 +48,10 @@ module Forge
     end
 
     def clean_templates
-      FileUtils.rm Dir.glob(File.join(@project.build_path, '*.php'))
+      # TODO: cleaner way of removing templates only?
+      Dir.glob(File.join(@project.build_path, '*.php')).each do |path|
+        FileUtils.rm path unless path.include?('functions.php')
+      end
     end
 
     def copy_templates
