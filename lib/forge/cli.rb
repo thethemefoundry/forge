@@ -45,6 +45,8 @@ module Forge
     def link(path)
       project = Forge::Project.new('.', self)
 
+      FileUtils.mkdir_p project.build_path unless File.directory?(project.build_path)
+
       do_link(project, path)
     end
 
