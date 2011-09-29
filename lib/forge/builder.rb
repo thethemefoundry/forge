@@ -1,5 +1,4 @@
 require 'sprockets'
-require 'sprockets-sass'
 require 'sass'
 require 'zip/zip'
 require 'compass'
@@ -80,7 +79,7 @@ module Forge
     end
 
     def build_assets
-      [['style.scss'], ['js', 'theme.js']].each do |asset|
+      [['style.css'], ['js', 'theme.js']].each do |asset|
         destination = File.join(@project.build_path, asset)
 
         sprocket = @sprockets.find_asset(asset.last)
@@ -92,7 +91,7 @@ module Forge
           FileUtils.mkdir_p(File.dirname(destination)) unless File.directory?(File.dirname(destination))
           sprocket.write_to(destination) unless sprocket.nil?
 
-          if asset.last == 'style.scss' && (not sprockets_error)
+          if asset.last == 'style.css' && (not sprockets_error)
             @task.prepend_file destination, @project.parse_erb(stylesheet_header)
           end
         rescue Exception => e
@@ -121,13 +120,11 @@ module Forge
         @sprockets.append_path File.join(@assets_path, dir)
       end
 
-      # Add all compass frameworks to the sprockets path
+
+      # Add all compass frameworks to the sass path
       # TODO: This feels really hacky - is there a better way?
       Compass::Frameworks::ALL.each do |framework|
-        @sprockets.append_path(framework.stylesheets_directory)
-        Dir.glob(File.join(framework.stylesheets_directory, '**', '*')).each do |path|
-          @sprockets.append_path(path) if File.directory?(path)
-        end
+        Sass::Engine::DEFAULT_OPTIONS[:load_paths] << framework.stylesheets_directory
       end
 
       @sprockets.context_class.instance_eval do
