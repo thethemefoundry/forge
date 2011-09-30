@@ -1,4 +1,5 @@
 require 'sprockets'
+require 'sprockets-sass'
 require 'sass'
 require 'zip/zip'
 require 'compass'
