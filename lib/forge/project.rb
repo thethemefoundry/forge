@@ -68,7 +68,7 @@ module Forge
     end
 
     def theme_id
-      File.basename(self.root)
+      File.basename(self.root).gsub(/\W/, '_')
     end
 
     def load_config
