@@ -7,7 +7,7 @@
 					<?php the_post_thumbnail(); ?>
 				</div>
 			<?php } ?>
-			<h1 class="page-title"><?php the_title(); ?></h1>
+			<h1><?php the_title(); ?></h1>
 			<div class="entry entry-page clear">
 				<?php the_content(); ?>
 			</div>
