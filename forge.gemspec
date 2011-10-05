@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Andy Adams}, %q{Drew Strojny}, %q{Matt Button}]
-  s.date = %q{2011-09-21}
+  s.date = %q{2011-10-05}
   s.description = %q{A toolkit for bootstrapping and developing WordPress themes.}
   s.email = %q{aadams@jestro.com}
   s.executables = [%q{forge}]
@@ -36,22 +36,22 @@ Gem::Specification.new do |s|
     "layouts/config/config.json.erb",
     "layouts/config/stylesheet_header.erb",
     "layouts/default/functions/functions.php.erb",
-    "layouts/default/stylesheets/comments.scss",
-    "layouts/default/stylesheets/pages.scss",
-    "layouts/default/stylesheets/patterns.scss",
-    "layouts/default/stylesheets/posts.scss",
-    "layouts/default/stylesheets/preboot.scss",
-    "layouts/default/stylesheets/queries.scss",
-    "layouts/default/stylesheets/reset.scss",
-    "layouts/default/stylesheets/scaffolding.scss",
+    "layouts/default/stylesheets/comments.css.scss",
+    "layouts/default/stylesheets/pages.css.scss",
+    "layouts/default/stylesheets/patterns.css.scss",
+    "layouts/default/stylesheets/posts.css.scss",
+    "layouts/default/stylesheets/preboot.css.scss",
+    "layouts/default/stylesheets/queries.css.scss",
+    "layouts/default/stylesheets/reset.css.scss",
+    "layouts/default/stylesheets/scaffolding.css.scss",
     "layouts/default/stylesheets/style.css.scss.erb",
-    "layouts/default/stylesheets/widgets.scss",
-    "layouts/default/templates/core/comments.php",
-    "layouts/default/templates/core/footer.php",
-    "layouts/default/templates/core/header.php.erb",
-    "layouts/default/templates/core/index.php",
-    "layouts/default/templates/core/sidebar.php",
-    "layouts/default/templates/custom/partials/loop.php.erb",
+    "layouts/default/stylesheets/widgets.css.scss",
+    "layouts/default/templates/comments.php",
+    "layouts/default/templates/footer.php",
+    "layouts/default/templates/header.php.erb",
+    "layouts/default/templates/index.php",
+    "layouts/default/templates/partials/loop.php.erb",
+    "layouts/default/templates/sidebar.php",
     "lib/forge.rb",
     "lib/forge/builder.rb",
     "lib/forge/cli.rb",
@@ -84,6 +84,9 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<sprockets>, [">= 0"])
       s.add_runtime_dependency(%q<rubyzip>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<sass>, [">= 0"])
+      s.add_runtime_dependency(%q<sprockets-sass>, [">= 0"])
+      s.add_runtime_dependency(%q<compass>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<cucumber>, [">= 0"])
       s.add_development_dependency(%q<aruba>, [">= 0"])
@@ -96,6 +99,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<sprockets>, [">= 0"])
       s.add_dependency(%q<rubyzip>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<sass>, [">= 0"])
+      s.add_dependency(%q<sprockets-sass>, [">= 0"])
+      s.add_dependency(%q<compass>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<aruba>, [">= 0"])
@@ -109,6 +115,9 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<sprockets>, [">= 0"])
     s.add_dependency(%q<rubyzip>, [">= 0"])
     s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<sass>, [">= 0"])
+    s.add_dependency(%q<sprockets-sass>, [">= 0"])
+    s.add_dependency(%q<compass>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<aruba>, [">= 0"])
