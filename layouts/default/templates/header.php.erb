@@ -1,15 +1,6 @@
 <html <?php language_attributes( 'html' ) ?>>
 <head>
-	<?php if ( is_front_page() ) : ?>
-		<title><?php bloginfo( 'name' ); ?></title>
-	<?php elseif ( is_404() ) : ?>
-		<title><?php _e( 'Page Not Found |', '<%= theme_id %>' ); ?> | <?php bloginfo( 'name' ); ?></title>
-	<?php elseif ( is_search() ) : ?>
-		<title><?php printf( __( "Search results for '%s'", '<%= theme_id %>' ), get_search_query()); ?> | <?php bloginfo( 'name' ); ?></title>
-	<?php else : ?>
-		<title><?php wp_title( $sep = '' ); ?> | <?php bloginfo( 'name' );?></title>
-	<?php endif; ?>
-
+	<title><?php wp_title(); ?></title>
 	<!-- Basic Meta Data -->
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 
@@ -18,8 +9,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<div class="skip-content"><a href="#content"><?php _e( 'Skip to content', '<%= theme_id %>' ); ?></a></div>
-	<div id="wrapper" class="clear">
+	<div id="container" class="clear">
 		<div id="header" class="clear">
 			<div id="title">
 				<?php if ( is_front_page() ) echo( '<h1>' ); ?>

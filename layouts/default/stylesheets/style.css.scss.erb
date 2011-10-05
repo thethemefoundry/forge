@@ -1,13 +1,27 @@
-// This is your main stylesheet file, you can use scss in here to include css partials
+// This is your main stylesheet file, you can use SASS in here to include css partials
 
-/**
 @import "reset";
-@import "preboot";
-@import "scaffolding";
-@import "patterns";
-@import "posts";
-@import "pages";
-@import "widgets";
-@import "comments";
-@import "queries";
-**/
+@import "typography";
+
+@import "blueprint/grid";
+
+.clear {
+  clear: both;
+}
+
+#container {
+  @include container;
+  @include prepend(1);
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+
+#content {
+  @include column(15);
+}
+
+#sidebar {
+  @include column(7);
+  @include prepend(1);
+  @include last;
+}

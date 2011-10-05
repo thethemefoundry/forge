@@ -1,33 +1,21 @@
 <?php
 
-/***** Uncomment this section to use the forge-settings library
-add_action( 'after_setup_theme', '<%= theme_id %>_options' );
+add_action( 'after_setup_theme', '<%= theme_id %>_setup' );
 
-function <%= theme_id %>_options() {
-	require( dirname( __FILE__ ) . '/inc/forge-settings/settings.php' );
+if ( ! function_exists( '<%= theme_id %>_setup' ) ) :
 
-	global $<%= theme_id %>_options;
+/**
+* Set up your theme here
+*/
+function <%= theme_id %>_setup() {
+	add_theme_support( 'post-thumbnails' );
 
-	$<%= theme_id %>_options = new Settings_Collection( '<%= theme_id %>', 'theme_<%= theme_id %>_options' );
-
-	$<%= theme_id %>_options->add_section( 'first_section', 'Text for First Section' );
-	$<%= theme_id %>_options->add_section( 'second_section', 'Text for Second Section' );
-
-	$<%= theme_id %>_options->add_option( 'my_first_option', 'text', 'first_section' )
-		->default_value( 'The default text' )
-		->tab( 'general')
-		->label( 'Label for the text input' );
-
-	$<%= theme_id %>_options->add_option( 'select_this', 'select', 'second_section' )
-		->valid_values( array(
-			'one' => 'ONE',
-			'two' => 'TWO',
-			'three' => 'THREE' ) )
-		->default_value( 'two' )
-		->label( 'Label for the select box' );
-
-	// More options go here...
-
-	$<%= theme_id %>_options->initialize();
+	if ( ! is_admin() ) {
+		wp_enqueue_style(
+			'<%= theme_id %>-style',
+			get_bloginfo( 'stylesheet_url' )
+		);
+	}
 }
-*****/
+
+endif; // <%= theme_id %>_setup
