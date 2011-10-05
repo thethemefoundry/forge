@@ -1,18 +1,14 @@
 <?php get_header(); ?>
-<div id="content" class="clear">
 	<?php the_post(); ?>
-		<div id="page-<?php the_ID(); ?>" class="page clear">
+		<div id="page-<?php the_ID(); ?>">
 			<?php if ( has_post_thumbnail() ) { ?>
-				<div class="entry-page-image">
+				<div>
 					<?php the_post_thumbnail(); ?>
 				</div>
 			<?php } ?>
 			<h1><?php the_title(); ?></h1>
-			<div class="entry entry-page clear">
-				<?php the_content(); ?>
-			</div>
+			<?php the_content(); ?>
 		</div>
 	<?php comments_template( '', true ); ?>
-</div><!--end content-->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

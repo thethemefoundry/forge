@@ -1,7 +1,7 @@
 <?php if (have_posts()) : ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<div class="post-header clear">
+			<div class="post-header">
 				<h2 class="post-title">
 					<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php esc_attr( sprintf( __( 'Permanent Link to %s', '<%= theme_id %>' ), the_title_attribute( 'echo=false' ) ) ); ?>">
 					  <?php the_title(); ?>
@@ -15,16 +15,16 @@
 					</a>
 				<?php } ?>
 			</div><!--end post-header-->
-			<div class="entry entry-post clear">
+			<div class="entry">
 				<?php the_content( __( 'Read more', '<%= theme_id %>' )); ?>
 				<?php edit_post_link( __( 'Edit this', '<%= theme_id %>' ), '<p>', '</p>' ); ?>
 			</div><!--end entry-->
-			<div class="post-footer clear">
+			<div class="post-footer">
 				<p><?php comments_popup_link( __( 'Leave a comment', '<%= theme_id %>' ), __( '1 Comment', '<%= theme_id %>' ), __( '% Comments', '<%= theme_id %>' ) ); ?></p>
 			</div><!--end post-footer-->
 		</div><!--end post-->
 	<?php endwhile; /* rewind or continue if all posts have been fetched */ ?>
-	<div class="pagination index">
+		<div class="pagination index">
 			<div class="alignleft">
 				<?php previous_posts_link( __( '&larr; Newer entries', '<%= theme_id %>' )); ?>
 			</div>
