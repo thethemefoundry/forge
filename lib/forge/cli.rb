@@ -51,6 +51,7 @@ module Forge
       builder = Builder.new(project)
       builder.build
 
+      FileUtils.rm_rf Dir.glob(File.join(dir, '*'))
       directory(project.build_path, dir)
     end
 

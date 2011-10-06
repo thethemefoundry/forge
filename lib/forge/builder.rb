@@ -114,7 +114,14 @@ module Forge
       end
 
       # Copy the images directory over
-      FileUtils.cp_r File.join(@assets_path, 'images'), File.join(@project.build_path)
+      FileUtils.cp_r(File.join(@assets_path, 'images'), @project.build_path)
+
+      # Check for screenshot and move it into main build directory
+      Dir.glob(File.join(@project.build_path, 'images', '*')).each do |filename|
+        if filename.index(/screenshot\.(png|jpg|jpeg|gif)/)
+          FileUtils.mv(filename, @project.build_path + File::SEPARATOR )
+        end
+      end
     end
 
     private
