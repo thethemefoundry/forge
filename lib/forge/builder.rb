@@ -89,11 +89,13 @@ module Forge
 
         # Catch any sprockets errors and continue the process
         begin
-          FileUtils.mkdir_p(File.dirname(destination)) unless File.directory?(File.dirname(destination))
-          sprocket.write_to(destination) unless sprocket.nil?
+          @task.shell.mute do
+            FileUtils.mkdir_p(File.dirname(destination)) unless File.directory?(File.dirname(destination))
+            sprocket.write_to(destination) unless sprocket.nil?
 
-          if asset.last == 'style.css' && (not sprockets_error)
-            @task.prepend_file destination, @project.parse_erb(stylesheet_header)
+            if asset.last == 'style.css' && (not sprockets_error)
+              @task.prepend_file destination, @project.parse_erb(stylesheet_header)
+            end
           end
         rescue Exception => e
           @task.say "Error while building #{asset.last}:"

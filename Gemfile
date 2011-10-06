@@ -11,6 +11,7 @@ gem "json", "~> 1.6.1"
 gem "sass", "~> 3.1.8"
 gem "sprockets-sass", "~> 0.3.0"
 gem "compass", "~> 0.11.5"
+gem 'rack', '1.3.3'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
