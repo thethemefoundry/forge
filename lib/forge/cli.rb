@@ -22,7 +22,7 @@ module Forge
       project = Forge::Project.create(dir, theme, self)
     end
 
-    desc "link PATH", "symlink the compiled version of theme to the specified path"
+    desc "link PATH", "Create a symbolic link to the compilation directory"
     long_desc "This command will symlink the compiled version of the theme to the specified path.\n\n"+
       "To compile the theme use the `forge watch` command"
     def link(path)
@@ -34,6 +34,7 @@ module Forge
     end
 
     desc "watch", "Start watch process"
+    long_desc "Watches the source directory in your project for changes, and reflects those changes in a compile folder"
     def watch
       project = Forge::Project.new('.', self)
 
