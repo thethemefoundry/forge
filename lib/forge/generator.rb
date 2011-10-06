@@ -58,10 +58,10 @@ module Forge
     end
 
     def copy_settings_library
-      settings_path = @task.find_in_source_paths(File.join('lib', 'forge-settings', 'classes'))
+      settings_path = @task.find_in_source_paths(File.join('lib', 'struts', 'classes'))
 
       source = File.expand_path(settings_path)
-      target = File.expand_path(File.join(@project.includes_path, 'forge-settings', '.'))
+      target = File.expand_path(File.join(@project.includes_path, 'struts', '.'))
 
       @task.directory(source, target)
     end
