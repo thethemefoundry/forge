@@ -14,15 +14,18 @@ Install Forge (requires [Ruby](http://www.ruby-lang.org/) and [RubyGems](http://
 
 Create your new theme project:
 
-    $ forge create themename
+    $ forge create theme_name
+
+Change to your new project directory:
+
+    $ cd theme_name
 
 Link to your WordPress theme folder:
 
-    $ forge link /path/to/wordpress/wp-content/themes/my-theme
+    $ forge link /path/to/wordpress/wp-content/themes/theme_name
 
 Watch for changes and start developing!
 
-    $ cd themename
     $ forge watch
 
 See the [user's manual](http://forge.thethemefoundry.com/manual) for more information.
