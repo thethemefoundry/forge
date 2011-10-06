@@ -54,10 +54,7 @@ module Forge
         end
 
         # Give Thor contents of zip file for "overwrite" prompt
-        file = File.open(temp_filename, 'rb')
-        contents = file.read
-        file.close
-        contents
+        File.open(temp_filename, 'rb') { |f| f.read }
       end
 
       # Clean up the temp file
