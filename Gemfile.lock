@@ -67,15 +67,15 @@ PLATFORMS
 DEPENDENCIES
   aruba
   bundler (~> 1.0.0)
-  compass
+  compass (~> 0.11.5)
   cucumber
-  guard
+  guard (~> 0.8.4)
   jeweler (~> 1.6.4)
-  json
+  json (~> 1.6.1)
   rcov
   rspec
-  rubyzip
-  sass
-  sprockets
-  sprockets-sass
-  thor
+  rubyzip (~> 0.9.4)
+  sass (~> 3.1.8)
+  sprockets (~> 2.0.2)
+  sprockets-sass (~> 0.3.0)
+  thor (~> 0.14.6)

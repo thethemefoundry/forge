@@ -3,14 +3,14 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem "thor"
-gem "guard"
-gem "sprockets"
-gem "rubyzip"
-gem "json"
-gem "sass"
-gem "sprockets-sass"
-gem "compass"
+gem "thor", "~> 0.14.6"
+gem "guard", "~> 0.8.4"
+gem "sprockets", "~> 2.0.2"
+gem "rubyzip", "~> 0.9.4"
+gem "json", "~> 1.6.1"
+gem "sass", "~> 3.1.8"
+gem "sprockets-sass", "~> 0.3.0"
+gem "compass", "~> 0.11.5"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

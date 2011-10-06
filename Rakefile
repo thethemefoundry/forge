@@ -22,7 +22,7 @@ Jeweler::Tasks.new do |gem|
   gem.email = "aadams@jestro.com"
   gem.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
   # dependencies defined in Gemfile
-  gem.files.include Dir.glob('layouts/lib/forge-settings/**/*')
+  gem.files.include Dir.glob('**/*')
 end
 Jeweler::RubygemsDotOrgTasks.new
 
