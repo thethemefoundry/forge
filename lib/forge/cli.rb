@@ -45,7 +45,7 @@ module Forge
     end
 
     desc "build DIRECTORY", "Build your theme into specified directory"
-    def build(dir)
+    def build(dir='build')
       project = Forge::Project.new('.', self)
 
       builder = Builder.new(project)
@@ -55,13 +55,13 @@ module Forge
       directory(project.build_path, dir)
     end
 
-    desc "package", "Compile and zip your project"
-    def package
+    desc "package FILENAME", "Compile and zip your project to FILENAME.zip"
+    def package(filename=nil)
       project = Forge::Project.new('.', self)
 
       builder = Builder.new(project)
       builder.build
-      builder.zip
+      builder.zip(filename)
     end
 
     protected

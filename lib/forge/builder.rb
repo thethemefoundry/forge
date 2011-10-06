@@ -27,23 +27,35 @@ module Forge
     end
 
     # Use the rubyzip library to build a zip from the generated source
-    def zip
-      basename = File.basename(@project.root)
-      zip_filename = get_output_filename(basename)
-      @task.say_status("create ", zip_filename)
+    def zip(filename=nil)
+      filename = filename || File.basename(@project.root)
+      project_base = File.basename(@project.root)
 
-      Zip::ZipFile.open(zip_filename, Zip::ZipFile::CREATE) do |zip|
-        # Get all filenames in the build directory recursively
-        filenames = Dir[File.join(@project.build_path, '**', '*')]
+      zip_filename = File.join(File.basename(@package_path), "#{filename}.zip")
+      temp_filename = "#{zip_filename}.tmp"
 
-        # Remove the build directory path from the filename
-        filenames.collect! {|path| path.gsub(/#{@project.build_path}\//, '')}
+      File.delete(temp_filename) if File.exists?(temp_filename)
 
-        # Add each file in the build directory to the zip file
-        filenames.each do |filename|
-          zip.add File.join(basename, filename), File.join(@project.build_path, filename)
+      @task.create_file(zip_filename) do
+        Zip::ZipFile.open(temp_filename, Zip::ZipFile::CREATE) do |zip|
+          # Get all filenames in the build directory recursively
+          filenames = Dir[File.join(@project.build_path, '**', '*')]
+
+          # Remove the build directory path from the filename
+          filenames.collect! {|path| path.gsub(/#{@project.build_path}\//, '')}
+
+          # Add each file in the build directory to the zip file
+          filenames.each do |filename|
+            zip.add File.join(project_base, filename), File.join(@project.build_path, filename)
+          end
         end
+        file = File.open(temp_filename, 'rb')
+        contents = file.read
+        file.close
+        contents
       end
+
+      File.delete(temp_filename)
     end
 
     # Empty out the build directory
