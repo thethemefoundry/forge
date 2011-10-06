@@ -32,10 +32,13 @@ module Forge
       project_base = File.basename(@project.root)
 
       zip_filename = File.join(File.basename(@package_path), "#{filename}.zip")
+      # Create a temporary file for RubyZip to write to
       temp_filename = "#{zip_filename}.tmp"
 
       File.delete(temp_filename) if File.exists?(temp_filename)
 
+      # Wrapping the zip creation in Thor's create_file to get "overwrite" prompts
+      # Note: I could be overcomplicating this
       @task.create_file(zip_filename) do
         Zip::ZipFile.open(temp_filename, Zip::ZipFile::CREATE) do |zip|
           # Get all filenames in the build directory recursively
@@ -49,12 +52,15 @@ module Forge
             zip.add File.join(project_base, filename), File.join(@project.build_path, filename)
           end
         end
+
+        # Give Thor contents of zip file for "overwrite" prompt
         file = File.open(temp_filename, 'rb')
         contents = file.read
         file.close
         contents
       end
 
+      # Clean up the temp file
       File.delete(temp_filename)
     end
 
