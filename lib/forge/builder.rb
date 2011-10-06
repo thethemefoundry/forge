@@ -13,6 +13,7 @@ module Forge
       @assets_path = @project.assets_path
       @functions_path = @project.functions_path
       @includes_path = @project.includes_path
+      @package_path = @project.package_path
 
       init_sprockets
     end
@@ -28,8 +29,10 @@ module Forge
     # Use the rubyzip library to build a zip from the generated source
     def zip
       basename = File.basename(@project.root)
+      zip_filename = get_output_filename(basename)
+      @task.say_status("create ", zip_filename)
 
-      Zip::ZipFile.open(get_output_filename(basename), Zip::ZipFile::CREATE) do |zip|
+      Zip::ZipFile.open(zip_filename, Zip::ZipFile::CREATE) do |zip|
         # Get all filenames in the build directory recursively
         filenames = Dir[File.join(@project.build_path, '**', '*')]
 
@@ -142,11 +145,12 @@ module Forge
 
     # Generate a unique filename for the zip output
     def get_output_filename(basename)
-      filename = "#{basename}.zip"
+      package_path_base = File.basename(@package_path)
+      filename = File.join(package_path_base, "#{basename}.zip")
 
       i = 1
       while File.exists?(filename)
-        filename = "#{basename}(#{i}).zip"
+        filename = File.join(package_path_base, "#{basename}(#{i}).zip")
         i += 1
       end
 
