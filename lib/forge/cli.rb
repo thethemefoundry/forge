@@ -44,6 +44,16 @@ module Forge
       Forge::Guard.start(project, self)
     end
 
+    desc "build DIRECTORY", "Build your theme into specified directory"
+    def build(dir)
+      project = Forge::Project.new('.', self)
+
+      builder = Builder.new(project)
+      builder.build
+
+      directory(project.build_path, dir)
+    end
+
     desc "package", "Compile and zip your project"
     def package
       project = Forge::Project.new('.', self)

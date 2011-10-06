@@ -115,17 +115,14 @@ module Forge
     private
 
     def init_sprockets
+      Compass.configuration do |compass|
+        compass.line_comments = false
+      end
+
       @sprockets = Sprockets::Environment.new
 
       ['javascripts', 'stylesheets'].each do |dir|
         @sprockets.append_path File.join(@assets_path, dir)
-      end
-
-
-      # Add all compass frameworks to the sass path
-      # TODO: This feels really hacky - is there a better way?
-      Compass::Frameworks::ALL.each do |framework|
-        Sass::Engine::DEFAULT_OPTIONS[:load_paths] << framework.stylesheets_directory
       end
 
       @sprockets.context_class.instance_eval do

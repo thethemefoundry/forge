@@ -7,5 +7,9 @@
  * Version: <%= config["version_number"] if config["version_number"] %>
  * License: <%= config["license_name"] if config["license_name"] %>
  * License URI: <%= config["license_uri"] if config["license_uri"] %>
- * Tags: <%= config["tags"] if config["tags"] %>
+ * Tags: <%= config["tags"].join(", ") if config["tags"] %>
+<% if config["comments"] -%>
+ *
+ * <%= config["comments"] %>
+<% end -%>
  */
