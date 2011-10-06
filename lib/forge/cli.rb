@@ -14,6 +14,7 @@ module Forge
     end
 
     desc "create DIRECTORY", "Creates a Forge project"
+    method_option :struts, :type => :boolean, :desc => "Include Struts Options Framework"
     def create(dir)
       theme = {}
       theme[:name] = dir

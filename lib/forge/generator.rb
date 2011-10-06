@@ -83,7 +83,7 @@ module Forge
       copy_stylesheets
       copy_templates
       copy_functions
-      copy_settings_library
+      copy_settings_library if @task.options[:struts]
       return self
     end
 
