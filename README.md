@@ -1,12 +1,12 @@
 ## Forge is a toolkit for bootstrapping and developing WordPress themes.
 
-[Forge website and screencast](http://forge.thethemefoundry.com/)
+[Forge website](http://forge.thethemefoundry.com/)
 
 [User's manual](http://forge.thethemefoundry.com/manual)
 
 -----
 
-Current Version: **0.1.0**
+Current Version: **0.0.1**
 
 Install Forge (requires [Ruby](http://www.ruby-lang.org/) and [RubyGems](http://rubygems.org/)):
 
@@ -15,6 +15,10 @@ Install Forge (requires [Ruby](http://www.ruby-lang.org/) and [RubyGems](http://
 Create your new theme project:
 
     $ forge create themename
+
+Link to your WordPress theme folder:
+
+    $ forge link /path/to/wordpress/wp-content/themes/my-theme
 
 Watch for changes and start developing!
 
