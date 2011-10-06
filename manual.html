@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Forge</title>
+	<title>Forge User's Manual</title>
 	<meta name="description" content="Build WordPress themes using SASS and CoffeeScript." />
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link href='http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC' rel='stylesheet' type='text/css'>
 </head>
 <body id="manual">
 	<div id="wrapper">
@@ -15,22 +16,20 @@
 			</div>
 		</div>
 		<div class="section">
-			<h2>What is Forge?</h2>
-			<p>Forge is a WordPress theme development toolkit that gives you the power to quickly and easily develop your own WordPress themes in a tidy environment using powerful tools like SASS and CoffeeScript.</p>
-		</div>
-		<div class="section">
-			<h2>How does it work?</h2>
-			<p>Forge installs as a Ruby gem and allows you to quickly bootstrap a brand new theme and work inside a clean development environment with tools like SASS and CoffeeScript. Your theme is then automatically compiled to all your local WordPress environments as you save and work.</p>
-		</div>
-		<div class="section">
 			<h2>Basic setup</h2>
 			<ol>
-				<li>Install Ruby and Ruby gems.</li>
-				<li>Install Forge <code>gem install forge</code></li>
-				<li>Create your project <code>forge</code></li>
-				<li>Specify your WordPress install(s) <code>forge link /path/to/wordpress</code></li>
-				<li>Watch for changes <code>forge watch</code></li>
-				<li>Start developing!</li>
+				<li>Install Forge (requires <a href="http://www.ruby-lang.org/">Ruby</a> and <a href="http://rubygems.org/">RubyGems</a>):
+					<pre><code><span>$</span> gem install forge</code></pre>
+				</li>
+				<li>Create your new theme project:
+					<pre><code><span>$</span> forge create themename</code></pre>
+				</li>
+				<li>Link to your WordPress theme folder:
+					<pre><code><span>$</span> forge link /path/to/wordpress/wp-content/themes/my-theme</code></pre>
+				</li>
+				<li>Watch for changes and start developing! 
+					<pre><code><span>$</span> cd themename<br /><span>$</span> forge watch</code></pre>
+				</li>
 			</ol>
 		</div>
 	</div>

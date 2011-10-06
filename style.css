@@ -45,8 +45,8 @@ a:hover {
 	Header
 ------------------------------------------------------------ */
 #header {
-	padding: 20px 0 10px 0;
-	border-bottom: 4px double #d5cfb9;
+	padding: 20px 0;
+	border-bottom: 1px solid #dcd6bf;
 }
 h1 {
 	float: left;
@@ -110,5 +110,5 @@ pre {
 	padding-top: 10px;
 	line-height: 1.8em;
 	font-size: 0.857142857em; /* 12 / 14 */
-	border-top: 4px double #d5cfb9;
+	border-top: 1px solid #dcd6bf;
 }
