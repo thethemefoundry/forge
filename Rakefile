@@ -15,13 +15,14 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "forge"
-  gem.homepage = "http://github.com/jestro/forge"
+  gem.homepage = "http://nohomepageyet.org"
   gem.license = "MIT"
   gem.summary = %Q{A tool for developing wordpress themes}
   gem.description = %Q{A toolkit for bootstrapping and developing WordPress themes.}
   gem.email = "aadams@jestro.com"
   gem.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
   # dependencies defined in Gemfile
+  gem.files.include Dir.glob('layouts/lib/forge-settings/**/*')
 end
 Jeweler::RubygemsDotOrgTasks.new
 

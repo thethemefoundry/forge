@@ -4,15 +4,15 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{forge}
+  s.name = "forge"
   s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Andy Adams}, %q{Drew Strojny}, %q{Matt Button}]
-  s.date = %q{2011-10-05}
-  s.description = %q{A toolkit for bootstrapping and developing WordPress themes.}
-  s.email = %q{aadams@jestro.com}
-  s.executables = [%q{forge}]
+  s.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
+  s.date = "2011-10-06"
+  s.description = "A toolkit for bootstrapping and developing WordPress themes."
+  s.email = "aadams@jestro.com"
+  s.executables = ["forge"]
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -36,22 +36,28 @@ Gem::Specification.new do |s|
     "layouts/config/config.json.erb",
     "layouts/config/stylesheet_header.erb",
     "layouts/default/functions/functions.php.erb",
-    "layouts/default/stylesheets/comments.css.scss",
-    "layouts/default/stylesheets/pages.css.scss",
-    "layouts/default/stylesheets/patterns.css.scss",
-    "layouts/default/stylesheets/posts.css.scss",
-    "layouts/default/stylesheets/preboot.css.scss",
-    "layouts/default/stylesheets/queries.css.scss",
-    "layouts/default/stylesheets/reset.css.scss",
-    "layouts/default/stylesheets/scaffolding.css.scss",
+    "layouts/default/stylesheets/_reset.scss",
+    "layouts/default/stylesheets/_typography.scss",
     "layouts/default/stylesheets/style.css.scss.erb",
-    "layouts/default/stylesheets/widgets.css.scss",
+    "layouts/default/templates/404.php.erb",
+    "layouts/default/templates/archive.php.erb",
+    "layouts/default/templates/attachment.php.erb",
     "layouts/default/templates/comments.php",
     "layouts/default/templates/footer.php",
     "layouts/default/templates/header.php.erb",
     "layouts/default/templates/index.php",
+    "layouts/default/templates/page.php",
     "layouts/default/templates/partials/loop.php.erb",
+    "layouts/default/templates/search.php.erb",
     "layouts/default/templates/sidebar.php",
+    "layouts/default/templates/single.php.erb",
+    "layouts/lib/forge-settings/README.md",
+    "layouts/lib/forge-settings/classes/settings.php",
+    "layouts/lib/forge-settings/classes/settings/collection.php",
+    "layouts/lib/forge-settings/classes/settings/option.php",
+    "layouts/lib/forge-settings/classes/settings/option/select.php",
+    "layouts/lib/forge-settings/classes/settings/option/text.php",
+    "layouts/lib/forge-settings/classes/settings/section.php",
     "lib/forge.rb",
     "lib/forge/builder.rb",
     "lib/forge/cli.rb",
@@ -69,11 +75,11 @@ Gem::Specification.new do |s|
     "spec/lib/forge/project_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/jestro/forge}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
-  s.summary = %q{A tool for developing wordpress themes}
+  s.homepage = "http://nohomepageyet.org"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.11"
+  s.summary = "A tool for developing wordpress themes"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
