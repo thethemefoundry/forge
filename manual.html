@@ -68,15 +68,23 @@ your_theme/ridiculous.php</code></pre>
 				The assets folder allows you to use <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>, <a href="http://sass-lang.com/">SASS</a>, and <a href="http://getsprockets.org">Sprockets</a> on your theme painlessly.
 				Of course, you don't have to use anything beyond JavaScript and plain old CSS - it's up to you!
 			</p>
+			<h4>Stylesheets</h4>
 			<p>
-				Forge only makes use of one stylesheet: <strong>style.css.scss</strong>,
+				Forge only makes use of one stylesheet: <strong>assets/stylesheets/style.css.scss</strong>,
 				which is processed by <a href="http://sass-lang.com/">SASS</a> and compiled to your style.css file. That means you get the wonderfulness of SASS's partial stylesheets, mixins - all of it!
 				Also included are <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> standard libraries for mixing in.
 			</p>
+			<h4>JavaScripts</h4>
 			<p>
-				For theme JavaScript, everything goes in <strong>theme.js</strong>, which is processed by <a href="http://getsprockets.org">Sprockets</a> and compiled to <pre><code>your_theme/js/theme.js</code></pre>
+				For theme JavaScript, everything not related to the admin panel goes in <strong>assets/javascripts/theme.js</strong>,
+				which is processed by <a href="http://getsprockets.org">Sprockets</a> and compiled to <pre><code>your_theme/javascripts/theme.js</code></pre>
 				You can harness the power of Sprockets includes and requires to generate a single JavaScript file for your theme
 			</p>
+			<p>
+				In addition, <strong>assets/javascripts/admin.js</strong> will compile to <pre><code>your_theme/javascripts/admin.js</code></pre>
+				in case you need JavaScript for your theme options
+			</p>
+			<h4>Images</h4>
 			<p>
 				Images aren't too tricky - everything in your <strong>assets/images/</strong> folder will be compiled to
 				<pre><code>your_theme/images/</code></pre> exactly how you have it in your source folder.
