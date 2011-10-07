@@ -53,7 +53,7 @@ h1 {
 	font-family: 'IM Fell DW Pica SC', serif;
 	font-size: 2em;
 	font-weight: 400;
-	
+
 }
 #header h1 a {
 	text-decoration: none;
@@ -102,6 +102,8 @@ pre {
 	background: #efecdc;
 	border: 1px solid #dcd7be;
 }
+p { margin-bottom: 10px; }
+h2,h3 { border-bottom: 1px solid #dcd6bf; }
 /*---------------------------------------------------------
 	Footer
 ------------------------------------------------------------ */
@@ -111,4 +113,12 @@ pre {
 	line-height: 1.8em;
 	font-size: 0.857142857em; /* 12 / 14 */
 	border-top: 1px solid #dcd6bf;
+}
+/*---------------------------------------------------------
+	Extras
+------------------------------------------------------------ */
+ul.bulleted {
+	list-style: outside;
+	padding-left: 25px;
+	margin-bottom: 15px;
 }
