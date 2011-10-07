@@ -98,7 +98,7 @@ module Forge
     end
 
     def build_assets
-      [['style.css'], ['js', 'theme.js']].each do |asset|
+      [['style.css'], ['javascripts', 'theme.js'], ['javascripts', 'admin.js']].each do |asset|
         destination = File.join(@project.build_path, asset)
 
         sprocket = @sprockets.find_asset(asset.last)
