@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "forge"
-  gem.homepage = "http://nohomepageyet.org"
+  gem.homepage = "http://forge.thethemefoundry.com"
   gem.license = "MIT"
   gem.summary = %Q{A tool for developing wordpress themes}
   gem.description = %Q{A toolkit for bootstrapping and developing WordPress themes.}

@@ -77,7 +77,7 @@ Gem::Specification.new do |s|
     "spec/lib/forge/project_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = "http://nohomepageyet.org"
+  s.homepage = "http://forge.thethemefoundry.com"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.11"
