@@ -68,12 +68,15 @@ your_theme/ridiculous.php</code></pre>
 				The assets folder allows you to use <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>, <a href="http://sass-lang.com/">SASS</a>, and <a href="http://getsprockets.org">Sprockets</a> on your theme painlessly.
 				Of course, you don't have to use anything beyond JavaScript and plain old CSS - it's up to you!
 			</p>
+
 			<h4>Stylesheets</h4>
 			<p>
 				Forge only makes use of one stylesheet: <strong>assets/stylesheets/style.css.scss</strong>,
 				which is processed by <a href="http://sass-lang.com/">SASS</a> and compiled to your style.css file. That means you get the wonderfulness of SASS's partial stylesheets, mixins - all of it!
 				Also included are <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> standard libraries for mixing in.
 			</p>
+			<p>In addition, edit the settings in <strong>config.json</strong> (at the root of your Forge project) and they'll be reflected in your style.css header</p>
+
 			<h4>JavaScripts</h4>
 			<p>
 				For theme JavaScript, everything not related to the admin panel goes in <strong>assets/javascripts/theme.js</strong>,
@@ -103,6 +106,7 @@ your_theme/ridiculous.php</code></pre>
 				Again, pretty simple. Everything here is directly copied as-is to
 				<pre><code>your_theme/includes/</code></pre>
 			</p>
+
 			<p>That's it! That's all there is to Forge! Happy theming!</p>
 		</div>
 		<div id="footer">
