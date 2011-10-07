@@ -33,10 +33,10 @@
 			</ol>
 		</div>
 		<div class="section">
-			<h2>How Forge Works</h2>
+			<h2>How Forge works</h2>
 			<p>
-				All of your development work goes on in the <strong>source</strong> directory of your project.
-				There are 4 different folders you'll work with in your Forge project, each of which has a special function:
+				All of your development work takes place in the <strong>source</strong> directory of your project.
+				There are four folders you'll work from, each of which has a special function:
 			</p>
 			<ul class="bulleted">
 				<li><a href="#templates"><strong>templates</strong></a>: Any and all WordPress templates for your theme</li>
@@ -44,38 +44,31 @@
 				<li><a href="#functions"><strong>functions</strong></a>: Your functions.php file</li>
 				<li><a href="#includes"><strong>includes</strong></a>: Any libraries or external code you need for your theme</li>
 			</ul>
-			<p>Let's take a look at what each section does.</p>
-
 			<h3 id="templates">Templates</h3>
 			<p>
-				The templates folder serves as a way to organize your template files.
-				Any file you place in this directory will end up at the root of your theme.
-				So that means that
-				<pre><code>source/templates/index.php</code></pre>
-				and
-				<pre><code>source/templates/pages/my_template.php</code></pre>
-				and even
-				<pre><code>source/templates/this/is/getting/ridiculous.php</code></pre>
-				will be translated to
+				The templates folder is used to organize your template files.
+				Any file you place in this directory or it's subdirectories will build into the root of your theme. Forge gives you some sensible defaults - but feel free to organize however you want.
+				<pre><code>source/templates/index.php
+source/templates/pages/my_template.php
+source/templates/this/is/getting/ridiculous.php</code></pre>
+				Will compile to:
 				<pre><code>your_theme/index.php
 your_theme/my_template.php
 your_theme/ridiculous.php</code></pre>
 			</p>
-			<p>Forge gives you some default folders that we think make sense - but feel free to organize until your OCD little heart is content!</p>
-
 			<h3 id="assets">Assets</h3>
 			<p>
-				The assets folder allows you to use <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>, <a href="http://sass-lang.com/">SASS</a>, and <a href="http://getsprockets.org">Sprockets</a> on your theme painlessly.
-				Of course, you don't have to use anything beyond JavaScript and plain old CSS - it's up to you!
+				The assets folder gives you access to powerful tools like <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>, <a href="http://sass-lang.com/">SASS</a>, and <a href="http://getsprockets.org">Sprockets</a>.
+				Of course, you are free to use JavaScript and plain old CSS as well.
 			</p>
 
 			<h4>Stylesheets</h4>
 			<p>
 				Forge only makes use of one stylesheet: <strong>assets/stylesheets/style.css.scss</strong>,
 				which is processed by <a href="http://sass-lang.com/">SASS</a> and compiled to your style.css file. That means you get the wonderfulness of SASS's partial stylesheets, mixins - all of it!
-				Also included are <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> standard libraries for mixing in.
+				The <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> libraries are also included.
 			</p>
-			<p>In addition, edit the settings in <strong>config.json</strong> (at the root of your Forge project) and they'll be reflected in your style.css header</p>
+			<p>You may edit your theme settings (name, author, URI, etc.) in <strong>config.json</strong> (at the root of your Forge project) and they'll be reflected in the header of your style.css file.</p>
 
 			<h4>JavaScripts</h4>
 			<p>
@@ -106,7 +99,6 @@ your_theme/ridiculous.php</code></pre>
 				Again, pretty simple. Everything here is directly copied as-is to
 				<pre><code>your_theme/includes/</code></pre>
 			</p>
-
 			<p>That's it! That's all there is to Forge! Happy theming!</p>
 		</div>
 		<div id="footer">
