@@ -39,75 +39,11 @@
 				There are 4 different folders you'll work with in your Forge project, each of which has a special function:
 			</p>
 			<ul class="bulleted">
-				<li><a href="#templates"><strong>templates</strong></a>: Any and all WordPress templates for your theme</li>
-				<li><a href="#assets"><strong>assets</strong></a>: Images, JavaScript/CoffeeScript, and CSS/SASS</li>
-				<li><a href="#functions"><strong>functions</strong></a>: Your functions.php file</li>
-				<li><a href="#includes"><strong>includes</strong></a>: Any libraries or external code you need for your theme</li>
+				<li><a href="/templates"><strong>templates</strong></a>: Any and all WordPress templates for your theme</li>
+				<li><a href="/assets"><strong>assets</strong></a>: Images, JavaScript/CoffeeScript, and CSS/SASS</li>
+				<li><a href="/functions"><strong>functions and includes</strong></a>: Your functions.php file, along with any libraries or external code you need for your theme</li>
 			</ul>
-			<p>Let's take a look at what each section does.</p>
-
-			<h3 id="templates">Templates</h3>
-			<p>
-				The templates folder serves as a way to organize your template files.
-				Any file you place in this directory will end up at the root of your theme.
-				So that means that
-				<pre><code>source/templates/index.php</code></pre>
-				and
-				<pre><code>source/templates/pages/my_template.php</code></pre>
-				and even
-				<pre><code>source/templates/this/is/getting/ridiculous.php</code></pre>
-				will be translated to
-				<pre><code>your_theme/index.php
-your_theme/my_template.php
-your_theme/ridiculous.php</code></pre>
-			</p>
-			<p>Forge gives you some default folders that we think make sense - but feel free to organize until your OCD little heart is content!</p>
-
-			<h3 id="assets">Assets</h3>
-			<p>
-				The assets folder allows you to use <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>, <a href="http://sass-lang.com/">SASS</a>, and <a href="http://getsprockets.org">Sprockets</a> on your theme painlessly.
-				Of course, you don't have to use anything beyond JavaScript and plain old CSS - it's up to you!
-			</p>
-
-			<h4>Stylesheets</h4>
-			<p>
-				Forge only makes use of one stylesheet: <strong>assets/stylesheets/style.css.scss</strong>,
-				which is processed by <a href="http://sass-lang.com/">SASS</a> and compiled to your style.css file. That means you get the wonderfulness of SASS's partial stylesheets, mixins - all of it!
-				Also included are <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> standard libraries for mixing in.
-			</p>
-			<p>In addition, edit the settings in <strong>config.json</strong> (at the root of your Forge project) and they'll be reflected in your style.css header</p>
-
-			<h4>JavaScripts</h4>
-			<p>
-				For theme JavaScript, everything not related to the admin panel goes in <strong>assets/javascripts/theme.js</strong>,
-				which is processed by <a href="http://getsprockets.org">Sprockets</a> and compiled to <pre><code>your_theme/javascripts/theme.js</code></pre>
-				You can harness the power of Sprockets includes and requires to generate a single JavaScript file for your theme
-			</p>
-			<p>
-				In addition, <strong>assets/javascripts/admin.js</strong> will compile to <pre><code>your_theme/javascripts/admin.js</code></pre>
-				in case you need JavaScript for your theme options
-			</p>
-			<h4>Images</h4>
-			<p>
-				Images aren't too tricky - everything in your <strong>assets/images/</strong> folder will be compiled to
-				<pre><code>your_theme/images/</code></pre> exactly how you have it in your source folder.
-				The only exception is screenshot.png/jpg/jpeg/gif. That will be automagically copied to
-				<pre><code>your_theme/screenshot.png</code></pre>
-			</p>
-
-			<h3 id="functions">Functions</h3>
-			<p>
-				Functions are dead simple. Your <strong>functions/functions.php</strong> file is copied to the root of your theme.
-				We plan on doing more here later, so stay tuned :).
-			</p>
-
-			<h3 id="includes">Includes</h3>
-			<p>
-				Again, pretty simple. Everything here is directly copied as-is to
-				<pre><code>your_theme/includes/</code></pre>
-			</p>
-
-			<p>That's it! That's all there is to Forge! Happy theming!</p>
+			<p>Click the links above to learn more.</p>
 		</div>
 		<div id="footer">
 			Brought to you by <a href="http://thethemefoundry.com">The Theme Foundry</a>.
