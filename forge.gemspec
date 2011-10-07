@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "forge"
-  s.version = "0.0.0"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
-  s.date = "2011-10-06"
+  s.date = "2011-10-07"
   s.description = "A toolkit for bootstrapping and developing WordPress themes."
   s.email = "aadams@jestro.com"
   s.executables = ["forge"]
@@ -36,6 +36,8 @@ Gem::Specification.new do |s|
     "layouts/config/config.json.erb",
     "layouts/config/stylesheet_header.erb",
     "layouts/default/functions/functions.php.erb",
+    "layouts/default/javascripts/admin.js",
+    "layouts/default/javascripts/theme.js",
     "layouts/default/stylesheets/_reset.scss",
     "layouts/default/stylesheets/_typography.scss",
     "layouts/default/stylesheets/style.css.scss.erb",
@@ -51,13 +53,13 @@ Gem::Specification.new do |s|
     "layouts/default/templates/search.php.erb",
     "layouts/default/templates/sidebar.php",
     "layouts/default/templates/single.php.erb",
-    "layouts/lib/forge-settings/README.md",
-    "layouts/lib/forge-settings/classes/settings.php",
-    "layouts/lib/forge-settings/classes/settings/collection.php",
-    "layouts/lib/forge-settings/classes/settings/option.php",
-    "layouts/lib/forge-settings/classes/settings/option/select.php",
-    "layouts/lib/forge-settings/classes/settings/option/text.php",
-    "layouts/lib/forge-settings/classes/settings/section.php",
+    "layouts/lib/struts/README.md",
+    "layouts/lib/struts/classes/settings.php",
+    "layouts/lib/struts/classes/settings/collection.php",
+    "layouts/lib/struts/classes/settings/option.php",
+    "layouts/lib/struts/classes/settings/option/select.php",
+    "layouts/lib/struts/classes/settings/option/text.php",
+    "layouts/lib/struts/classes/settings/section.php",
     "lib/forge.rb",
     "lib/forge/builder.rb",
     "lib/forge/cli.rb",
@@ -85,14 +87,15 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<thor>, [">= 0"])
-      s.add_runtime_dependency(%q<guard>, [">= 0"])
-      s.add_runtime_dependency(%q<sprockets>, [">= 0"])
-      s.add_runtime_dependency(%q<rubyzip>, [">= 0"])
-      s.add_runtime_dependency(%q<json>, [">= 0"])
-      s.add_runtime_dependency(%q<sass>, [">= 0"])
-      s.add_runtime_dependency(%q<sprockets-sass>, [">= 0"])
-      s.add_runtime_dependency(%q<compass>, [">= 0"])
+      s.add_runtime_dependency(%q<thor>, ["~> 0.14.6"])
+      s.add_runtime_dependency(%q<guard>, ["~> 0.8.4"])
+      s.add_runtime_dependency(%q<sprockets>, ["~> 2.0.2"])
+      s.add_runtime_dependency(%q<rubyzip>, ["~> 0.9.4"])
+      s.add_runtime_dependency(%q<json>, ["~> 1.6.1"])
+      s.add_runtime_dependency(%q<sass>, ["~> 3.1.8"])
+      s.add_runtime_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
+      s.add_runtime_dependency(%q<compass>, ["~> 0.11.5"])
+      s.add_runtime_dependency(%q<rack>, ["= 1.3.3"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<cucumber>, [">= 0"])
       s.add_development_dependency(%q<aruba>, [">= 0"])
@@ -100,14 +103,15 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
-      s.add_dependency(%q<thor>, [">= 0"])
-      s.add_dependency(%q<guard>, [">= 0"])
-      s.add_dependency(%q<sprockets>, [">= 0"])
-      s.add_dependency(%q<rubyzip>, [">= 0"])
-      s.add_dependency(%q<json>, [">= 0"])
-      s.add_dependency(%q<sass>, [">= 0"])
-      s.add_dependency(%q<sprockets-sass>, [">= 0"])
-      s.add_dependency(%q<compass>, [">= 0"])
+      s.add_dependency(%q<thor>, ["~> 0.14.6"])
+      s.add_dependency(%q<guard>, ["~> 0.8.4"])
+      s.add_dependency(%q<sprockets>, ["~> 2.0.2"])
+      s.add_dependency(%q<rubyzip>, ["~> 0.9.4"])
+      s.add_dependency(%q<json>, ["~> 1.6.1"])
+      s.add_dependency(%q<sass>, ["~> 3.1.8"])
+      s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
+      s.add_dependency(%q<compass>, ["~> 0.11.5"])
+      s.add_dependency(%q<rack>, ["= 1.3.3"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<aruba>, [">= 0"])
@@ -116,14 +120,15 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rcov>, [">= 0"])
     end
   else
-    s.add_dependency(%q<thor>, [">= 0"])
-    s.add_dependency(%q<guard>, [">= 0"])
-    s.add_dependency(%q<sprockets>, [">= 0"])
-    s.add_dependency(%q<rubyzip>, [">= 0"])
-    s.add_dependency(%q<json>, [">= 0"])
-    s.add_dependency(%q<sass>, [">= 0"])
-    s.add_dependency(%q<sprockets-sass>, [">= 0"])
-    s.add_dependency(%q<compass>, [">= 0"])
+    s.add_dependency(%q<thor>, ["~> 0.14.6"])
+    s.add_dependency(%q<guard>, ["~> 0.8.4"])
+    s.add_dependency(%q<sprockets>, ["~> 2.0.2"])
+    s.add_dependency(%q<rubyzip>, ["~> 0.9.4"])
+    s.add_dependency(%q<json>, ["~> 1.6.1"])
+    s.add_dependency(%q<sass>, ["~> 3.1.8"])
+    s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
+    s.add_dependency(%q<compass>, ["~> 0.11.5"])
+    s.add_dependency(%q<rack>, ["= 1.3.3"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<aruba>, [">= 0"])
