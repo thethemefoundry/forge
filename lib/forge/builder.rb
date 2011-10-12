@@ -98,8 +98,24 @@ module Forge
     end
 
     def build_assets
-      [['style.css'], ['javascripts', 'theme.js'], ['javascripts', 'admin.js']].each do |asset|
+      asset_defaults = [['style.css'], ['javascripts', 'theme.js'], ['javascripts', 'admin.js']]
+
+      extra_stylesheets = @project.config['extra_stylesheets'].collect { |path| ['stylesheets', File.join(path.split('/'))] }
+      extra_javascripts = @project.config['extra_javascripts'].collect { |path| ['javascripts', File.join(path.split('/'))] }
+
+      # Merge the 3 arrays
+      asset_paths = (asset_defaults + extra_stylesheets + extra_javascripts).uniq
+
+      asset_paths.each do |asset|
         destination = File.join(@project.build_path, asset)
+
+        asset_path = File.join(@assets_path, asset)
+
+        # Copy a directory over as-is if it is specified in the asset_paths
+        if File.directory?(asset_path)
+          FileUtils.cp_r asset_path, destination
+          next # continue to next asset
+        end
 
         sprocket = @sprockets.find_asset(asset.last)
 
