@@ -16,232 +16,238 @@
 			</div>
 		</div>
 		<div class="section">
-			<h2>Basic setup</h2>
+			<h2>Overview</h2>
+			<p>
+				Forge was designed to make developing WordPress themes just a little bit easier.
+				It supports tools such as Sass, CoffeeScript and Sprockets, and helps you organize
+				your theme the way you want to - instead of the flat structure required by WordPress.
+			</p>
+
+			<h3>Quick Start</h3>
 			<ol>
 				<li>Install Forge (requires <a href="http://www.ruby-lang.org/">Ruby</a> and <a href="http://rubygems.org/">RubyGems</a>):
 					<pre><code><span>$</span> gem install forge</code></pre>
 				</li>
 				<li>Create your new theme project:
-					<pre><code><span>$</span> forge create themename</code></pre>
+					<pre><code><span>$</span> forge create your_theme</code></pre>
+				</li>
+				<li>Change to your project directory:
+					<pre><code><span>$</span> cd your_theme</code></pre>
 				</li>
 				<li>Link to your WordPress theme folder:
-					<pre><code><span>$</span> forge link /path/to/wordpress/wp-content/themes/my-theme</code></pre>
+					<pre><code><span>$</span> forge link /path/to/wordpress/wp-content/themes/your_theme</code></pre>
 				</li>
 				<li>Watch for changes and start developing!
-					<pre><code><span>$</span> cd themename<br /><span>$</span> forge watch</code></pre>
+					<pre><code><span>$</span> forge watch</code></pre>
 				</li>
 			</ol>
 		</div>
-		<div class="section">
-			<h2>How Forge works</h2>
-			<p>
-				All of your development work takes place in the <strong>source</strong> directory of your project.
-				There are four folders you'll work from, each of which has a special function:
-			</p>
-			<ul class="bulleted">
-				<li><a href="#templates"><strong>templates</strong></a>: Any and all WordPress templates for your theme</li>
-				<li><a href="#assets"><strong>assets</strong></a>: Images, JavaScript/CoffeeScript, and CSS/Sass</li>
-				<li><a href="#functions"><strong>functions and includes</strong></a>: Your functions.php file, along with any libraries or external code you need for your theme</li>
-			</ul>
-		</div>
 
 		<div class="section">
-			<h3 id="templates">Templates</h2>
-			<p>
-				The templates folder serves as a way to organize your template files.
-				Any file you place in this directory will end up at the root of your theme.
-				So that means that
-				<pre><code>source/templates/index.php
-source/templates/pages/my_template.php
-source/templates/this/is/getting/ridiculous.php</code></pre>
-
-				will be translated to
-				<pre><code>your_theme/index.php
-your_theme/my_template.php
-your_theme/ridiculous.php</code></pre>
-			</p>
-			<p>Forge gives you some default folders that we think make sense - but feel free to organize however you'd prefer!</p>
-		</div>
-
-		<div class="section">
-			<h3 id="assets">Assets</h3>
-
-			<p>
-				Assets are your JavaScript, CSS, and image files.
-				Forge allows you to use CoffeeScript, Sass, and Sprockets on your theme painlessly.
-				If you want to stick with plain CSS and JavaScript, you can do that as well.
-			</p>
-			<p>Assets are split into three main categories:</p>
+			<h2>Table of Contents</h2>
 			<ul>
-				<li><a href="#stylesheets">Stylesheets</a></li>
-				<li><a href="#javascript">JavaScript</a></li>
-				<li><a href="#images">Images</a></li>
+				<li><a href="#commands">Forge Commands</a></li>
+				<li>
+					<ul>
+						<li><a href="#commands-create">forge create</a></li>
+						<li><a href="#commands-link">forge link</a></li>
+						<li><a href="#commands-watch">forge watch</a></li>
+						<li><a href="#commands-build">forge build</a></li>
+						<li><a href="#commands-package">forge package</a></li>
+					</ul>
+				</li>
+				<li><a href="#how-forge-works">How Forge Works</a></li>
+					<ul>
+						<li><a href="#how-forge-works-assets">Assets</a></li>
+							<ul>
+								<li><a href="#how-forge-works-stylesheets">Stylesheets</a></li>
+								<li><a href="#how-forge-works-javascript">JavaScript</a></li>
+								<li><a href="#how-forge-works-images">Images</a></li>
+							</ul>
+						<li><a href="#how-forge-works-templates">Templates</a></li>
+						<li><a href="#how-forge-works-functions-includes">Functions and Includes</a></li>
+					</ul>
+				<li><a href="#configuring-forge">Configuring Forge</a></li>
 			</ul>
+		</div>
 
-			<h4 id="stylesheets">Stylesheets</h4>
+		<div class="section">
+			<h2 id="commands">Forge Commands</h2>
+			<p>Forge comes with a handful of commands that make theme development and release easier.</p>
 
-			<p>
-				Stylesheets in Forge use <a href="http://sass-lang.com/">Sass</a>, a language that makes stylesheet development quicker and easier.
-				In addition, Forge supports <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> mixins to speed things up even more.
-			</p>
+			<h3 id="commands-create">forge create</h3>
+			<p>Usage: <code>forge create your_theme</code></p>
+			<p>Creates the <code>your_theme</code> directory if it doesn't exist, and sets up a new Forge project in that directory.</p>
+			<p>A new Forge project contains directories for your assets, templates, functions and includes. Forge also generates many of the standard WordPress templates and adds some basic Sass/CSS to get you started.</p>
+			<p>See <a href="#how-forge-works">how Forge works</a> for a detailed explanation of how a Forge project is structured.</p>
 
-			<p>
-				<strong><em>Note:</em></strong>
-				Forge supports both the Sass (.sass) and SCSS (.scss) syntax. Just change the filename to whatever.sass, and you're all set!
-			</p>
+			<h3 id="commands-link">forge link</h3>
+			<p>Usage (from within a Forge project): <code>forge link /path/to/wordpress_install/wp-content/themes/your_theme</code></p>
+			<p>Creates a symbolic link from <code>/path/to/wordpress_install/wp-content/themes/your_theme</code> to the hidden Forge build directory (<code>.forge/build</code>). After running <code>forge link</code>, any changes you make while running <code>forge watch</code> will be reflected in your WordPress installation.</p>
+			<p><code>forge link</code> is just a convenient way to run <code>ln -s /path/to/wordpress_install/wp-content/themes/your_theme .forge/build</code></p>
+			<p>You'll need to run <code>forge link</code> once for every WordPress install you want to test your theme with.</p>
 
-			<p>
-				With Forge, the only stylesheet that will be included with your theme is the main stylesheet (style.css), which is located at
-			</p>
-			<pre><code>source/assets/stylesheets/style.css.scss</code></pre>
+			<h3 id="commands-watch">forge watch</h3>
+			<p>Usage (from within a Forge project): <code>forge watch</code></p>
+			<p>Watches the source directory in your project for changes and compiles those changes in the Forge build directory (<code>.forge/build</code>), which should be linked to your WordPress installation after running <code>forge link</code>.</p>
+			<p><code>forge watch</code> is where the magic happens - you need to leave forge watch running while working on your project. </p>
+			<p>For a more detailed explanation of what happens during <code>forge watch</code>, check out <a href="#how-forge-works">how Forge works</a>.</p>
 
-			<p>
-				Sass supports importing of partial stylesheets.
-				Forge allows as many partials you want for breaking up your CSS into an organized structure.
-				For example, assume the following files exist:
-			</p>
+			<h3 id="commands-build">forge build</h3>
+			<p>Usage (from within a Forge project): <code>forge build</code></p>
+			<p>Compiles the theme from the source directory into the build directory. If you want to build somewhere other than build, you can specify the directory by running <code>forge build my_build_directory</code>.</p>
+			<p><code>forge build</code> is useful if you want to review Forge's output before releasing your theme.</p>
 
+			<h3 id="commands-package">forge package</h3>
+			<p>Usage (from within a Forge project): <code>forge package</code></p>
+			<p>Compiles the theme, then zips it to <code>package/your_theme.zip</code>. If you want to control the name of the zip file, just run <code>forge package your_name</code> and the theme will be compiled to <code>package/your_name.zip</code>.</p>
+		</div>
+
+		<div class="section">
+			<h2 id="how-forge-works">How Forge works</h2>
+			<p>Running <code>forge create</code> generates a skeleton project for developing your theme. All of your development work is done in the source directory, which is laid out following some conventions that will make development easier.</p>
+			<p>When you run <code>forge watch</code>, <code>forge build</code>, or <code>forge package</code> the underlying process is the same - Forge compiles the source directory into a working theme. As we explain how Forge works, we’ll be referring to the <code>final_theme</code> directory, which represents the "compiled" theme, and ultimately the final product.</p>
+			<p>The source directory is made up of 4 sections: assets, templates, functions, and includes.</p>
+
+			<h3 id="how-forge-works-assets">Assets</h3>
+			<p>Assets are your JavaScript, CSS, and image files. Forge allows you to use CoffeeScript, Sass, and Sprockets on your theme painlessly. If you want to stick with plain CSS and JavaScript, you can do that as well.</p>
+			<p>Assets fall into 3 categories: stylesheets, javascript, and images.</p>
+
+			<h4 id="how-forge-works-stylesheets">Stylesheets</h4>
+			<p>Stylesheets in Forge use <a href="http://sass-lang.com/">Sass</a>, a language that makes stylesheet development quicker and easier. By default, Forge generates <code>source/assets/stylesheets/style.css.scss</code>. Forge supports both the Sass (.sass) and SCSS (.scss) syntax - just change the extension to <code>style.css.sass</code> if you prefer Sass syntax. </p>
+			<p>In addition, Forge supports <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> mixins.</p>
+			<p>By default, the only stylesheet that will be included with your theme is the main stylesheet (style.css), which is located at source/assets/stylesheets/style.css.scss.</p>
+			<p>Sass supports importing of partial stylesheets. Forge allows as many partials you want for breaking up your CSS into an organized structure. For example, assume the following files exist:</p>
 			<pre><code>source/assets/stylesheets/_pages.scss
 source/assets/stylesheets/_reset.scss
 source/assets/stylesheets/style.css.scss</code></pre>
-
-			<p>
-				Partial stylesheets are typically indicated with a leading underscore.
-				Including the partials in your main stylesheet is simple:
-			</p>
-
-			<pre><code><em>(in source/assets/stylesheets/style.css.scss)</em>
+			<p>Including the partials in your main stylesheet is simple:</p>
+			<pre><code>(in source/assets/stylesheets/style.css.scss)
 @import "reset";
 @import "pages";
 
 body { color: #333; }
-...</code></pre>
+…</code></pre>
+			<p><code>style.css.scss</code> will be processed, a Theme header will be added based on the values in <code>config.json</code>, and the result output to <code>final_theme/style.css</code>.</p>
 
-			<p>
-				<strong>style.css.scss</strong> will be processed, a Theme header will be added based on the
-				values in <strong>config.json</strong>, and the result output to
-			</p>
+			<h4 id="how-forge-works-images">Images</h4>
+			<p>Images in Forge are are kept in <code>source/assets/images/</code></p>
 
-			<pre><code>your_theme/style.css</code></pre>
-
-			<p>
-				Read more about <a href="http://sass-lang.com/">Sass</a>, <a href="http://compass-style.org/">Compass</a>
-				and <a href="http://www.blueprintcss.org/">Blueprint</a>
-			</p>
-
-			<h4 id="javascript">JavaScript</h4>
-
-			<p>
-				JavaScript in Forge harnesses the power of
-				<a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a> and
-				<a href="http://getsprockets.org">Sprockets</a>.
-				The bulk of your work will be done in
-			</p>
-
-			<pre><code>source/assets/javascripts/theme.js</code></pre>
-
-			<p>
-				In <strong>theme.js</strong>, you can include any other JavaScript or CoffeeScript files you'll need in your final theme.
-				For example, with these files:
-			</p>
-
-			<pre><code>source/assets/javascripts/slider.js
-source/assets/javascripts/tags.coffee
-source/assets/javascripts/theme.js</code></pre>
-
-			<p>Including other files is as easy as</p>
-
-			<pre><code><em>(in source/assets/javascripts/theme.js)</em>
-//= require 'slider'
-//= require 'tags'
-
-$('#more .javascript .here').show();
-...</code></pre>
-
-			<p><strong>theme.js</strong> will be processed and output to</p>
-
-			<pre><code>your_theme/javascripts/theme.js</code></pre>
-
-			<p>Forge also processes an admin JavaScript file, in case you need a separate file for your Theme Options:</p>
-
-			<pre><code>source/assets/javascripts/admin.js</code></pre>
-
-			<p>This is processed the same way as <strong>theme.js</strong>, but is output to</p>
-
-			<pre><code>your_theme/javascripts/admin.js</code></pre>
-
-			<p>
-				Read more about <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>
-				and <a href="http://getsprockets.org">Sprockets</a>.
-			</p>
-
-
-			<h4 id="images">Images</h4>
-
-			<p>Images in Forge are not too tricky - everything in</p>
-
-			<pre><code>source/assets/images/</code></pre>
-
-			<p>will be copied, unchanged to</p>
-
-			<pre><code>your_theme/images/</code></pre>
-
-			<p>
-				<strong><em>Note:</em></strong>
-				The only exception to this rule is your screenshot file -
-				named <strong>screenshot.png</strong>, <strong>screenshot.jpg</strong>,
-				<strong>screenshot.jpeg</strong>, or <strong>screenshot.gif</strong>.
-				This file will be copied directly to the root of your theme.
-			</p>
-
-			<p>To clarify with an example. If you had the following setup:</p>
+			<p>Everything in the images folder will be copied unchanged to final_theme/images/</p>
+			<p>The only exception to this rule is your screenshot file - named screenshot.png, screenshot.jpg, screenshot.jpeg, or screenshot.gif. This file will be copied directly to the root of your theme.</p>
+			<p>To clarify with an example - the following images folder setup:</p>
 
 			<pre><code>source/assets/images/photo.jpg
 source/assets/images/screenshot.png
 source/assets/images/animals/wild/lion.jpg
 source/assets/images/food/hamburger.png</code></pre>
 
-			<p>It would translate to the following:</p>
+			<p>would translate to the following:</p>
 
-			<pre><code>your_theme/images/photo.jpg
-your_theme/images/animals/wild/lion.jpg
-your_theme/images/food/hamburger.png
-your_theme/screenshot.png</code></pre>
-		</div>
-		<div class="section">
-			<h3 id="functions">Functions</h3>
+			<pre><code>final_theme/images/photo.jpg
+final_theme/images/animals/wild/lion.jpg
+final_theme/images/food/hamburger.png
+// screenshot goes in the root
+final_theme/screenshot.png</code></pre>
 
-			<p>Functions in Forge are pretty simple:</p>
+			<h3 id="how-forge-works-templates">Templates</h3>
+			<p>The templates directory is simply a way to organize your template files. In a normal theme, all templates would go in the root directory. With Forge, you can organize your templates however you prefer, and they’ll be moved to the root when the theme is built.</p>
 
-			<pre><code>source/functions/functions.php</code></pre>
+			<p>For example, the following set up:</p>
 
-			<p>becomes</p>
+			<pre><code>source/templates/index.php
+source/templates/pages/my_template.php
+source/templates/this/is/getting/really_deep.php</code></pre>
 
-			<pre><code>your_theme/functions.php</code></pre>
+			<p>will translate to this in your theme:</p>
 
-			<p>We plan on doing more here later, so stay tuned!</p>
+			<pre><code>final_theme/index.php
+final_theme/my_template.php
+final_theme/really_deep.php</code></pre>
 
+			<p>Forge gives you some default folders that we think make sense, but there’s no specific structure required.</p>
 
-			<h4>Includes</h4>
+			<h3 id="how-forge-works-functions-includes">Functions and Includes</h3>
+			<p>Forge simply copies <code>source/functions/functions.php</code> as-is into <code>final_theme/functions.php</code>.</p>
 
-			<p>Includes are also pretty simple. Everything here is directly copied from
+			<p>If you have any libraries you want to include with your project, you can put them into <code>source/includes/</code> and they will be copied over directly into <code>final_theme/includes/</code>.</p>
 
-			<pre><code>source/includes/</code></pre>
-
-			<p>into</p>
-
-			<pre><code>your_theme/includes/</code></pre>
-
-			<p>So, a quick example:</p>
+			<p>To clarify with an example:</p>
 
 			<pre><code>source/includes/struts/options.php
-source/includes/theme_library.php</code></pre>
+source/includes/theme_library.php
+source/includes/javascripts/external.js</code></pre>
 
 			<p>becomes</p>
 
-			<pre><code>your_theme/includes/struts/options.php
-your_theme/includes/theme_library.php</code></pre>
+			<pre><code>final_theme/includes/struts/options.php
+final_theme/includes/theme_library.php
+final_theme/includes/javascripts/external.js</code></pre>
+		</div>
 
+		<div class="section">
+			<h2 id="configuring-forge">Configuring Forge</h2>
+
+			<p>Forge requires <code>config.json</code> to be present at the root of your theme. <code>config.json</code> is used to build the header required in style.css, and is also used to change Forge settings.</p>
+
+			<p>The configuration options are:</p>
+			<table border="0" cellspacing="5" cellpadding="5">
+				<tr>
+					<th>Option Name</th>
+					<th>Description</th>
+					<th>Example</th>
+				</tr>
+				<tr>
+					<td>name</td>
+					<td>The name of the theme</td>
+					<td>"name": "My Awesome Theme"</td>
+				</tr>
+				<tr>
+					<td>uri</td>
+					<td>The website for the theme</td>
+					<td>"uri": "http://myawesometheme.com/"</td>
+				</tr>
+				<tr>
+					<td>author</td>
+					<td>The author's name	</td>
+					<td>"author": "The Theme Shop"</td>
+				</tr>
+				<tr>
+					<td>author_uri</td>
+					<td>The author's website</td>
+					<td>"author_uri": "http://thethemeshop.com/"</td>
+				</tr>
+				<tr>
+					<td>description</td>
+					<td>Description of the theme</td>
+					<td>"description": "A stylish theme for artists and serial-bloggers."</td>
+				</tr>
+				<tr>
+					<td>version_number</td>
+					<td>Version number of the theme</td>
+					<td>"version_number": "1.2.4"</td>
+				</tr>
+				<tr>
+					<td>license_name</td>
+					<td>Name of the theme license</td>
+					<td>"license_name": "GNU General Public License"</td>
+				</tr>
+				<tr>
+					<td>license_uri</td>
+					<td>Website for the theme license</td>
+					<td>"license_uri": "www.gnu.org/licenses/gpl-2.0.html"</td>
+				</tr>
+				<tr>
+					<td>tags</td>
+					<td>Tags for this theme, as an array</td>
+					<td>"tags": ["blue", "white", "two-columns"]</td>
+				</tr>
+				<tr>
+					<td>comments</td>
+					<td>Additional comments (optional)</td>
+					<td>"comments": "Designed with love."</td>
+				</tr>
+			</table>
 		</div>
 		<div id="footer">
 			Brought to you by <a href="http://thethemefoundry.com">The Theme Foundry</a>.
