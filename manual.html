@@ -114,11 +114,11 @@
 			<h2 id="how-forge-works">3. How Forge works</h2>
 			<p>Running <code>forge create</code> generates a skeleton project for developing your theme. All of your development work takes place in the source directory of that project.</p>
 			<p>When you run <code>forge watch</code>, <code>forge build</code>, or <code>forge package</code> the underlying process is the same - Forge compiles the source directory into a working theme. As we explain how Forge works, we’ll be referring to the <code>final_theme</code> directory, which represents the "compiled" theme.</p>
-			<p>The source directory is made up of 4 sections: Assets, Templates, Functions, and Includes.</p>
+			<p>The source directory is made up of 4 sections: <a href="#how-forge-works-assets">Assets</a>, <a href="#how-forge-works-templates">Templates</a>, <a href="#how-forge-works-functions-includes">Functions</a>, and <a href="#how-forge-works-functions-includes">Includes</a>.</p>
 
 			<h3 id="how-forge-works-assets">3.1 Assets</h3>
 			<p>Assets are your JavaScript, CSS, and image files. You may use CoffeeScript, Sass, and Sprockets. If you want to stick with plain CSS and JavaScript, you can do that as well.</p>
-			<p>Assets fall into 3 categories: Stylesheets, Javascripts, and Images.</p>
+			<p>Assets fall into 3 categories: <a href="#how-forge-works-stylesheets">Stylesheets</a>, <a href="#how-forge-works-javascript">JavaScript</a>, and <a href="#how-forge-works-images">Images</a>.</p>
 
 			<h4 id="how-forge-works-stylesheets">3.1.1 Stylesheets</h4>
 			<p>Stylesheets in Forge use <a href="http://sass-lang.com/">Sass</a>, a language that makes stylesheet development quicker and easier. By default, Forge generates <code>source/assets/stylesheets/style.css.scss</code>.</p>
@@ -176,7 +176,7 @@ $('#more .javascript .here').show();
 			<h4 id="how-forge-works-images">3.1.3 Images</h4>
 			<p>Images in Forge are are kept in <code>source/assets/images/</code></p>
 
-			<p>Everything in the images folder will be copied unchanged to final_theme/images/</p>
+			<p>Everything in the images folder will be copied unchanged to <code>final_theme/images/</code></p>
 			<p>The only exception to this rule is your screenshot file - named screenshot.png, screenshot.jpg, screenshot.jpeg, or screenshot.gif. This file will be copied directly to the root of your theme.</p>
 			<p>To clarify with an example - the following images folder setup:</p>
 
