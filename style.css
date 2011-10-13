@@ -29,7 +29,7 @@ a:hover {
 	Basic Structure
 ------------------------------------------------------------ */
 #wrapper {
-	max-width: 560px;
+	max-width: 660px;
 	margin: 0 auto;
 	padding: 0 20px;
 }
@@ -85,13 +85,17 @@ div.section {
 	line-height: 1.8em;
 }
 h2 {
-	font-size: 1.142857143em; /* 16 / 14 */
-	margin-bottom: 5px;
+	margin-bottom: 10px;
+	font-size: 1.285714286em; /* 18 / 14 */
 	color: #706858;
+}
+body#home h2 {
+	font-size: 1.142857143em; /* 16 / 14 */
 }
 h3 {
 	margin: 30px 0 10px 0;
 	padding-bottom: 5px;
+	font-size: 1.142857143em; /* 16 / 14 */
 	color: #706858;
 	border-bottom: 1px solid #dcd6bf;
 }
@@ -99,11 +103,12 @@ h4 {
 	margin: 30px 0 5px 0;
 	color: #867a62;
 	text-transform: uppercase;
-	font-size: 0.857142857em; /* 12 / 14 */
 }
 code {
+	padding: 3px;
 	font-family: Consolas, monospace;
 	font-size: 14px;
+	background: #eeefd7;
 }
 code span {
 	color: #aa9d89;
@@ -113,6 +118,10 @@ pre {
 	padding: 10px;
 	background: #efecdc;
 	border: 1px solid #dcd7be;
+}
+pre code {
+	background: none;
+	padding: 0;
 }
 p {
 	margin-bottom: 10px;
@@ -134,4 +143,27 @@ ul.bulleted {
 	list-style: outside;
 	padding-left: 25px;
 	margin-bottom: 15px;
+}
+/*---------------------------------------------------------
+	Manual
+------------------------------------------------------------ */
+div.toc ul {
+	list-style: outside;
+	list-style-type: disc;
+	margin: 0 0 0 20px;
+}
+div.toc ul ul {
+	list-style-type: circle;
+}
+div.toc ul ul ul {
+	list-style-type: square;
+}
+div.configure dl {
+	margin: 20px 0;
+}
+div.configure dt {
+	font-weight: bold;
+}
+div.configure dd.example {
+	text-decoration: italic;
 }
