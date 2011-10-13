@@ -36,7 +36,7 @@
 						<li><a href="#how-forge-works-assets">3.1 Assets</a></li>
 							<ul>
 								<li><a href="#how-forge-works-stylesheets">3.1.1 Stylesheets</a></li>
-								<li><a href="#how-forge-works-javascript">3.1.2 Javascripts</a></li>
+								<li><a href="#how-forge-works-javascript">3.1.2 JavaScript</a></li>
 								<li><a href="#how-forge-works-images">3.1.3 Images</a></li>
 							</ul>
 						<li><a href="#how-forge-works-templates">3.2 Templates</a></li>
@@ -45,7 +45,7 @@
 				<li><a href="#configuring-forge">4. Configuring Forge</a></li>
 			</ul>
 		</div>
-		
+
 		<div class="section">
 			<h2 id="overview">1. Overview</h2>
 			<p>
@@ -136,6 +136,42 @@ source/assets/stylesheets/style.css.scss</code></pre>
 body { color: #333; }
 …</code></pre>
 			<p><code>style.css.scss</code> will be processed, a Theme header will be added based on the values in <code>config.json</code>, and the result output to <code>final_theme/style.css</code>.</p>
+
+			<h4 id="how-forge-works-javascript">3.1.2 JavaScript</h4>
+			<p>
+				JavaScript in Forge harnesses the power of
+				<a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a> and
+				<a href="http://getsprockets.org">Sprockets</a>.
+				The master JavaScript file for your project is <code>source/assets/javascripts/theme.js</code>. In <strong>theme.js</strong>, you can include any other JavaScript or CoffeeScript files you'll need in your final theme. For example, with these files:
+			</p>
+
+			<pre><code>source/assets/javascripts/slider.js
+source/assets/javascripts/tags.coffee
+source/assets/javascripts/theme.js</code></pre>
+
+			<p>Including other files is as easy as</p>
+
+			<pre><code><em>(in source/assets/javascripts/theme.js)</em>
+//= require 'slider'
+//= require 'tags'
+
+$('#more .javascript .here').show();
+...</code></pre>
+
+			<p><strong>theme.js</strong> will be processed and output to <code>your_theme/javascripts/theme.js</code></p>
+
+			<p>Forge also processes an admin JavaScript file, for scripts to be used only in the WordPress admin.</p>
+
+			<pre><code>source/assets/javascripts/admin.js</code></pre>
+
+			<p>This is processed the same way as <strong>theme.js</strong>, but is output to</p>
+
+			<pre><code>your_theme/javascripts/admin.js</code></pre>
+
+			<p>
+				Read more about <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>
+				and <a href="http://getsprockets.org">Sprockets</a>.
+			</p>
 
 			<h4 id="how-forge-works-images">3.1.3 Images</h4>
 			<p>Images in Forge are are kept in <code>source/assets/images/</code></p>
