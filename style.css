@@ -145,6 +145,20 @@ ul.bulleted {
 /*---------------------------------------------------------
 	Manual
 ------------------------------------------------------------ */
+div.help {
+	margin: 30px 0;
+	padding: 20px;
+	line-height: 1.6em;
+	color: #444;
+	background: #d5e5ed;
+	border: 1px solid #bed8e6;
+}
+div.help a {
+	color: #3e5c6b;
+}
+div.help a:hover {
+	color: #334b58;
+}
 div.toc ul {
 	list-style: outside;
 	list-style-type: disc;
