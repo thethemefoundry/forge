@@ -5,6 +5,9 @@
  * Author URI: <%= config["author_uri"] %>
  * Description: <%= config["description"] if config["description"] %>
  * Version: <%= config["version_number"] if config["version_number"] %>
+<% if config["template"] -%>
+ * Template: <%= config["template"] %>
+<% end -%>
  * License: <%= config["license_name"] if config["license_name"] %>
  * License URI: <%= config["license_uri"] if config["license_uri"] %>
  * Tags: <%= config["tags"].join(", ") if config["tags"] %>
