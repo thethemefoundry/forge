@@ -88,7 +88,7 @@
 			<pre><code>forge link /path/to/wordpress_install/wp-content/themes/your_theme</code></pre>
 			<p>Must be run from within a Forge project.</p>
 			<p>Creates a symbolic link from <code>/path/to/wordpress_install/wp-content/themes/your_theme</code> to the hidden Forge build directory (<code>.forge/build</code>). After running <code>forge link</code>, any changes you make while running <code>forge watch</code> will be reflected in your WordPress installation.</p>
-			<p><code>forge link</code> is just a convenient way to run <code>ln -s /path/to/wordpress_install/wp-content/themes/your_theme .forge/build</code></p>
+			<p><code>forge link</code> is just a convenient way to run <code>ln -s .forge/build /path/to/wordpress_install/wp-content/themes/your_theme</code></p>
 			<p>You'll need to run <code>forge link</code> once for every WordPress install you want to test your theme with.</p>
 
 			<h3 id="commands-watch">2.3 forge watch</h3>
