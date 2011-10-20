@@ -46,6 +46,14 @@ module Forge
         end
       }
 
+      if @project.config['live_reload']
+        guardfile_contents << %Q{
+          guard 'livereload' do
+            watch(%r{#{source_path}/*})
+          end
+        }
+      end
+
       (@additional_guards || []).each do |block|
         result = block.call(options, livereload)
         guardfile_contents << result unless result.nil?
