@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "forge"
-  s.version = "0.0.2"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
-  s.date = "2011-10-07"
+  s.date = "2011-10-21"
   s.description = "A toolkit for bootstrapping and developing WordPress themes."
   s.email = "aadams@jestro.com"
   s.executables = ["forge"]
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     ".document",
     ".gitmodules",
     ".rspec",
+    "CHANGELOG.md",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
@@ -28,8 +29,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/forge",
-    "features/create.feature",
-    "features/link.feature",
     "features/step_definitions/forge_steps.rb",
     "features/support/env.rb",
     "forge.gemspec",
@@ -96,6 +95,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
       s.add_runtime_dependency(%q<compass>, ["~> 0.11.5"])
       s.add_runtime_dependency(%q<rack>, ["= 1.3.3"])
+      s.add_runtime_dependency(%q<guard-livereload>, ["~> 0.3.1"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<cucumber>, [">= 0"])
       s.add_development_dependency(%q<aruba>, [">= 0"])
@@ -112,6 +112,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
       s.add_dependency(%q<compass>, ["~> 0.11.5"])
       s.add_dependency(%q<rack>, ["= 1.3.3"])
+      s.add_dependency(%q<guard-livereload>, ["~> 0.3.1"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<aruba>, [">= 0"])
@@ -129,6 +130,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
     s.add_dependency(%q<compass>, ["~> 0.11.5"])
     s.add_dependency(%q<rack>, ["= 1.3.3"])
+    s.add_dependency(%q<guard-livereload>, ["~> 0.3.1"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<aruba>, [">= 0"])
