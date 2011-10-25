@@ -23,6 +23,7 @@ module Forge
       clean_build_directory
       copy_templates
       copy_functions
+      copy_includes
       build_assets
     end
 
