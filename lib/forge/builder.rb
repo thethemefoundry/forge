@@ -75,8 +75,27 @@ module Forge
     end
 
     def copy_templates
-      template_paths.each do |template_path|
-        FileUtils.cp template_path, @project.build_path unless File.directory?(template_path)
+      if @project.config['preserve_template_struct']
+        FileUtils.cp_r File.join(@templates_path, '.'), @project.build_path
+        unless Dir.glob(File.join(@templates_path, '*')).empty?
+          # Iterate over all files in source/includes, so we can exclude if necessary
+          paths = Dir.glob(File.join(@templates_path, '**', '*'))
+          paths.each do |path|
+            # Skip over hidden files and folders (.git, .svn, etc)
+            continue if File.basename(path)[0] == '.'
+
+            # Remove @includes_path from full file path to get the relative path
+            relative_path = path.gsub(@templates_path, '')
+            destination = File.join(@project.build_path, relative_path)
+
+            FileUtils.mkdir_p(destination) if File.directory?(path)
+            FileUtils.cp path, destination unless File.directory?(path)
+          end
+        end
+      else
+        template_paths.each do |template_path|
+          FileUtils.cp template_path, @project.build_path unless File.directory?(template_path)
+        end
       end
     end
 
