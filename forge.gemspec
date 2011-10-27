@@ -111,7 +111,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<sass>, ["~> 3.1.8"])
       s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
       s.add_dependency(%q<compass>, ["~> 0.11.5"])
-      s.add_dependency(%q<rack>, ["= 1.3.3"])
+      s.add_dependency(%q<rack>, [">= 1.3.3"])
       s.add_dependency(%q<guard-livereload>, ["~> 0.3.1"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
