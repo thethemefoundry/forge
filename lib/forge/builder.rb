@@ -90,6 +90,9 @@ module Forge
 
     def copy_includes
       unless Dir.glob(File.join(@includes_path, '*')).empty?
+        # Create the includes folder in the build directory
+        FileUtils.mkdir(File.join(@project.build_path, 'includes'))
+
         # Iterate over all files in source/includes, so we can exclude if necessary
         paths = Dir.glob(File.join(@includes_path, '**', '*'))
         paths.each do |path|
