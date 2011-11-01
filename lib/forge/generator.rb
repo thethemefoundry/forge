@@ -23,6 +23,8 @@ module Forge
         ['assets', 'javascripts'],
         ['assets', 'stylesheets'],
 
+        ['framework'],
+
         ['functions'],
 
         ['includes'],

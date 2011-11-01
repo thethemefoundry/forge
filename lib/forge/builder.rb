@@ -9,6 +9,7 @@ module Forge
     def initialize(project)
       @project = project
       @task    = project.task
+      @framework_path = @project.framework_path
       @templates_path = @project.templates_path
       @assets_path = @project.assets_path
       @functions_path = @project.functions_path
@@ -21,6 +22,7 @@ module Forge
     # Runs all the methods necessary to build a completed project
     def build
       clean_build_directory
+      copy_framework
       copy_templates
       copy_functions
       copy_includes
@@ -67,6 +69,31 @@ module Forge
       FileUtils.rm_rf Dir.glob(File.join(@project.build_path, '*'))
     end
 
+    def clean_framework
+      FileUtils.rm_rf File.join(@project.build_path, 'framework')
+    end
+
+    def copy_framework
+      unless Dir.glob(File.join(@framework_path, '*')).empty?
+        # Create the framework folder in the build directory
+        FileUtils.mkdir(File.join(@project.build_path, 'framework'))
+
+        # Iterate over all files in source/framework, so we can exclude if necessary
+        paths = Dir.glob(File.join(@framework_path, '**', '*'))
+        paths.each do |path|
+          # Skip over hidden files and folders (.git, .svn, etc)
+          continue if File.basename(path)[0] == '.'
+
+          # Remove @framework_path from full file path to get the relative path
+          relative_path = path.gsub(@framework_path, '')
+          destination = File.join(@project.build_path, relative_path)
+
+          FileUtils.mkdir_p(destination) if File.directory?(path)
+          FileUtils.cp path, destination unless File.directory?(path)
+        end
+      end
+    end
+
     def clean_templates
       # TODO: cleaner way of removing templates only?
       Dir.glob(File.join(@project.build_path, '*.php')).each do |path|
@@ -81,7 +108,9 @@ module Forge
     end
 
     def copy_functions
-      FileUtils.cp_r File.join(@functions_path, 'functions.php'), @project.build_path
+      unless Dir.glob(File.join(@functions_path, 'functions.php')).empty?
+        FileUtils.cp_r File.join(@functions_path, 'functions.php'), @project.build_path
+      end
     end
 
     def clean_includes

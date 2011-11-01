@@ -43,6 +43,7 @@ module Forge
         guard 'forgefunctions' do
           watch(%r{#{source_path}/functions/*})
           watch(%r{#{source_path}/includes/*})
+          watch(%r{#{source_path}/framework/*})
         end
       }
 
