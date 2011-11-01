@@ -108,7 +108,9 @@ module Forge
     end
 
     def copy_functions
-      FileUtils.cp_r File.join(@functions_path, 'functions.php'), @project.build_path
+      unless Dir.glob(File.join(@functions_path, 'functions.php')).empty?
+        FileUtils.cp_r File.join(@functions_path, 'functions.php'), @project.build_path
+      end
     end
 
     def clean_includes
