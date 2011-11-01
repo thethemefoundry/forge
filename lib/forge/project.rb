@@ -52,6 +52,10 @@ module Forge
       File.join(self.source_path, 'includes')
     end
 
+    def framework_path
+      File.join(self.source_path, 'framework')
+    end
+
     def config_file
       @config_file ||= File.join(self.root, 'config.json')
     end
