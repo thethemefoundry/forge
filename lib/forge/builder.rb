@@ -107,9 +107,6 @@ module Forge
         # Iterate over all files in source/includes, so we can exclude if necessary
         paths = Dir.glob(File.join(@includes_path, '**', '*'))
         paths.each do |path|
-          # Skip over hidden files and folders (.git, .svn, etc)
-          continue if File.basename(path)[0] == '.'
-
           # Remove @includes_path from full file path to get the relative path
           relative_path = path.gsub(@includes_path, '')
           destination = File.join(@project.build_path, 'includes', relative_path)
