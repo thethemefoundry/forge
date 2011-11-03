@@ -76,12 +76,17 @@ module Forge
 
     def copy_templates
       template_paths.each do |template_path|
-        unless File.directory?(template_path)
-          @task.shell.mute do
-            @task.create_file(File.join(@project.build_path, File.basename(template_path))) do
-              @project.parse_erb(template_path)
-            end
-          end
+        # Skip directories
+        next if File.directory?(template_path)
+
+        if template_path.end_with?('.erb')
+          # Chop the .erb extension off the filename
+          destination = File.join(@project.build_path, File.basename(template_path).slice(0..-5))
+
+          write_erb(template_path, destination)
+        else
+          # Regular old copy of PHP-only files
+          FileUtils.cp template_path, @project.build_path
         end
       end
     end
@@ -207,6 +212,23 @@ module Forge
 
       file = @task.find_in_source_paths(File.join('config', 'stylesheet_header.erb'))
       @stylesheet_header = File.expand_path(file)
+    end
+
+    # Write an .erb from source to destination, catching and reporting errors along the way
+    def write_erb(source, destination)
+      begin
+        @task.shell.mute do
+          @task.create_file(destination) do
+            @project.parse_erb(source)
+          end
+        end
+      rescue Exception => e
+        @task.say "Error while building #{File.basename(source)}:"
+        @task.say e.message, Thor::Shell::Color::RED
+        File.open(destination, 'w') do |file|
+          file.puts(e.message)
+        end
+      end
     end
   end
 end
