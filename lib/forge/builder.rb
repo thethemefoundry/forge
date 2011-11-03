@@ -221,10 +221,8 @@ module Forge
         end
       rescue Exception => e
         @task.say "Error while building #{File.basename(source)}:"
-        @task.say e.message, Thor::Shell::Color::RED
-        File.open(destination, 'w') do |file|
-          file.puts(e.message)
-        end
+        @task.say e.message + "\n", Thor::Shell::Color::RED
+        exit
       end
     end
   end
