@@ -76,7 +76,13 @@ module Forge
 
     def copy_templates
       template_paths.each do |template_path|
-        FileUtils.cp template_path, @project.build_path unless File.directory?(template_path)
+        unless File.directory?(template_path)
+          @task.shell.mute do
+            @task.create_file(File.join(@project.build_path, File.basename(template_path))) do
+              @project.parse_erb(template_path)
+            end
+          end
+        end
       end
     end
 

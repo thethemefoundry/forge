@@ -52,7 +52,10 @@ module Forge
       builder = Builder.new(project)
       builder.build
 
-      FileUtils.rm_rf Dir.glob(File.join(dir, '*'))
+      Dir.glob(File.join(dir, '**', '*')).each do |file|
+        shell.mute { remove_file(file) }
+      end
+
       directory(project.build_path, dir)
     end
 
