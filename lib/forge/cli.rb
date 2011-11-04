@@ -35,8 +35,9 @@ module Forge
 
     desc "watch", "Start watch process"
     long_desc "Watches the source directory in your project for changes, and reflects those changes in a compile folder"
+    method_option :config, :type => :string, :desc => "Name of alternate config file"
     def watch
-      project = Forge::Project.new('.', self)
+      project = Forge::Project.new('.', self, nil, options[:config])
 
       # Empty the build directory before starting up to clean out old files
       FileUtils.rm_rf project.build_path
@@ -46,8 +47,9 @@ module Forge
     end
 
     desc "build DIRECTORY", "Build your theme into specified directory"
+    method_option :config, :type => :string, :desc => "Name of alternate config file"
     def build(dir='build')
-      project = Forge::Project.new('.', self)
+      project = Forge::Project.new('.', self, nil, options[:config])
 
       builder = Builder.new(project)
       builder.build
@@ -60,8 +62,9 @@ module Forge
     end
 
     desc "package FILENAME", "Compile and zip your project to FILENAME.zip"
+    method_option :config, :type => :string, :desc => "Name of alternate config file"
     def package(filename=nil)
-      project = Forge::Project.new('.', self)
+      project = Forge::Project.new('.', self, nil, options[:config])
 
       builder = Builder.new(project)
       builder.build
