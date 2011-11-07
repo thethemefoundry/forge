@@ -15,6 +15,7 @@ module Guard
 
     def run_all
       UI.info "Rebuilding all functions"
+      ::Forge::Guard.builder.clean_functions
       ::Forge::Guard.builder.copy_functions
       ::Forge::Guard.builder.clean_includes
       ::Forge::Guard.builder.copy_includes
@@ -23,6 +24,7 @@ module Guard
     # Called on file(s) modifications
     def run_on_change(paths)
       UI.info "Functions have changed, copying over"
+      ::Forge::Guard.builder.clean_functions
       ::Forge::Guard.builder.copy_functions
       ::Forge::Guard.builder.clean_includes
       ::Forge::Guard.builder.copy_includes

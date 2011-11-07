@@ -91,8 +91,20 @@ module Forge
       end
     end
 
+    def clean_functions
+      FileUtils.rm File.join(@project.build_path, 'functions.php')
+    end
+
     def copy_functions
-      FileUtils.cp_r File.join(@functions_path, 'functions.php'), @project.build_path
+      functions_erb_path = File.join(@functions_path, 'functions.php.erb')
+      functions_php_path = File.join(@functions_path, 'functions.php')
+
+      if File.exists?(functions_erb_path)
+        destination = File.join(@project.build_path, 'functions.php')
+        write_erb(functions_erb_path, destination)
+      elsif File.exists?(functions_php_path)
+        FileUtils.cp functions_php_path, @project.build_path
+      end
     end
 
     def clean_includes
