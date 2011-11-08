@@ -1,25 +1,25 @@
 <?php
 
 
-add_action( 'init', '<%= theme_id %>_init' );
+add_action( 'wp_enqueue_scripts', '<%= theme_id %>_enqueue_scripts' );
 
-if ( ! function_exists( '<%= theme_id %>_init' ) ) :
+if ( ! function_exists( '<%= theme_id %>_enqueue_scripts' ) ) :
 
 /**
-* Theme init actions
+* Add theme styles and scripts here
 */
-function <%= theme_id %>_init() {
+function <%= theme_id %>_enqueue_scripts() {
 
-	if ( ! is_admin() ) :
+	if ( ! is_admin() ) {
 		wp_enqueue_style(
 			'<%= theme_id %>-style',
 			get_bloginfo( 'stylesheet_url' )
 		);
-	endif;
+	}
 
 }
 
-endif; // <%= theme_id %>_init
+endif; // <%= theme_id %>_enqueue_scripts
 
 add_action( 'after_setup_theme', '<%= theme_id %>_setup' );
 
