@@ -1,5 +1,25 @@
 <?php
 
+add_action( 'wp_enqueue_scripts', '<%= theme_id %>_enqueue_scripts' );
+
+if ( ! function_exists( '<%= theme_id %>_enqueue_scripts' ) ) :
+
+/**
+* Add theme styles and scripts here
+*/
+function <%= theme_id %>_enqueue_scripts() {
+
+	if ( ! is_admin() ) {
+		wp_enqueue_style(
+			'<%= theme_id %>-style',
+			get_bloginfo( 'stylesheet_url' )
+		);
+	}
+
+}
+
+endif; // <%= theme_id %>_enqueue_scripts
+
 add_action( 'after_setup_theme', '<%= theme_id %>_setup' );
 
 if ( ! function_exists( '<%= theme_id %>_setup' ) ) :
@@ -9,13 +29,6 @@ if ( ! function_exists( '<%= theme_id %>_setup' ) ) :
 */
 function <%= theme_id %>_setup() {
 	add_theme_support( 'post-thumbnails' );
-
-	if ( ! is_admin() ) {
-		wp_enqueue_style(
-			'<%= theme_id %>-style',
-			get_bloginfo( 'stylesheet_url' )
-		);
-	}
 }
 
 endif; // <%= theme_id %>_setup
