@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
-  s.date = "2011-10-27"
+  s.date = "2011-11-11"
   s.description = "A toolkit for bootstrapping and developing WordPress themes."
   s.email = "aadams@jestro.com"
   s.executables = ["forge"]
@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
     "bin/forge",
     "features/step_definitions/forge_steps.rb",
     "features/support/env.rb",
-    "forge-0.1.2.gem",
     "forge.gemspec",
     "layouts/config/config.json.erb",
     "layouts/config/stylesheet_header.erb",
@@ -53,13 +52,6 @@ Gem::Specification.new do |s|
     "layouts/default/templates/search.php.erb",
     "layouts/default/templates/sidebar.php",
     "layouts/default/templates/single.php.erb",
-    "layouts/lib/struts/README.md",
-    "layouts/lib/struts/classes/settings.php",
-    "layouts/lib/struts/classes/settings/collection.php",
-    "layouts/lib/struts/classes/settings/option.php",
-    "layouts/lib/struts/classes/settings/option/select.php",
-    "layouts/lib/struts/classes/settings/option/text.php",
-    "layouts/lib/struts/classes/settings/section.php",
     "lib/forge.rb",
     "lib/forge/builder.rb",
     "lib/forge/cli.rb",
