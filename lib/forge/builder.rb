@@ -188,11 +188,11 @@ module Forge
         @sprockets.append_path File.join(@assets_path, dir)
       end
 
-      @sprockets.context_class.instance_eval do
-        def config
-          return {:name => 'asd'}
-          p "CALLING CONFIG"
-          @project.config
+      # Passing the @project instance variable to the Sprockets::Context instance
+      # used for processing the asset ERB files. Ruby meta-programming, FTW.
+      @sprockets.context_class.instance_exec(@project) do |project|
+        define_method :config do
+          project.config
         end
       end
     end
