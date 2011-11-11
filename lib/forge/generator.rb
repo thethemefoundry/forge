@@ -66,15 +66,6 @@ module Forge
       self
     end
 
-    def copy_settings_library
-      settings_path = @task.find_in_source_paths(File.join('lib', 'struts', 'classes'))
-
-      source = File.expand_path(settings_path)
-      target = File.expand_path(File.join(@project.includes_path, 'struts', '.'))
-
-      @task.directory(source, target)
-    end
-
     def copy_functions
       source = File.expand_path(File.join(self.layout_path, 'functions', 'functions.php.erb'))
       target = File.expand_path(File.join(@project.source_path, 'functions', 'functions.php'))
@@ -93,7 +84,6 @@ module Forge
       copy_javascript
       copy_templates
       copy_functions
-      copy_settings_library if @task.options[:struts]
       return self
     end
 
