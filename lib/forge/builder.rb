@@ -169,6 +169,10 @@ module Forge
         @sprockets.append_path File.join(@assets_path, dir)
       end
 
+      Tilt::LessTemplateWithPaths.load_path = File.join(@assets_path, 'stylesheets')
+
+      @sprockets.register_engine '.less', Tilt::LessTemplateWithPaths
+
       @sprockets.context_class.instance_eval do
         def config
           return {:name => 'asd'}
@@ -202,6 +206,19 @@ module Forge
 
       file = @task.find_in_source_paths(File.join('config', 'stylesheet_header.erb'))
       @stylesheet_header = File.expand_path(file)
+    end
+  end
+end
+
+module Tilt
+  class LessTemplateWithPaths < LessTemplate
+    class << self
+      attr_accessor :load_path
+    end
+
+    def prepare
+      parser = ::Less::Parser.new(:filename => eval_file, :line => line, :paths => [self.class.load_path])
+      @engine = parser.parse(data)
     end
   end
 end
