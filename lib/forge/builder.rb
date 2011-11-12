@@ -1,8 +1,10 @@
 require 'sprockets'
 require 'sprockets-sass'
 require 'sass'
+require 'less'
 require 'zip/zip'
 require 'compass'
+require 'forge/engines'
 
 module Forge
   class Builder
@@ -188,6 +190,11 @@ module Forge
         @sprockets.append_path File.join(@assets_path, dir)
       end
 
+      # Add assets/styleshets to load path for Less Engine
+      Tilt::LessTemplateWithPaths.load_path = File.join(@assets_path, 'stylesheets')
+
+      @sprockets.register_engine '.less', Tilt::LessTemplateWithPaths
+
       # Passing the @project instance variable to the Sprockets::Context instance
       # used for processing the asset ERB files. Ruby meta-programming, FTW.
       @sprockets.context_class.instance_exec(@project) do |project|
@@ -235,7 +242,7 @@ module Forge
         @task.say "Error while building #{File.basename(source)}:"
         @task.say e.message + "\n", Thor::Shell::Color::RED
         exit
-      end
+     end
     end
   end
 end

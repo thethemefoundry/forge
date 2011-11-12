@@ -13,6 +13,7 @@ gem "sprockets-sass", "~> 0.3.0"
 gem "compass", "~> 0.11.5"
 gem 'rack', '~> 1.3.5'
 gem "guard-livereload", "~> 0.3.1"
+gem "less", "~> 2.0.7"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
