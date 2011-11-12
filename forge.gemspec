@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "forge"
-  s.version = "0.1.3"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
-  s.date = "2011-11-11"
+  s.date = "2011-11-12"
   s.description = "A toolkit for bootstrapping and developing WordPress themes."
   s.email = "aadams@jestro.com"
   s.executables = ["forge"]
@@ -56,6 +56,7 @@ Gem::Specification.new do |s|
     "lib/forge/builder.rb",
     "lib/forge/cli.rb",
     "lib/forge/config.rb",
+    "lib/forge/engines.rb",
     "lib/forge/error.rb",
     "lib/forge/generator.rb",
     "lib/forge/guard.rb",
@@ -89,6 +90,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<compass>, ["~> 0.11.5"])
       s.add_runtime_dependency(%q<rack>, ["~> 1.3.5"])
       s.add_runtime_dependency(%q<guard-livereload>, ["~> 0.3.1"])
+      s.add_runtime_dependency(%q<less>, ["~> 2.0.7"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<cucumber>, [">= 0"])
       s.add_development_dependency(%q<aruba>, [">= 0"])
@@ -106,6 +108,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<compass>, ["~> 0.11.5"])
       s.add_dependency(%q<rack>, ["~> 1.3.5"])
       s.add_dependency(%q<guard-livereload>, ["~> 0.3.1"])
+      s.add_dependency(%q<less>, ["~> 2.0.7"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<aruba>, [">= 0"])
@@ -124,6 +127,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<compass>, ["~> 0.11.5"])
     s.add_dependency(%q<rack>, ["~> 1.3.5"])
     s.add_dependency(%q<guard-livereload>, ["~> 0.3.1"])
+    s.add_dependency(%q<less>, ["~> 2.0.7"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<aruba>, [">= 0"])

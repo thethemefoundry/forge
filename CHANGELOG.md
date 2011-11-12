@@ -1,3 +1,9 @@
+== 0.2 ==
+- Added preliminary LESS support
+- Added ERB processing on templates, functions and assets with filenames that end with .erb
+- Adding --config=filename flag for specifying an alternate config file
+- Scaffolding template cleanup
+
 == 0.1.3 ==
 - Fixed bug where forge watch crashed when a file was at the root of the includes folder
 
