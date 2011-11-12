@@ -16,10 +16,11 @@ module Forge
 
     attr_accessor :root, :config, :task
 
-    def initialize(root, task, config={})
+    def initialize(root, task, config={}, config_file=nil)
       @root        = File.expand_path(root)
       @config      = config || {}
       @task        = task
+      @config_file = config_file
 
       self.load_config if @config.empty?
     end

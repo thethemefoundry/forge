@@ -76,12 +76,35 @@ module Forge
 
     def copy_templates
       template_paths.each do |template_path|
-        FileUtils.cp template_path, @project.build_path unless File.directory?(template_path)
+        # Skip directories
+        next if File.directory?(template_path)
+
+        if template_path.end_with?('.erb')
+          # Chop the .erb extension off the filename
+          destination = File.join(@project.build_path, File.basename(template_path).slice(0..-5))
+
+          write_erb(template_path, destination)
+        else
+          # Regular old copy of PHP-only files
+          FileUtils.cp template_path, @project.build_path
+        end
       end
     end
 
+    def clean_functions
+      FileUtils.rm File.join(@project.build_path, 'functions.php')
+    end
+
     def copy_functions
-      FileUtils.cp_r File.join(@functions_path, 'functions.php'), @project.build_path
+      functions_erb_path = File.join(@functions_path, 'functions.php.erb')
+      functions_php_path = File.join(@functions_path, 'functions.php')
+
+      if File.exists?(functions_erb_path)
+        destination = File.join(@project.build_path, 'functions.php')
+        write_erb(functions_erb_path, destination)
+      elsif File.exists?(functions_php_path)
+        FileUtils.cp functions_php_path, @project.build_path
+      end
     end
 
     def clean_includes
@@ -96,9 +119,6 @@ module Forge
         # Iterate over all files in source/includes, so we can exclude if necessary
         paths = Dir.glob(File.join(@includes_path, '**', '*'))
         paths.each do |path|
-          # Skip over hidden files and folders (.git, .svn, etc)
-          continue if File.basename(path)[0] == '.'
-
           # Remove @includes_path from full file path to get the relative path
           relative_path = path.gsub(@includes_path, '')
           destination = File.join(@project.build_path, 'includes', relative_path)
@@ -168,11 +188,11 @@ module Forge
         @sprockets.append_path File.join(@assets_path, dir)
       end
 
-      @sprockets.context_class.instance_eval do
-        def config
-          return {:name => 'asd'}
-          p "CALLING CONFIG"
-          @project.config
+      # Passing the @project instance variable to the Sprockets::Context instance
+      # used for processing the asset ERB files. Ruby meta-programming, FTW.
+      @sprockets.context_class.instance_exec(@project) do |project|
+        define_method :config do
+          project.config
         end
       end
     end
@@ -201,6 +221,21 @@ module Forge
 
       file = @task.find_in_source_paths(File.join('config', 'stylesheet_header.erb'))
       @stylesheet_header = File.expand_path(file)
+    end
+
+    # Write an .erb from source to destination, catching and reporting errors along the way
+    def write_erb(source, destination)
+      begin
+        @task.shell.mute do
+          @task.create_file(destination) do
+            @project.parse_erb(source)
+          end
+        end
+      rescue Exception => e
+        @task.say "Error while building #{File.basename(source)}:"
+        @task.say e.message + "\n", Thor::Shell::Color::RED
+        exit
+      end
     end
   end
 end
