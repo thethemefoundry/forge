@@ -50,7 +50,7 @@
 			<h2 id="overview">1. Overview</h2>
 			<p>
 				Forge was designed to make developing WordPress themes just a little bit easier.
-				It supports tools such as Sass, CoffeeScript and Sprockets, and helps you organize
+				It supports tools such as Sass, LESS, CoffeeScript and Sprockets, and helps you organize
 				your theme the way you want to - instead of the flat structure required by WordPress.
 			</p>
 
@@ -117,13 +117,14 @@
 			<p>The source directory is made up of 4 sections: <a href="#how-forge-works-assets">Assets</a>, <a href="#how-forge-works-templates">Templates</a>, <a href="#how-forge-works-functions-includes">Functions</a>, and <a href="#how-forge-works-functions-includes">Includes</a>.</p>
 
 			<h3 id="how-forge-works-assets">3.1 Assets</h3>
-			<p>Assets are your JavaScript, CSS, and image files. You may use CoffeeScript, Sass, and Sprockets. If you want to stick with plain CSS and JavaScript, you can do that as well.</p>
+			<p>Assets are your JavaScript, CSS, and image files. You may use CoffeeScript, Sass, LESS, and Sprockets. If you want to stick with plain CSS and JavaScript, you can do that as well.</p>
 			<p>Assets fall into 3 categories: <a href="#how-forge-works-stylesheets">Stylesheets</a>, <a href="#how-forge-works-javascript">JavaScript</a>, and <a href="#how-forge-works-images">Images</a>.</p>
 
 			<h4 id="how-forge-works-stylesheets">3.1.1 Stylesheets</h4>
-			<p>Stylesheets in Forge use <a href="http://sass-lang.com/">Sass</a>, a language that makes stylesheet development quicker and easier. By default, Forge generates <code>source/assets/stylesheets/style.css.scss</code>.</p>
+			<p>Stylesheets in Forge use <a href="http://sass-lang.com/">Sass</a> or <a href="http://lesscss.org/">LESS</a>, languages that make stylesheet development quicker and easier. By default, Forge generates <code>source/assets/stylesheets/style.css.scss</code>.</p>
 			<p>Forge supports both the Sass (.sass) and SCSS (.scss) syntax - just change the extension to <code>style.css.sass</code> if you prefer Sass syntax.</p>
-			<p>In addition, Forge supports <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> mixins.</p>
+			<p>Or, if you prefer LESS to Sass, just name your stylesheet file <code>style.css.less</code>, and the LESS processor will take over.</p>
+			<p>In addition, Forge supports <a href="http://compass-style.org/">Compass</a> and <a href="http://www.blueprintcss.org/">Blueprint</a> mixins for Sass.</p>
 			<p>By default, the only stylesheet included with your theme is the main stylesheet (style.css), which is located at <code>source/assets/stylesheets/style.css.scss</code>.</p>
 			<p>Sass supports importing of partial stylesheets. Forge allows as many partials you want for breaking up your CSS into an organized structure. For example, assume the following files exist:</p>
 			<pre><code>source/assets/stylesheets/_pages.scss
