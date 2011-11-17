@@ -11,8 +11,8 @@
  * License: <%= config["license_name"] if config["license_name"] %>
  * License URI: <%= config["license_uri"] if config["license_uri"] %>
  * Tags: <%= config["tags"].join(", ") if config["tags"] %>
-<% if config["comments"] -%>
+<%- unless config["comments"].nil? || config["comments"].empty? -%>
  *
  * <%= config["comments"] %>
-<% end -%>
+<%- end -%>
  */

@@ -1,5 +1,5 @@
 require 'pathname'
-require 'json'
+require 'insensitive_hash'
 
 module Forge
   class Project
@@ -54,7 +54,7 @@ module Forge
     end
 
     def config_file
-      @config_file ||= File.join(self.root, 'config.json')
+      @config_file ||= File.join(self.root, 'config.rb')
     end
 
     # Create a symlink from source to the project build dir
@@ -77,8 +77,11 @@ module Forge
         raise Error, "Could not find the config file, are you sure you're in a
         forge project directory?"
       end
+      config = {}.insensitive
 
-      self.config = JSON.parse File.open(config_file).read
+      eval(File.read(self.config_file))
+
+      @config = config
     end
 
     def get_binding

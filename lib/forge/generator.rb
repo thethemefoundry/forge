@@ -88,7 +88,7 @@ module Forge
     end
 
     def write_config
-      write_template(['config', 'config.json.erb'], @project.config_file)
+      write_template(['config', 'config.tt'], @project.config_file)
 
       self
     end

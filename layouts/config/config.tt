@@ -1,0 +1,29 @@
+# The name of the theme
+config[:name] = "<%= config[:name] %>"
+
+# The website for the theme
+config[:uri] = "<%= config[:uri] %>"
+
+# The author's name
+config[:author] = "<%= config[:author] %>"
+
+# The author's website
+config[:author_uri] = "<%= config[:author_uri] %>"
+
+# Description of the theme
+config[:description] = "<%= config[:description] %>"
+
+# Version number of the theme
+config[:version_number] = "<%= config[:version_number] %>"
+
+# Name of the theme license
+config[:license_name] = "<%= config[:license_name] %>"
+
+# Website for the theme license
+config[:license_uri] = "<%= config[:license_uri] %>"
+
+# Tags for this theme, as an array (ex. ["blue", "white", "two-columns"])
+config[:tags] = <%= config[:tags] ? config[:tags] : "[]" %>
+
+# Additional comments (optional)
+config[:comments] = "<%= config[:comments] %>"

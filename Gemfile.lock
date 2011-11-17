@@ -41,6 +41,7 @@ GEM
       guard (>= 0.4.0)
       multi_json (~> 1.0.3)
     hike (1.2.1)
+    insensitive_hash (0.0.3)
     jeweler (1.6.4)
       bundler (~> 1.0)
       git (>= 1.2.5)
@@ -86,6 +87,7 @@ DEPENDENCIES
   cucumber
   guard (~> 0.8.4)
   guard-livereload (~> 0.3.1)
+  insensitive_hash (~> 0.0.3)
   jeweler (~> 1.6.4)
   json (~> 1.6.1)
   less (~> 2.0.7)
