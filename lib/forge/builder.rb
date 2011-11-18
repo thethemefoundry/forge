@@ -140,15 +140,13 @@ module Forge
 
         sprocket = @sprockets.find_asset(asset.last)
 
-        sprockets_error = false
-
         # Catch any sprockets errors and continue the process
         begin
           @task.shell.mute do
             FileUtils.mkdir_p(File.dirname(destination)) unless File.directory?(File.dirname(destination))
             sprocket.write_to(destination) unless sprocket.nil?
 
-            if asset.last == 'style.css' && (not sprockets_error)
+            if asset.last == 'style.css'
               @task.prepend_file destination, @project.parse_erb(stylesheet_header)
             end
           end
