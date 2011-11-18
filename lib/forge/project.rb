@@ -80,7 +80,12 @@ module Forge
       end
       config = {}.insensitive
 
-      eval(File.read(self.config_file))
+      begin
+        eval(File.read(self.config_file))
+      rescue Exception => e
+        @task.say "Error while evaluating config file:"
+        @task.say e.message, Thor::Shell::Color::RED
+      end
 
       @config = config
     end
