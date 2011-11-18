@@ -1,5 +1,6 @@
 require 'pathname'
 require 'insensitive_hash'
+require 'compass'
 
 module Forge
   class Project

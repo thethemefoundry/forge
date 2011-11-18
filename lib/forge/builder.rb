@@ -3,7 +3,6 @@ require 'sprockets-sass'
 require 'sass'
 require 'less'
 require 'zip/zip'
-require 'compass'
 require 'forge/engines'
 
 module Forge
@@ -180,10 +179,6 @@ module Forge
     private
 
     def init_sprockets
-      Compass.configuration do |compass|
-        compass.line_comments = false
-      end
-
       @sprockets = Sprockets::Environment.new
 
       ['javascripts', 'stylesheets'].each do |dir|

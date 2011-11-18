@@ -26,6 +26,9 @@ module Guard
     def run_on_change(paths)
       UI.info "Project config changed, reloading"
       ::Forge::Guard.project.load_config
+      ::Forge::Guard.builder = ::Forge::Builder.new(::Forge::Guard.project)
+      # Rebuild everything if the config changes
+      ::Forge::Guard.builder.build
     end
   end
 end
