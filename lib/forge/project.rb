@@ -74,17 +74,18 @@ module Forge
     end
 
     def load_config
-      unless File.exists?(self.config_file)
-        raise Error, "Could not find the config file, are you sure you're in a
-        forge project directory?"
-      end
-      config = {}.insensitive
+      config = {}
 
-      begin
-        eval(File.read(self.config_file))
-      rescue Exception => e
-        @task.say "Error while evaluating config file:"
-        @task.say e.message, Thor::Shell::Color::RED
+      if File.exists?(self.config_file)
+        config = load_ruby_config
+      else
+        # Old format of config file
+        if File.exists?(File.join(self.root, 'config.json'))
+          config = convert_old_config
+        else
+          raise Error, "Could not find the config file, are you sure you're in a
+          forge project directory?"
+        end
       end
 
       @config = config
@@ -97,5 +98,45 @@ module Forge
     def parse_erb(file)
       ERB.new(::File.binread(file), nil, '-', '@output_buffer').result(binding)
     end
+
+    private
+
+    def convert_old_config
+      require 'json'
+
+      @task.say("It looks like you are using the old JSON-format config. Forge will now try converting your config to the new Ruby format.")
+      @task.ask(" Press any key to continue...")
+
+      begin
+        @config = JSON.parse(File.open(File.join(self.root, 'config.json')).read).insensitive
+
+        @task.create_file(@config_file) do
+          parse_erb(File.expand_path(@task.find_in_source_paths(File.join(['config', 'config.tt']))))
+        end
+      rescue Exception => e
+        @task.say "Error while building new config file:", Thor::Shell::Color::RED
+        @task.say e.message, Thor::Shell::Color::RED
+        @task.say "You'll need to either fix the error and try again, or manually convert your config.json file to Ruby format (config.rb)"
+        exit
+      end
+
+      @task.say "Success! Double-check that all your config values were moved over, and you can now delete config.json.", Thor::Shell::Color::GREEN
+
+      return load_ruby_config
+    end
+
+    def load_ruby_config
+      config = {}.insensitive
+
+      begin
+        eval(File.read(self.config_file))
+      rescue Exception => e
+        @task.say "Error while evaluating config file:"
+        @task.say e.message, Thor::Shell::Color::RED
+      end
+
+      return config
+    end
+
   end
 end
