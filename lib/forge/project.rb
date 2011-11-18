@@ -76,6 +76,7 @@ module Forge
     def load_config
       config = {}
 
+      # Check for config.rb
       if File.exists?(self.config_file)
         config = load_ruby_config
       else
@@ -104,14 +105,19 @@ module Forge
     def convert_old_config
       require 'json'
 
+      # Let the user know what is going to happen
       @task.say("It looks like you are using the old JSON-format config. Forge will now try converting your config to the new Ruby format.")
       @task.ask(" Press any key to continue...")
 
       begin
-        @config = JSON.parse(File.open(File.join(self.root, 'config.json')).read).insensitive
+        old_file_name = File.join(self.root, 'config.json')
+        # Parse the old config and make it an insensitive hash
+        @config = JSON.parse(File.open(old_file_name).read).insensitive
 
         @task.create_file(@config_file) do
-          parse_erb(File.expand_path(@task.find_in_source_paths(File.join(['config', 'config.tt']))))
+          # Find the config.tt template, and parse it using ERB
+          config_template_path = @task.find_in_source_paths(File.join(['config', 'config.tt']))
+          parse_erb(File.expand_path(config_template_path))
         end
       rescue Exception => e
         @task.say "Error while building new config file:", Thor::Shell::Color::RED
@@ -122,13 +128,15 @@ module Forge
 
       @task.say "Success! Double-check that all your config values were moved over, and you can now delete config.json.", Thor::Shell::Color::GREEN
 
+      # We now have a Ruby config file, so we can continue loading as normal
       return load_ruby_config
     end
 
     def load_ruby_config
-      config = {}.insensitive
+      config = {}.insensitive # Insensitive hash for convenience
 
       begin
+        # Config file is just executed as straight ruby
         eval(File.read(self.config_file))
       rescue Exception => e
         @task.say "Error while evaluating config file:"
