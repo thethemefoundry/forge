@@ -58,6 +58,10 @@ module Forge
       @config_file ||= File.join(self.root, 'config.rb')
     end
 
+    def global_config_file
+      @global_config_file ||= File.join(ENV['HOME'], '.forge', 'config.rb')
+    end
+
     # Create a symlink from source to the project build dir
     def link(source)
       source = File.expand_path(source)
@@ -74,15 +78,20 @@ module Forge
     end
 
     def load_config
-      config = {}
+      config = {}.insensitive
+
+      # Check for global (user) config.rb
+      if File.exists?(self.global_config_file)
+        config.merge!(load_ruby_config(self.global_config_file))
+      end
 
       # Check for config.rb
       if File.exists?(self.config_file)
-        config = load_ruby_config
+        config.merge!(load_ruby_config(self.config_file))
       else
         # Old format of config file
         if File.exists?(File.join(self.root, 'config.json'))
-          config = convert_old_config
+          config.merge!(convert_old_config)
         else
           raise Error, "Could not find the config file, are you sure you're in a
           forge project directory?"
@@ -129,15 +138,15 @@ module Forge
       @task.say "Success! Double-check that all your config values were moved over, and you can now delete config.json.", Thor::Shell::Color::GREEN
 
       # We now have a Ruby config file, so we can continue loading as normal
-      return load_ruby_config
+      return load_ruby_config(self.config_file)
     end
 
-    def load_ruby_config
+    def load_ruby_config(file)
       config = {}.insensitive # Insensitive hash for convenience
 
       begin
         # Config file is just executed as straight ruby
-        eval(File.read(self.config_file))
+        eval(File.read(file))
       rescue Exception => e
         @task.say "Error while evaluating config file:"
         @task.say e.message, Thor::Shell::Color::RED

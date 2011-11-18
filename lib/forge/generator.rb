@@ -88,6 +88,14 @@ module Forge
     end
 
     def write_config
+      unless File.exists?(@project.global_config_file)
+        @task.shell.mute do
+          @task.create_file(@project.global_config_file) do
+            "# Place your global configuration values here\n# config[:live_reload] = true"
+          end
+        end
+      end
+
       write_template(['config', 'config.tt'], @project.config_file)
 
       self
