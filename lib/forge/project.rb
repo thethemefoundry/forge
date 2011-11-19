@@ -119,8 +119,8 @@ module Forge
 
       begin
         old_file_name = File.join(self.root, 'config.json')
-        # Parse the old config format
-        @config = JSON.parse(File.open(old_file_name).read)
+        # Parse the old config format, convert keys to symbols
+        @config = JSON.parse(File.open(old_file_name).read).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
         @task.create_file(@config_file) do
           # Find the config.tt template, and parse it using ERB
