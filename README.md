@@ -6,7 +6,7 @@
 
 -----
 
-Current Version: **0.1.1**
+Current Version: **0.2.0**
 
 Install Forge (requires [Ruby](http://www.ruby-lang.org/) and [RubyGems](http://rubygems.org/)):
 
