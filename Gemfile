@@ -14,7 +14,6 @@ gem "compass", "~> 0.11.5"
 gem 'rack', '~> 1.3.5'
 gem "guard-livereload", "~> 0.3.1"
 gem "less", "~> 2.0.7"
-gem "insensitive_hash", "~> 0.0.3"
 gem "rb-fsevent", "~> 0.4.3.1"
 gem "yui-compressor", "~> 0.9.6"
 
