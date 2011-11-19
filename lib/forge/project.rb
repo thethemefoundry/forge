@@ -1,5 +1,4 @@
 require 'pathname'
-require 'insensitive_hash'
 require 'compass'
 
 module Forge
@@ -78,7 +77,7 @@ module Forge
     end
 
     def load_config
-      config = {}.insensitive
+      config = {}
 
       # Check for global (user) config.rb
       if File.exists?(self.global_config_file)
@@ -142,7 +141,7 @@ module Forge
     end
 
     def load_ruby_config(file)
-      config = {}.insensitive # Insensitive hash for convenience
+      config = {}
 
       begin
         # Config file is just executed as straight ruby

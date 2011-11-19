@@ -46,7 +46,7 @@ module Forge
         end
       }
 
-      if @project.config['live_reload']
+      if @project.config[:livereload]
         guardfile_contents << %Q{
           guard 'livereload' do
             watch(%r{#{source_path}/*})

@@ -146,6 +146,18 @@ module Forge
             FileUtils.mkdir_p(File.dirname(destination)) unless File.directory?(File.dirname(destination))
             sprocket.write_to(destination) unless sprocket.nil?
 
+            if @project.config[:compress_js] && destination.end_with?('.js')
+              require "yui/compressor"
+
+              # Grab the initial sprockets output
+              sprockets_output = File.open(destination, 'r').read
+
+              # Re-write the file, minified
+              File.open(destination, 'w') do |file|
+                file.write(YUI::JavaScriptCompressor.new.compress(sprockets_output))
+              end
+            end
+
             if asset.last == 'style.css'
               @task.prepend_file destination, @project.parse_erb(stylesheet_header)
             end

@@ -28,6 +28,12 @@ config[:tags] = <%= config[:tags] ? config[:tags] : "[]" %>
 # Additional comments (optional)
 config[:comments] = "<%= config[:comments] %>"
 
+# JavaScript compression
+# config[:compress_js] = false
+
+# Enable livereload
+# config[:livereload] = false
+
 # Compass configuration can also go here.
 # See http://compass-style.org/help/tutorials/configuration-reference/ for some of the options
 # Note: Most options (especially path-related options) will have no effect on Forge

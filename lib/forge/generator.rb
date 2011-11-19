@@ -91,7 +91,7 @@ module Forge
       unless File.exists?(@project.global_config_file)
         @task.shell.mute do
           @task.create_file(@project.global_config_file) do
-            "# Place your global configuration values here\n# config[:live_reload] = true"
+            "# Place your global configuration values here\n# config[:livereload] = true"
           end
         end
       end
