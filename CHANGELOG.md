@@ -1,4 +1,8 @@
-== 0.2 ==
+== 0.3.0 ==
+- Changed configuration over to Ruby from JSON
+- Fixed some bugs that caused forge watch to crash
+
+== 0.2.0 ==
 - Added preliminary LESS support
 - Added ERB processing on templates, functions and assets with filenames that end with .erb
 - Adding --config=filename flag for specifying an alternate config file
