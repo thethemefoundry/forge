@@ -11,10 +11,10 @@ table { border-collapse: collapse; border-spacing: 0; }
 	Body and links
 ------------------------------------------------------------ */
 body {
-	font-size: 87.5%;
-	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-family: 'Proxima Nova', Helvetica, Arial, sans-serif;
 	color: #6d6455;
-	background: #e3e2ce url(/images/bg.png);
+	background: #e3e2ce url(/images/bg.jpg);
 }
 a:link,
 a:visited {
@@ -24,14 +24,53 @@ a:visited {
 a:hover {
 	color: #39342c;
 }
-
+/* 
+* The fonts included are copyrighted by the vendors listed below.
+* Name: Proxima Nova
+* Vendor: Mark Simonson Studio
+* License URL: http://www.fontspring.com/fflicense/mark-simonson-studio
+*/
+@font-face {
+		font-family: 'Proxima Nova';
+		src: url('/fonts/ProximaNova-Reg-webfont.eot');
+		src: url('/fonts/ProximaNova-Reg-webfont.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/ProximaNova-Reg-webfont.woff') format('woff'),
+				 url('/fonts/ProximaNova-Reg-webfont.ttf') format('truetype'),
+				 url('/fonts/ProximaNova-Reg-webfont.svg#ProximaNovaRegular') format('svg');
+		font-weight: 400;
+		font-style: normal;
+}
+@font-face {
+		font-family: 'Proxima Nova';
+		src: url('/fonts/ProximaNova-RegIt-webfont.eot');
+		src: url('/fonts/ProximaNova-RegIt-webfont.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/ProximaNova-RegIt-webfont.woff') format('woff'),
+				 url('/fonts/ProximaNova-RegIt-webfont.ttf') format('truetype'),
+				 url('/fonts/ProximaNova-RegIt-webfont.svg#ProximaNovaRegularItalic') format('svg');
+		font-weight: normal;
+		font-style: italic;
+}
+@font-face {
+		font-family: 'Proxima Nova';
+		src: url('/fonts/ProximaNova-Bold-webfont.eot');
+		src: url('/fonts/ProximaNova-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/ProximaNova-Bold-webfont.woff') format('woff'),
+				 url('/fonts/ProximaNova-Bold-webfont.ttf') format('truetype'),
+				 url('/fonts/ProximaNova-Bold-webfont.svg#ProximaNovaBold') format('svg');
+		font-weight: 700;
+		font-style: normal;
+}
 /*---------------------------------------------------------
 	Basic Structure
 ------------------------------------------------------------ */
 #wrapper {
-	max-width: 660px;
+	max-width: 500px;
 	margin: 0 auto;
-	padding: 0 20px;
+	padding: 22px 44px;
+	background: #fbfaf5;
+	-webkit-box-shadow: 0 1px 3px rgba(64, 56, 41, .20);
+	-moz-box-shadow: 0 1px 3px rgba(64, 56, 41, .20);
+	box-shadow: 0 1px 3px rgba(64, 56, 41, .20);
 }
 .clear:after {
 	content: ".";
@@ -45,111 +84,89 @@ a:hover {
 	Header
 ------------------------------------------------------------ */
 #header {
-	padding: 30px 0;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 22px 44px;
 	text-align: center;
 }
-h1 {
-	margin: 0 auto;
-	font-family: 'IM Fell DW Pica SC', serif;
-	font-size: 6em;
-	font-weight: 400;
-	
+#header h1 {
+	float: left;
+	font-size: 24px;
+	line-height: 44px;
 }
-body#manual h1 {
-	font-size: 3em;
+#header h1 a {
+	text-decoration: none;
+	color: #6d6455;
+}
+#header h1 a:hover {
+	color: #494339;
 }
 #nav {
-	margin-top: 10px;
-	text-align: center;
+	float: right;
 }
 #nav ul li {
-	display: inline;
-	padding: 10px;
-}
-#nav a {
-	display: inline-block;
-	color: #6d6455;
-	text-decoration: none;
-	border-bottom: 1px dotted;
-}
-#nav a:hover {
-	color: #494339;
-	border-bottom: 1px solid;
+	float: left;
+	margin-left: 22px;
+	line-height: 44px;
 }
 
 /*---------------------------------------------------------
 	Sections
 ------------------------------------------------------------ */
 div.section {
-	margin: 30px 0;
-	line-height: 1.8em;
+	margin: 22px 0;
+	line-height: 22px;
 }
-h2 {
-	margin-bottom: 10px;
-	font-size: 1.285714286em; /* 18 / 14 */
-	color: #706858;
-}
-body#home h2 {
-	font-size: 1.142857143em; /* 16 / 14 */
-}
-h3 {
-	margin: 30px 0 10px 0;
-	font-size: 1.142857143em; /* 16 / 14 */
-	color: #706858;
-}
+h2,
+h3,
 h4 {
-	margin: 30px 0 5px 0;
-	color: #867a62;
-	text-transform: uppercase;
+	margin: 22px 0 0 0;
+	line-height: 44px;
 }
 code {
-	padding: 3px;
+	font-size: 13px;
 	font-family: Consolas, monospace;
-	font-size: 14px;
-	background: #eeefd7;
 }
 code span {
 	color: #aa9d89;
 }
 pre {
-	margin: 5px 0 20px 0;
-	padding: 10px;
-	background: #efecdc;
-	border: 1px solid #dcd7be;
+	margin: 22px 0;
+	padding: 11px;
+	line-height: 22px;
+	background-color: #f4f0e7;
+	border: 1px solid #e8e0d1;
 }
 pre code {
 	background: none;
 	padding: 0;
 }
 p {
-	margin-bottom: 10px;
+	margin-bottom: 22px;
 }
 /*---------------------------------------------------------
 	Footer
 ------------------------------------------------------------ */
 #footer {
-	margin: 0 0 30px 0;
-	padding-top: 10px;
-	line-height: 1.8em;
+	margin: 22px 0;
+	font-size: 13px;
 	text-align: center;
-	font-size: 0.857142857em; /* 12 / 14 */
-	border-top: 1px solid #dcd6bf;
 }
 /*---------------------------------------------------------
 	Extras
 ------------------------------------------------------------ */
 ul.bulleted {
 	list-style: outside;
-	padding-left: 25px;
-	margin-bottom: 15px;
+	padding-left: 22px;
+	margin-bottom: 22px;
 }
 /*---------------------------------------------------------
 	Manual
 ------------------------------------------------------------ */
 div.help {
-	margin: 30px 0;
-	padding: 20px;
-	line-height: 1.6em;
+	margin: 22px 0;
+	padding: 11px;
+	line-height: 22px;
 	color: #444;
 	background: #d9eaf2;
 	border: 1px solid #bed8e6;
