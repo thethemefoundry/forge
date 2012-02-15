@@ -59,6 +59,8 @@ a:hover {
 	line-height: 44px;
 }
 #header h1 a {
+	font-size: 24px;
+	line-height: 44px;
 	text-decoration: none;
 	color: #6d6455;
 }
