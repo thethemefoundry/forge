@@ -14,15 +14,15 @@ body {
 	font-size: 14px;
 	font-family: 'Proxima Nova', Helvetica, Arial, sans-serif;
 	color: #6d6455;
-	background: #e3e2ce url(/images/bg.jpg);
+	background: #ede5d5 url(/images/bg.jpg);
 }
 a:link,
 a:visited {
-	color: #494339;
+	color: #6b6251;
 	text-decoration: underline;
 }
 a:hover {
-	color: #39342c;
+	color: #312d25;
 }
 /* 
 * The fonts included are copyrighted by the vendors listed below.
