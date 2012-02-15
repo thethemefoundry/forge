@@ -126,6 +126,7 @@ h4 {
 code {
 	font-size: 13px;
 	font-family: Consolas, monospace;
+	word-wrap: break-word;
 }
 code span {
 	color: #aa9d89;
