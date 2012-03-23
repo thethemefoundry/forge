@@ -22,6 +22,7 @@ module Forge
         ['assets', 'images'],
         ['assets', 'javascripts'],
         ['assets', 'stylesheets'],
+        ['assets', 'lib'],
 
         ['functions'],
 
