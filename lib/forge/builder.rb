@@ -94,6 +94,7 @@ module Forge
 
     def clean_functions
       FileUtils.rm File.join(@project.build_path, 'functions.php')
+      FileUtils.rm_rf File.join(@project.build_path, 'functions')
     end
 
     def copy_functions
@@ -105,6 +106,20 @@ module Forge
         write_erb(functions_erb_path, destination)
       elsif File.exists?(functions_php_path)
         FileUtils.cp functions_php_path, @project.build_path
+      end
+
+      functions_paths = Dir.glob(File.join(@functions_path, '*')).reject do |filename|
+        [functions_erb_path, functions_php_path].include?(filename)
+      end
+
+      unless functions_paths.empty?
+        # Create the includes folder in the build directory
+        FileUtils.mkdir_p(File.join(@project.build_path, 'functions'))
+
+        # Iterate over all files in source/functions, skipping the actual functions.php file
+        paths = Dir.glob(File.join(@functions_path, '**', '*')).reject {|filename| [functions_erb_path, functions_php_path].include?(filename) }
+
+        copy_paths_with_erb(paths, @functions_path, File.join(@project.build_path, 'functions'))
       end
     end
 
@@ -119,14 +134,7 @@ module Forge
 
         # Iterate over all files in source/includes, so we can exclude if necessary
         paths = Dir.glob(File.join(@includes_path, '**', '*'))
-        paths.each do |path|
-          # Remove @includes_path from full file path to get the relative path
-          relative_path = path.gsub(@includes_path, '')
-          destination = File.join(@project.build_path, 'includes', relative_path)
-
-          FileUtils.mkdir_p(destination) if File.directory?(path)
-          FileUtils.cp path, destination unless File.directory?(path)
-        end
+        copy_paths_with_erb(paths, @includes_path, File.join(@project.build_path, 'includes'))
       end
     end
 
@@ -187,6 +195,26 @@ module Forge
     end
 
     private
+
+    def copy_paths_with_erb(paths, source_dir, destination_dir)
+      paths.each do |path|
+        # Remove source directory from full file path to get the relative path
+        relative_path = path.gsub(source_dir, '')
+
+        destination = File.join(destination_dir, relative_path)
+
+        if destination.end_with?('.erb')
+          # Remove the .erb extension if the path was an erb file
+          destination = destination.slice(0..-5)
+          # And process it as an erb
+          write_erb(path, destination)
+        else
+          # Otherwise, we simply move the file over
+          FileUtils.mkdir_p(destination) if File.directory?(path)
+          FileUtils.cp path, destination unless File.directory?(path)
+        end
+      end
+    end
 
     def init_sprockets
       @sprockets = Sprockets::Environment.new
