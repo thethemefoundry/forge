@@ -219,7 +219,7 @@ module Forge
     def init_sprockets
       @sprockets = Sprockets::Environment.new
 
-      ['javascripts', 'stylesheets'].each do |dir|
+      ['javascripts', 'stylesheets', 'lib'].each do |dir|
         @sprockets.append_path File.join(@assets_path, dir)
       end
 
