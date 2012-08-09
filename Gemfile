@@ -10,7 +10,7 @@ gem "rubyzip", "~> 0.9.4"
 gem "json", "~> 1.6.1"
 gem "sass", "~> 3.1.8"
 gem "sprockets-sass", "~> 0.3.0"
-gem "compass", "~> 0.11.5"
+gem "compass", "~> 0.12.2"
 gem 'rack', '~> 1.3.5'
 gem "guard-livereload", "~> 0.3.1"
 gem "less", "~> 2.0.7"
