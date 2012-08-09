@@ -14,7 +14,7 @@ gem "compass", "~> 0.11.5"
 gem 'rack', '~> 1.3.5'
 gem "guard-livereload", "~> 0.3.1"
 gem "less", "~> 2.0.7"
-gem "rb-fsevent", "~> 0.4.3.1"
+gem "rb-fsevent", "~> 0.9.1"
 gem "yui-compressor", "~> 0.9.6"
 
 # Add dependencies to develop your gem here.
@@ -25,5 +25,4 @@ group :development do
   gem "aruba"
   gem "bundler", "~> 1.0.0"
   gem "jeweler", "~> 1.6.4"
-  gem "rcov", ">= 0"
 end
