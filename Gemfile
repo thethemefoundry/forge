@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem "thor", "~> 0.14.6"
+gem "thor", "~> 0.15.4"
 gem "guard", "~> 1.3.0"
 gem "sprockets", "~> 2.0.2"
 gem "rubyzip", "~> 0.9.4"
