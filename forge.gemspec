@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "forge"
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
@@ -66,6 +66,7 @@ Gem::Specification.new do |s|
     "lib/guard/forge/config.rb",
     "lib/guard/forge/functions.rb",
     "lib/guard/forge/templates.rb",
+    "pkg/forge-0.4.0.gem",
     "spec/lib/forge/config_spec.rb",
     "spec/lib/forge/project_spec.rb",
     "spec/spec_helper.rb"
@@ -87,7 +88,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<json>, ["~> 1.6.1"])
       s.add_runtime_dependency(%q<sass>, ["~> 3.1.8"])
       s.add_runtime_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
-      s.add_runtime_dependency(%q<compass>, ["~> 0.11.5"])
+      s.add_runtime_dependency(%q<compass>, ["~> 0.12.2"])
       s.add_runtime_dependency(%q<rack>, ["~> 1.3.5"])
       s.add_runtime_dependency(%q<guard-livereload>, ["~> 0.3.1"])
       s.add_runtime_dependency(%q<less>, ["~> 2.0.7"])
@@ -106,7 +107,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<json>, ["~> 1.6.1"])
       s.add_dependency(%q<sass>, ["~> 3.1.8"])
       s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
-      s.add_dependency(%q<compass>, ["~> 0.11.5"])
+      s.add_dependency(%q<compass>, ["~> 0.12.2"])
       s.add_dependency(%q<rack>, ["~> 1.3.5"])
       s.add_dependency(%q<guard-livereload>, ["~> 0.3.1"])
       s.add_dependency(%q<less>, ["~> 2.0.7"])
@@ -126,7 +127,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<json>, ["~> 1.6.1"])
     s.add_dependency(%q<sass>, ["~> 3.1.8"])
     s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
-    s.add_dependency(%q<compass>, ["~> 0.11.5"])
+    s.add_dependency(%q<compass>, ["~> 0.12.2"])
     s.add_dependency(%q<rack>, ["~> 1.3.5"])
     s.add_dependency(%q<guard-livereload>, ["~> 0.3.1"])
     s.add_dependency(%q<less>, ["~> 2.0.7"])
