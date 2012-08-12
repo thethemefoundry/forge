@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "forge"
-  s.version = "0.4.3"
+  s.version = "0.4.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
-  s.date = "2012-08-09"
+  s.date = "2012-08-12"
   s.description = "A toolkit for bootstrapping and developing WordPress themes."
   s.email = "aadams@jestro.com"
   s.executables = ["forge"]
@@ -69,6 +69,7 @@ Gem::Specification.new do |s|
     "pkg/forge-0.4.0.gem",
     "pkg/forge-0.4.1.gem",
     "pkg/forge-0.4.2.gem",
+    "pkg/forge-0.4.3.gem",
     "spec/lib/forge/config_spec.rb",
     "spec/lib/forge/project_spec.rb",
     "spec/spec_helper.rb"
@@ -88,7 +89,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<sprockets>, ["~> 2.0.2"])
       s.add_runtime_dependency(%q<rubyzip>, ["~> 0.9.4"])
       s.add_runtime_dependency(%q<json>, ["~> 1.6.1"])
-      s.add_runtime_dependency(%q<sass>, ["~> 3.1.8"])
+      s.add_runtime_dependency(%q<sass>, ["~> 3.2.0"])
       s.add_runtime_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
       s.add_runtime_dependency(%q<compass>, ["~> 0.12.2"])
       s.add_runtime_dependency(%q<rack>, ["~> 1.3.5"])
@@ -107,7 +108,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<sprockets>, ["~> 2.0.2"])
       s.add_dependency(%q<rubyzip>, ["~> 0.9.4"])
       s.add_dependency(%q<json>, ["~> 1.6.1"])
-      s.add_dependency(%q<sass>, ["~> 3.1.8"])
+      s.add_dependency(%q<sass>, ["~> 3.2.0"])
       s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
       s.add_dependency(%q<compass>, ["~> 0.12.2"])
       s.add_dependency(%q<rack>, ["~> 1.3.5"])
@@ -127,7 +128,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<sprockets>, ["~> 2.0.2"])
     s.add_dependency(%q<rubyzip>, ["~> 0.9.4"])
     s.add_dependency(%q<json>, ["~> 1.6.1"])
-    s.add_dependency(%q<sass>, ["~> 3.1.8"])
+    s.add_dependency(%q<sass>, ["~> 3.2.0"])
     s.add_dependency(%q<sprockets-sass>, ["~> 0.3.0"])
     s.add_dependency(%q<compass>, ["~> 0.12.2"])
     s.add_dependency(%q<rack>, ["~> 1.3.5"])
