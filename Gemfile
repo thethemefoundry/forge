@@ -8,7 +8,7 @@ gem "guard", "~> 1.3.0"
 gem "sprockets", "~> 2.0.2"
 gem "rubyzip", "~> 0.9.4"
 gem "json", "~> 1.6.1"
-gem "sass", "~> 3.1.8"
+gem "sass", "~> 3.2.0"
 gem "sprockets-sass", "~> 0.3.0"
 gem "compass", "~> 0.12.2"
 gem 'rack', '~> 1.3.5'
