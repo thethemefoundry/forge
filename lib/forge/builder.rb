@@ -165,10 +165,6 @@ module Forge
                 file.write(YUI::JavaScriptCompressor.new.compress(sprockets_output))
               end
             end
-
-            if asset.last == 'style.css'
-              @task.prepend_file destination, @project.parse_erb(stylesheet_header)
-            end
           end
         rescue Exception => e
           @task.say "Error while building #{asset.last}:"
@@ -256,12 +252,6 @@ module Forge
     end
 
     protected
-    def stylesheet_header
-      return @stylesheet_header unless @stylesheet_header.nil?
-
-      file = @task.find_in_source_paths(File.join('config', 'stylesheet_header.erb'))
-      @stylesheet_header = File.expand_path(file)
-    end
 
     # Write an .erb from source to destination, catching and reporting errors along the way
     def write_erb(source, destination)
