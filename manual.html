@@ -140,7 +140,7 @@ source/assets/stylesheets/style.css.scss</code></pre>
 
 body { color: #333; }
 …</code></pre>
-			<p><code>style.css.scss</code> will be processed, a Theme header will be added based on the values in <code>config.rb</code>, and the result output to <code>final_theme/style.css</code>.</p>
+			<p><code>style.css.scss</code> will be processed and the result output to <code>final_theme/style.css</code>.</p>
 
 			<h4 id="how-forge-works-javascript">3.1.2 JavaScript</h4>
 			<p>
@@ -236,64 +236,9 @@ final_theme/includes/javascripts/external.js</code></pre>
 		<div class="section configure">
 			<h2 id="configuring-forge">4. Configuring Forge</h2>
 
-			<p>Forge requires <code>config.rb</code> to be present at the root of your theme. <code>config.rb</code> is used to build the header required in style.css, and is also used to change Forge settings.</p>
+			<p>Forge requires <code>config.rb</code> to be present at the root of your theme. <code>config.rb</code> can be used to change Compass configuration as well as enable <a href="https://github.com/mockko/livereload">LiveReload</a>.</p>
 			<p>Forge also looks for a config file located in at <code>~/.forge/config.rb</code>. Any global configuration you want to apply to all Forge projects can go here. The <code>config.rb</code> of individual projects will take priority over your global settings.</p>
 			<p>Below is a list of the configuration options.</p>
-			<dl>
-				<dt>name</dt>
-				<dd>The name of the theme.</dd>
-				<dd><code>config[:name] = "My Awesome Theme"</code></dd>
-			</dl>
-			<dl>
-				<dt>uri</dt>
-				<dd>The website for the theme.</dd>
-				<dd><code>config[:uri] = "http://myawesometheme.com/"</code></dd>
-			</dl>
-			<dl>
-				<dt>author</dt>
-				<dd>The author's name.</dd>
-				<dd><code>config[:author] = "The Theme Foundry"</code></dd>
-			</dl>
-			<dl>
-				<dt>author_uri</dt>
-				<dd>The author's website.</dd>
-				<dd><code>config[:author_uri] = "http://thethemefoundry.com/"</code></dd>
-			</dl>
-			<dl>
-				<dt>description</dt>
-				<dd>Description of the theme.</dd>
-				<dd><code>config[:description] = "A stylish theme for artists and serial-bloggers."</code></dd>
-			</dl>
-			<dl>
-				<dt>version_number</dt>
-				<dd>Version number of the theme.</dd>
-				<dd><code>config[:version_number] = "1.2.4"</code></dd>
-			</dl>
-			<dl>
-				<dt>license_name</dt>
-				<dd>Name of the theme license.</dd>
-				<dd><code>config[:license_name] = "GNU General Public License"</code></dd>
-			</dl>
-			<dl>
-				<dt>license_uri</dt>
-				<dd>Website for the theme license.</dd>
-				<dd><code>config[:license_uri] = "www.gnu.org/licenses/gpl-2.0.html"</code></dd>
-			</dl>
-			<dl>
-				<dt>tags</dt>
-				<dd>Tags for this theme, as an array.</dd>
-				<dd><code>config[:tags] = ["blue", "white", "two-columns"]</code></dd>
-			</dl>
-			<dl>
-				<dt>comments</dt>
-				<dd>Additional comments (optional)</dd>
-				<dd><code>config[:comments] = "Designed with love."</code></dd>
-			</dl>
-			<dl>
-				<dt>template</dt>
-				<dd>Parent theme name, for child themes (optional)</dd>
-				<dd><code>config[:template] = "twentyeleven"</code></dd>
-			</dl>
 			<dl>
 				<dt>live_reload</dt>
 				<dd>Set to true to use <a href="https://github.com/mockko/livereload">LiveReload</a> with Forge (optional)</dd>
