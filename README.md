@@ -43,3 +43,13 @@ Get a little help with the Forge commands:
     $ forge help
 
 See the [user's manual](http://forge.thethemefoundry.com/manual) for more information.
+
+-----
+
+**Note for upgrading existing projects to 0.5.0:**
+
+As of version 0.5.0, Forge no longer generates the header of your **style.css** file based on the values in `config.rb`.
+
+Instead, you need to write your own header and include it in **style.css.scss** yourself to generate a valid theme stylesheet.
+
+If you have any questions on migrating, open a new issue and we'll help you sort it out!
