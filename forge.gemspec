@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "forge"
-  s.version = "0.4.4"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Adams", "Drew Strojny", "Matt Button"]
-  s.date = "2012-08-12"
+  s.date = "2012-10-02"
   s.description = "A toolkit for bootstrapping and developing WordPress themes."
   s.email = "aadams@jestro.com"
   s.executables = ["forge"]
@@ -33,10 +33,10 @@ Gem::Specification.new do |s|
     "features/support/env.rb",
     "forge.gemspec",
     "layouts/config/config.tt",
-    "layouts/config/stylesheet_header.erb",
     "layouts/default/functions/functions.php.erb",
     "layouts/default/javascripts/admin.js",
     "layouts/default/javascripts/theme.js",
+    "layouts/default/stylesheets/_header.scss.erb",
     "layouts/default/stylesheets/_reset.scss",
     "layouts/default/stylesheets/_typography.scss",
     "layouts/default/stylesheets/style.css.scss.erb",
@@ -66,10 +66,6 @@ Gem::Specification.new do |s|
     "lib/guard/forge/config.rb",
     "lib/guard/forge/functions.rb",
     "lib/guard/forge/templates.rb",
-    "pkg/forge-0.4.0.gem",
-    "pkg/forge-0.4.1.gem",
-    "pkg/forge-0.4.2.gem",
-    "pkg/forge-0.4.3.gem",
     "spec/lib/forge/config_spec.rb",
     "spec/lib/forge/project_spec.rb",
     "spec/spec_helper.rb"
