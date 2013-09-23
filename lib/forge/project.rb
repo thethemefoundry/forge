@@ -30,7 +30,7 @@ module Forge
     end
 
     def fonts_path
-      assets_path.join('fonts')
+      File.join(self.assets_path, 'fonts')
     end
 
     def build_path
