@@ -23,6 +23,6 @@ group :development do
   gem "rspec"
   gem "cucumber", ">= 0"
   gem "aruba"
-  gem "bundler", "~> 1.2.3"
+  gem "bundler"
   gem "jeweler", "~> 1.6.4"
 end
