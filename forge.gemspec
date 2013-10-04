@@ -82,7 +82,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<thor>, ["~> 0.15.4"])
       s.add_runtime_dependency(%q<guard>, ["~> 1.3.0"])
-      s.add_runtime_dependency(%q<sprockets>, ["~> 2.0.2"])
+      s.add_runtime_dependency(%q<sprockets>, ["~> 2.10.0"])
       s.add_runtime_dependency(%q<rubyzip>, ["~> 0.9.4"])
       s.add_runtime_dependency(%q<json>, ["~> 1.8.0"])
       s.add_runtime_dependency(%q<sass>, ["~> 3.2.0"])
@@ -101,7 +101,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<thor>, ["~> 0.15.4"])
       s.add_dependency(%q<guard>, ["~> 1.3.0"])
-      s.add_dependency(%q<sprockets>, ["~> 2.0.2"])
+      s.add_dependency(%q<sprockets>, ["~> 2.10.0"])
       s.add_dependency(%q<rubyzip>, ["~> 0.9.4"])
       s.add_dependency(%q<json>, ["~> 1.8.0"])
       s.add_dependency(%q<sass>, ["~> 3.2.0"])
