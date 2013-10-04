@@ -5,7 +5,7 @@ source "http://rubygems.org"
 
 gem "thor", "~> 0.15.4"
 gem "guard", "~> 1.3.0"
-gem "sprockets", "~> 2.0.2"
+gem "sprockets", "2.10.0"
 gem "rubyzip", "~> 0.9.4"
 gem "json", "~> 1.8.0"
 gem "sass", "~> 3.2.0"
