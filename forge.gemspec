@@ -80,9 +80,9 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<thor>, ["~> 0.15.4"])
-      s.add_runtime_dependency(%q<guard>, ["~> 1.3.0"])
-      s.add_runtime_dependency(%q<sprockets>, ["~> 2.0.2"])
+      s.add_runtime_dependency(%q<thor>, [">= 0.18.1"])
+      s.add_runtime_dependency(%q<guard>, [">= 2.2.1"])
+      s.add_runtime_dependency(%q<sprockets>, ["~> 2.12.0"])
       s.add_runtime_dependency(%q<rubyzip>, ["~> 0.9.4"])
       s.add_runtime_dependency(%q<json>, ["~> 1.8.0"])
       s.add_runtime_dependency(%q<sass>, ["~> 3.2.0"])
@@ -91,7 +91,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rack>, ["~> 1.3.5"])
       s.add_runtime_dependency(%q<guard-livereload>, ["~> 1.0.3"])
       s.add_runtime_dependency(%q<less>, ["~> 2.2.2"])
-      s.add_runtime_dependency(%q<rb-fsevent>, ["~> 0.9.1"])
+      s.add_runtime_dependency(%q<rb-fsevent>, [">= 0.9.3"])
       s.add_runtime_dependency(%q<yui-compressor>, ["~> 0.9.6"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<cucumber>, [">= 0"])
@@ -99,9 +99,9 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.2.3"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
     else
-      s.add_dependency(%q<thor>, ["~> 0.15.4"])
-      s.add_dependency(%q<guard>, ["~> 1.3.0"])
-      s.add_dependency(%q<sprockets>, ["~> 2.0.2"])
+      s.add_dependency(%q<thor>, [">= 0.18.1"])
+      s.add_dependency(%q<guard>, ['>=2.2.1'])
+      s.add_dependency(%q<sprockets>, ["~> 2.12.0"])
       s.add_dependency(%q<rubyzip>, ["~> 0.9.4"])
       s.add_dependency(%q<json>, ["~> 1.8.0"])
       s.add_dependency(%q<sass>, ["~> 3.2.0"])
@@ -110,7 +110,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rack>, ["~> 1.3.5"])
       s.add_dependency(%q<guard-livereload>, ["~> 1.0.3"])
       s.add_dependency(%q<less>, ["~> 2.2.2"])
-      s.add_dependency(%q<rb-fsevent>, ["~> 0.9.1"])
+      s.add_dependency(%q<rb-fsevent>, [">= 0.9.3"])
       s.add_dependency(%q<yui-compressor>, ["~> 0.9.6"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
@@ -119,9 +119,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     end
   else
-    s.add_dependency(%q<thor>, ["~> 0.15.4"])
-    s.add_dependency(%q<guard>, ["~> 1.3.0"])
-    s.add_dependency(%q<sprockets>, ["~> 2.0.2"])
+    s.add_dependency(%q<thor>, [">= 0.18.1"])
+    s.add_dependency(%q<guard>, [">= 2.2.1"])
+    s.add_dependency(%q<sprockets>, ["~> 2.12.0"])
     s.add_dependency(%q<rubyzip>, ["~> 0.9.4"])
     s.add_dependency(%q<json>, ["~> 1.8.0"])
     s.add_dependency(%q<sass>, ["~> 3.2.0"])
@@ -130,7 +130,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rack>, ["~> 1.3.5"])
     s.add_dependency(%q<guard-livereload>, ["~> 1.0.3"])
     s.add_dependency(%q<less>, ["~> 2.2.2"])
-    s.add_dependency(%q<rb-fsevent>, ["~> 0.9.1"])
+    s.add_dependency(%q<rb-fsevent>, [">= 0.9.3"])
     s.add_dependency(%q<yui-compressor>, ["~> 0.9.6"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
@@ -139,4 +139,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
   end
 end
-
