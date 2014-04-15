@@ -58,8 +58,7 @@ module Forge
         result = block.call(options, livereload)
         guardfile_contents << result unless result.nil?
       end
-
-      ::Guard.start({ :guardfile_contents => guardfile_contents })
+      ::Guard.start({ :guardfile_contents => guardfile_contents }).join
     end
   end
 end

@@ -3,18 +3,17 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem "thor", "~> 0.15.4"
-gem "guard", "~> 1.3.0"
-gem "sprockets", "~> 2.0.2"
+gem "thor", ">= 0.18.1"
+gem 'guard', '>=2.2.1'
+gem "sprockets", "~> 2.12.0"
 gem "rubyzip", "~> 0.9.4"
 gem "json", "~> 1.8.0"
 gem "sass", "~> 3.2.0"
 gem "sprockets-sass", "~> 0.3.0"
 gem "compass", "~> 0.12.2"
 gem 'rack', '~> 1.3.5'
-gem "guard-livereload", "~> 1.0.3"
 gem "less", "~> 2.2.2"
-gem "rb-fsevent", "~> 0.9.1"
+gem "rb-fsevent", ">= 0.9.3"
 gem "yui-compressor", "~> 0.9.6"
 
 # Add dependencies to develop your gem here.
@@ -23,6 +22,5 @@ group :development do
   gem "rspec"
   gem "cucumber", ">= 0"
   gem "aruba"
-  gem "bundler", "~> 1.2.3"
   gem "jeweler", "~> 1.6.4"
 end
