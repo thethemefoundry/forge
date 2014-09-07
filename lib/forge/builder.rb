@@ -219,6 +219,12 @@ module Forge
         @sprockets.append_path File.join(@assets_path, dir)
       end
 
+      if @project.config[:sprockets_paths]
+        @project.config[:sprockets_paths].each do |dir|
+          @sprockets.append_path dir
+        end
+      end
+
       # Add assets/styleshets to load path for Less Engine
       Tilt::LessTemplateWithPaths.load_path = File.join(@assets_path, 'stylesheets')
 
