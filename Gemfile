@@ -7,7 +7,7 @@ gem "thor", ">= 0.18.1"
 gem 'guard', '>=2.2.1'
 gem "sprockets", "~> 2.12.0"
 gem "rubyzip", "~> 0.9.4"
-gem "json", "~> 1.8.0"
+gem "json", "~> 2.3.0"
 gem "sass", "~> 3.2.0"
 gem "sprockets-sass", "~> 0.3.0"
 gem "compass", "~> 0.12.2"
