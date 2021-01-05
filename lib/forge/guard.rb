@@ -1,5 +1,5 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/compat/plugin'
 
 module Forge
   module Guard

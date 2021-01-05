@@ -1,8 +1,8 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/compat/plugin'
 
 module Guard
-  class ForgeTemplates < ::Guard::Guard
+  class ForgeTemplates < Plugin
     def initialize(watchers=[], options={})
       super
     end
