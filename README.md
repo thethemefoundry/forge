@@ -1,4 +1,5 @@
-## Forge is a toolkit for bootstrapping and developing WordPress themes.
+## My Wordpress Project
+##  Forge is a toolkit for bootstrapping and developing WordPress themes.
 
 [Forge website](http://forge.thethemefoundry.com/)
 
