@@ -179,8 +179,9 @@ module Forge
         end
       end
 
-      # Copy the images directory over
+      # Copy the images & fonts directly directory over
       FileUtils.cp_r(File.join(@assets_path, 'images'), @project.build_path) if File.exists?(File.join(@assets_path, 'images'))
+      FileUtils.cp_r(File.join(@assets_path, 'fonts'), @project.build_path) if File.exists?(File.join(@assets_path, 'fonts'))
 
       # Check for screenshot and move it into main build directory
       Dir.glob(File.join(@project.build_path, 'images', '*')).each do |filename|
@@ -215,7 +216,7 @@ module Forge
     def init_sprockets
       @sprockets = Sprockets::Environment.new
 
-      ['javascripts', 'stylesheets', 'lib'].each do |dir|
+      ['javascripts', 'stylesheets', 'lib', 'fonts'].each do |dir|
         @sprockets.append_path File.join(@assets_path, dir)
       end
 
